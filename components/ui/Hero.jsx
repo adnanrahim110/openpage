@@ -3,6 +3,7 @@
 import { usePopup } from "@/context/PopupProvider";
 import { banners_noisy_bg, icons_curve_line, testi } from "@/public";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { GiTalk } from "react-icons/gi";
 import { HiSparkles } from "react-icons/hi2";
@@ -27,6 +28,11 @@ const Hero = ({
   images,
 }) => {
   const { openPopup } = usePopup();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const TrustedBy = () => (
     <motion.div
@@ -83,30 +89,33 @@ const Hero = ({
     </div>
   );
 
-  const ParticlesBackground = () => (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-primary/30 rounded-full"
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-          }}
-          animate={{
-            y: [null, Math.random() * -100 - 50],
-            opacity: [0, 1, 0],
-          }}
-          transition={{
-            duration: Math.random() * 3 + 2,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
+  const ParticlesBackground = () => {
+    if (!isClient) return null;
+    return (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-primary/30 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [null, Math.random() * -100 - 50],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: Math.random() * 3 + 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+    );
+  };
 
   return !hero2 ? (
     <section className="relative hero_Slider overflow-hidden size-full">

@@ -15,7 +15,10 @@ const RoundSlider = () => {
   const rotationInProgressRef = useRef(false);
   const mouseDownXRef = useRef(null);
   const mouseUpXRef = useRef(null);
-  const [zDepth, setZDepth] = useState(window.innerWidth < 786 ? 180 : 250);
+  const [isClient, setIsClient] = useState(false);
+  const [zDepth, setZDepth] = useState(
+    () => (typeof window !== "undefined" && window.innerWidth < 786 ? 180 : 250)
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -24,6 +27,12 @@ const RoundSlider = () => {
   const smoothMouseY = useSpring(mouseY, { damping: 50, stiffness: 400 });
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const carouselEl = carouselRef.current;
     if (!carouselEl) return;
 
@@ -134,6 +143,7 @@ const RoundSlider = () => {
 
   useEffect(() => {
     const handleResize = () => {
+      if (typeof window === "undefined") return;
       setZDepth(window.innerWidth < 786 ? 150 : 250);
     };
 
@@ -179,31 +189,33 @@ const RoundSlider = () => {
         }}
       />
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-primary/20 rounded-full"
-            animate={{
-              y: [
-                Math.random() * window.innerHeight,
-                Math.random() * window.innerHeight - 200,
-              ],
-              x: [
-                Math.random() * window.innerWidth,
-                Math.random() * window.innerWidth,
-              ],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 5 + 5,
-              repeat: Infinity,
-              delay: Math.random() * 3,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
+      {isClient && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-primary/20 rounded-full"
+              animate={{
+                y: [
+                  Math.random() * window.innerHeight,
+                  Math.random() * window.innerHeight - 200,
+                ],
+                x: [
+                  Math.random() * window.innerWidth,
+                  Math.random() * window.innerWidth,
+                ],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: Math.random() * 5 + 5,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       <div className="container relative z-10">
         <div className="row justify-center mb-16">

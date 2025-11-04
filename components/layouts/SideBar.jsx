@@ -18,7 +18,7 @@ const SideBar = ({ isSidebar, setIsSidebar }) => {
   useEffect(() => {
     setIsSidebar(false);
     setActiveDropdown(null);
-  }, [location]);
+  }, [pathname]);
 
   const isActiveItem = (item) => {
     if (item.link && pathname === item.link) return true;
