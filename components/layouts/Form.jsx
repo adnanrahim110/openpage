@@ -12,6 +12,8 @@ import { IoCheckmarkCircle } from "react-icons/io5";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import Button from "../ui/Button";
+import Subtitle from "../ui/Subtitle";
+import Title from "../ui/Title";
 
 const services = [
   { title: "Book Publishing and Distribution", value: "book-publishing" },
@@ -98,35 +100,29 @@ const Form = () => {
       <div className="container relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="lg:col-span-2 lg:pr-8"
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-2 lg:pr-8"
+          >
+            <Subtitle
+              variant="soft"
+              icon={HiSparkles}
+              iconClassName="text-primary text-lg"
+              className="mb-6"
             >
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-primary-50 to-accent-50 rounded-full border border-primary-200 mb-6">
-                <HiSparkles className="text-primary text-lg" />
-                <span className="text-sm font-bold text-primary tracking-wide uppercase">
-                  Get In Touch
-                </span>
-              </div>
+              Get In Touch
+            </Subtitle>
 
-              <h2 className="text-4xl md:text-5xl font-black leading-tight mb-6">
-                <span className="text-gray-900">Interested in</span>{" "}
-                <span className="relative inline-block">
-                  <span className="bg-linear-to-r from-primary to-accent-600 bg-clip-text text-transparent">
-                    Working Together?
-                  </span>
-                  <motion.div
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="absolute -bottom-2 left-0 right-0 h-1 bg-linear-to-r from-primary to-accent-600 rounded-full origin-left"
-                  />
-                </span>
-              </h2>
+            <Title
+              as="h2"
+              variant="black"
+              title="Interested in Working Together?"
+              highlight="Working Together?"
+              className="mb-6 text-4xl md:text-5xl"
+            />
 
               <p className="text-gray-700 font-medium text-base leading-relaxed mb-8">
                 We are here to help you with any questions you may have about

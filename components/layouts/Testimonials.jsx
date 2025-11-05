@@ -13,6 +13,8 @@ import "swiper/css/autoplay";
 import "swiper/css/effect-cards";
 import { Autoplay, EffectCards } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Subtitle from "../ui/Subtitle";
+import Title from "../ui/Title";
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -35,35 +37,32 @@ const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-primary-50 to-accent-50 rounded-full border border-primary-200 mb-6"
           >
-            <HiSparkles className="text-primary text-lg" />
-            <span className="text-sm font-bold text-primary tracking-wide uppercase">
+            <Subtitle
+              variant="soft"
+              icon={HiSparkles}
+              iconClassName="text-primary text-lg"
+              className="mb-6 mx-auto"
+            >
               Client Success Stories
-            </span>
+            </Subtitle>
           </motion.div>
 
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6"
+            className="mb-6"
           >
-            <span className="text-gray-900">Hear It From Our</span>{" "}
-            <span className="relative inline-block">
-              <span className="bg-linear-to-r from-primary to-accent-600 bg-clip-text text-transparent">
-                Clients
-              </span>
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-linear-to-r from-primary to-accent-600 rounded-full origin-left"
-              />
-            </span>
-          </motion.h2>
+            <Title
+              as="h2"
+              variant="black"
+              title="Hear It From Our Clients"
+              highlight="Clients"
+              className="text-center"
+            />
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}

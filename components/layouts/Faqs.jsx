@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import { FaAngleDown, FaQuestionCircle } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
 import { IoCheckmarkCircle } from "react-icons/io5";
+import Subtitle from "../ui/Subtitle";
+import Title from "../ui/Title";
 
 const Faqs = ({ qouestionare = faqs }) => {
   const [openId, setOpenId] = useState(0);
@@ -33,28 +35,30 @@ const Faqs = ({ qouestionare = faqs }) => {
             transition={{ duration: 0.5 }}
             className="lg:sticky lg:top-32"
           >
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-primary-50 to-accent-50 rounded-full border border-primary-200 mb-6">
-              <HiSparkles className="text-primary text-lg" />
-              <span className="text-sm font-bold text-primary tracking-wide uppercase">
-                FAQ Section
-              </span>
-            </div>
+            <Subtitle
+              variant="soft"
+              icon={HiSparkles}
+              iconClassName="text-primary text-lg"
+              className="mb-6"
+            >
+              FAQ Section
+            </Subtitle>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
-              <span className="text-gray-900">Frequently Asked</span>{" "}
-              <span className="relative inline-block">
-                <span className="bg-linear-to-r from-primary to-accent-600 bg-clip-text text-transparent">
-                  Questions
-                </span>
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className="absolute -bottom-2 left-0 right-0 h-1 bg-linear-to-r from-primary to-accent-600 rounded-full origin-left"
-                />
-              </span>
-            </h2>
+            <motion.div className="mb-6">
+              <Title
+                as="h2"
+                variant="black"
+                title="Frequently Asked Questions"
+                highlight="Questions"
+              />
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="mt-2 h-1 w-24 rounded-full bg-primary"
+              />
+            </motion.div>
 
             <p className="text-gray-700 font-medium text-lg leading-relaxed mb-10">
               Our customer care is here to serve you with any queries you have

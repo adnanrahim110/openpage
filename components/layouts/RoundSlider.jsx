@@ -1,12 +1,12 @@
 "use client";
 
 import { roundSlider } from "@/constants";
-import { fadeInUp } from "@/utils/animations";
-import { motion, useMotionValue, useSpring } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { HiSparkles } from "react-icons/hi2";
 import { IoMdInfinite } from "react-icons/io";
+import Subtitle from "../ui/Subtitle";
+import Title from "../ui/Title";
 
 const RoundSlider = () => {
   const carouselRef = useRef(null);
@@ -15,20 +15,10 @@ const RoundSlider = () => {
   const rotationInProgressRef = useRef(false);
   const mouseDownXRef = useRef(null);
   const mouseUpXRef = useRef(null);
-  const [isClient, setIsClient] = useState(false);
   const [zDepth, setZDepth] = useState(
     () => (typeof window !== "undefined" && window.innerWidth < 786 ? 180 : 250)
   );
   const [currentIndex, setCurrentIndex] = useState(0);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const smoothMouseX = useSpring(mouseX, { damping: 50, stiffness: 400 });
-  const smoothMouseY = useSpring(mouseY, { damping: 50, stiffness: 400 });
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -113,18 +103,10 @@ const RoundSlider = () => {
       }
     };
 
-    const handleMouseMoveGlobal = (e) => {
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-      mouseX.set((clientX / innerWidth - 0.5) * 20);
-      mouseY.set((clientY / innerHeight - 0.5) * 20);
-    };
-
     carouselEl.addEventListener("mousedown", handleMouseDown);
     carouselEl.addEventListener("mousemove", handleMouseMove);
     carouselEl.addEventListener("mouseup", handleMouseUp);
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    window.addEventListener("mousemove", handleMouseMoveGlobal);
 
     startRotation();
 
@@ -136,10 +118,9 @@ const RoundSlider = () => {
       carouselEl.removeEventListener("mousemove", handleMouseMove);
       carouselEl.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("mousemove", handleMouseMoveGlobal);
       delete window.rotateCarousel;
     };
-  }, [mouseX, mouseY]);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -155,30 +136,8 @@ const RoundSlider = () => {
     <section className="py-24 overflow-hidden relative">
       <div className="absolute inset-0 bg-linear-to-br from-gray-50 via-white to-gray-100" />
 
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-0 right-0 w-[600px] h-[600px] bg-linear-to-br from-primary/20 to-purple-500/20 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.5, 0.3, 0.5],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-linear-to-tr from-blue-500/20 to-primary/20 rounded-full blur-3xl"
-      />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-linear-to-br from-primary/15 to-purple-500/15 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-linear-to-tr from-blue-500/15 to-primary/15 rounded-full blur-3xl" />
 
       <div
         className="absolute inset-0 opacity-[0.02]"
@@ -189,91 +148,39 @@ const RoundSlider = () => {
         }}
       />
 
-      {isClient && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-primary/20 rounded-full"
-              animate={{
-                y: [
-                  Math.random() * window.innerHeight,
-                  Math.random() * window.innerHeight - 200,
-                ],
-                x: [
-                  Math.random() * window.innerWidth,
-                  Math.random() * window.innerWidth,
-                ],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: Math.random() * 5 + 5,
-                repeat: Infinity,
-                delay: Math.random() * 3,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
-      )}
-
       <div className="container relative z-10">
         <div className="row justify-center mb-16">
           <div className="lg:w-10/12 xl:w-9/12">
-            <div className="text-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-primary/10 via-purple-500/10 to-primary/10 backdrop-blur-sm rounded-full border border-primary/20 mb-6 shadow-lg"
+            <div className="text-center space-y-6">
+              <Subtitle
+                variant="halo"
+                icon={HiSparkles}
+                endIcon={IoMdInfinite}
+                iconClassName="text-primary text-xl animate-pulse"
+                endIconClassName="text-primary text-xl"
+                className="inline-flex shadow-lg"
+                textClassName="text-sm font-bold text-primary tracking-wider uppercase"
               >
-                <HiSparkles className="text-primary text-xl animate-pulse" />
-                <span className="text-sm font-bold text-primary tracking-wider uppercase">
-                  Our Masterpieces
-                </span>
-                <IoMdInfinite className="text-primary text-xl" />
-              </motion.div>
+                Our Masterpieces
+              </Subtitle>
 
-              <motion.h2
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp()}
-                className="mb-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight"
-              >
-                <span className="bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
-                  Portfolio of the Best{" "}
-                </span>
-                <span className="bg-linear-to-r from-primary via-purple-600 to-primary bg-clip-text text-transparent">
-                  Book Publishers
-                </span>
-              </motion.h2>
+              <Title
+                as="h2"
+                variant="black"
+                title="Portfolio of the Best Book Publishers"
+                highlight="Book Publishers"
+                className="text-center text-4xl md:text-5xl lg:text-6xl"
+              />
 
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp({ delay: 0.3 })}
-                className="max-w-3xl mx-auto"
-              >
-                <p className="text-gray-700 font-medium text-lg leading-relaxed">
-                  Peek behind the curtain at the storytelling magic we craft
-                  every day. At Western Book Publishing, we do not simply
-                  publish books, but{" "}
-                  <span className="text-primary font-bold">legacies</span>. Our
-                  catalog is eloquent, with titles that have not only dominated
-                  charts but also set new standards in publishing.
-                </p>
-              </motion.div>
+              <p className="mx-auto max-w-3xl text-gray-700 font-medium text-lg leading-relaxed">
+                Peek behind the curtain at the storytelling magic we craft every
+                day. At Western Book Publishing, we do not simply publish books,
+                but <span className="text-primary font-bold">legacies</span>.
+                Our catalog is eloquent, with titles that have not only
+                dominated charts but also set new standards in publishing.
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="flex flex-wrap justify-center gap-6 mt-8"
-              >
+              <div className="flex flex-wrap justify-center gap-6 pt-2">
                 {[
                   { label: "Books Published", value: "500+" },
                   { label: "Happy Authors", value: "300+" },
@@ -281,7 +188,7 @@ const RoundSlider = () => {
                 ].map((stat, idx) => (
                   <div
                     key={idx}
-                    className="px-6 py-3 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    className="px-6 py-3 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-lg transition-shadow duration-300 hover:shadow-xl"
                   >
                     <div className="text-2xl font-black text-primary">
                       {stat.value}
@@ -291,51 +198,35 @@ const RoundSlider = () => {
                     </div>
                   </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="row"
-        >
+        <div className="row">
           <div className="w-full">
             <div className="relative">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] bg-linear-to-r from-primary/5 to-purple-500/5 rounded-full blur-3xl -z-10" />
 
               <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-4 lg:px-12 z-20 pointer-events-none">
-                <motion.button
-                  whileHover={{ scale: 1.1, x: -5 }}
-                  whileTap={{ scale: 0.9 }}
+                <button
                   onClick={() => window.rotateCarousel?.("p")}
-                  className="pointer-events-auto w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white shadow-2xl border-2 border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 group"
+                  className="pointer-events-auto w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white shadow-2xl border-2 border-primary/20 flex items-center justify-center text-primary transition-all duration-300 group hover:-translate-x-1 hover:bg-primary hover:text-white"
                   aria-label="Previous"
                 >
-                  <FaChevronLeft className="text-xl lg:text-2xl group-hover:scale-110 transition-transform" />
-                </motion.button>
+                  <FaChevronLeft className="text-xl lg:text-2xl transition-transform group-hover:scale-110" />
+                </button>
 
-                <motion.button
-                  whileHover={{ scale: 1.1, x: 5 }}
-                  whileTap={{ scale: 0.9 }}
+                <button
                   onClick={() => window.rotateCarousel?.("n")}
-                  className="pointer-events-auto w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white shadow-2xl border-2 border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 group"
+                  className="pointer-events-auto w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white shadow-2xl border-2 border-primary/20 flex items-center justify-center text-primary transition-all duration-300 group hover:translate-x-1 hover:bg-primary hover:text-white"
                   aria-label="Next"
                 >
-                  <FaChevronRight className="text-xl lg:text-2xl group-hover:scale-110 transition-transform" />
-                </motion.button>
+                  <FaChevronRight className="text-xl lg:text-2xl transition-transform group-hover:scale-110" />
+                </button>
               </div>
 
-              <motion.div
-                style={{
-                  rotateX: smoothMouseY,
-                  rotateY: smoothMouseX,
-                }}
-                className="w-[120px] h-60 lg:w-[150px] lg:h-[280px] mx-auto relative perspective-distant lg:perspective-normal mt-12"
-              >
+              <div className="w-[120px] h-60 lg:w-[150px] lg:h-[280px] mx-auto relative perspective-distant lg:perspective-normal mt-12">
                 <div className="absolute inset-0 bg-linear-to-b from-white/50 via-transparent to-white/50 rounded-full blur-2xl scale-150 pointer-events-none" />
 
                 <div
@@ -368,15 +259,9 @@ const RoundSlider = () => {
                     );
                   })}
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.8 }}
-                className="flex justify-center gap-2 mt-12"
-              >
+              <div className="flex justify-center gap-2 mt-12">
                 {roundSlider.slice(0, -1).map((_, idx) => (
                   <button
                     key={idx}
@@ -398,10 +283,10 @@ const RoundSlider = () => {
                     aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

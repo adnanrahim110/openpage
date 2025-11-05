@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
+import Subtitle from "../ui/Subtitle";
+import Title from "../ui/Title";
 
 const ServicesSec = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -45,17 +47,22 @@ const ServicesSec = () => {
             transition={{ duration: 0.6 }}
             className="max-lg:text-center"
           >
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-primary/10 to-purple-500/10 backdrop-blur-sm rounded-full border border-primary/20 mb-6 max-lg:mx-auto shadow-lg">
-              <HiSparkles className="text-primary animate-pulse" />
-              <span className="text-sm font-bold text-primary tracking-wide uppercase">
-                Our Services
-              </span>
-            </div>
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
-              <span className="bg-linear-to-r from-gray-900 via-primary to-gray-900 bg-clip-text text-transparent">
-                Leave Your Print in the World of Literature
-              </span>
-            </h3>
+            <Subtitle
+              variant="halo"
+              icon={HiSparkles}
+              iconClassName="text-primary animate-pulse"
+              className="mb-6 max-lg:mx-auto shadow-lg"
+              textClassName="text-sm font-bold text-primary tracking-wide uppercase"
+            >
+              Our Services
+            </Subtitle>
+            <Title
+              as="h3"
+              variant="black"
+              title="Leave Your Print in the World of Literature"
+              highlight="World of Literature"
+              className="mb-6"
+            />
             <p className="text-gray-700 font-medium text-lg leading-relaxed">
               with the Best Book Writing Services
             </p>

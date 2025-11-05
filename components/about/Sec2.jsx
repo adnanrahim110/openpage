@@ -22,7 +22,7 @@ const Sec2 = () => {
                 variants={fadeInUp()}
                 className="p-5 relative z-1 after:absolute after:bg-accent-950 after:w-[120%] after:h-[110%] after:-left-5 lg:after:left-0 after:-top-[15px] after:z-[-1]"
               >
-                <h2 className="text-2xl lg:text-[28px] font-bold text-white leading-[1.2] mb-2.5 font-montserrat">
+                <h2 className="text-2xl lg:text-[28px] font-bold text-white leading-[1.2] mb-2.5 font-manrope">
                   Everlasting Tales via <br />
                   <span className="text-secondary">
                     western book publishing

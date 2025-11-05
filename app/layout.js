@@ -1,17 +1,18 @@
 import AppShell from "@/components/system/AppShell";
-import { DM_Sans, Montserrat } from "next/font/google";
+import { Barlow_Semi_Condensed, Manrope } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "700", "800", "900"],
-})
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const barlow = Barlow_Semi_Condensed({
+  variable: "--font-barlow-semi-condensed",
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -23,8 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${dmSans.variable} ${montserrat.variable} antialiased overflow-x-hidden`}
-        style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
+        className={`${barlow.variable} ${manrope.variable} antialiased overflow-x-hidden`}
       >
         <AppShell>{children}</AppShell>
       </body>

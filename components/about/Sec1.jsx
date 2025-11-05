@@ -49,7 +49,7 @@ const CounterCard = ({ icon, number, text, hasStarted, idx }) => {
       className="flex flex-col items-start bg-white/80 border border-white h-[200px] py-5 px-4 shadow-[0_0_20px_rgba(0,0,0,0.1)]"
     >
       <img src={icon} className="h-16 object-contain w-auto" alt="" />
-      <h3 className="text-black font-montserrat text-[26px] font-bold mt-8 mb-1.5">
+      <h3 className="text-black font-manrope text-[26px] font-bold mt-8 mb-1.5">
         {count}+
       </h3>
       <span className="text-black font-semibold text-[13px]">{text}</span>

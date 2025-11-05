@@ -5,8 +5,18 @@ import { motion } from "motion/react";
 import { FaAward, FaBookOpen, FaRocket } from "react-icons/fa6";
 import { HiSparkles } from "react-icons/hi2";
 import { IoCheckmarkCircle } from "react-icons/io5";
+import Subtitle from "../ui/Subtitle";
+import Title from "../ui/Title";
 
-const Sec2 = ({ title, text }) => {
+const defaultTitle =
+  "Western Book Publishing The Top Book Ghostwriting Publishing Company You'll Ever Need";
+
+const Sec2 = ({ title, text, titleHighlight }) => {
+  const displayTitle = title || defaultTitle;
+  const highlightText = title
+    ? titleHighlight
+    : titleHighlight || "Ghostwriting Publishing";
+
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-linear-to-br from-white via-gray-50 to-white" />
@@ -30,23 +40,31 @@ const Sec2 = ({ title, text }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-primary-50 to-accent-50 rounded-full border border-primary-200 mb-6 max-lg:mx-auto"
               >
-                <HiSparkles className="text-primary" />
-                <span className="text-sm font-bold text-primary tracking-wide uppercase">
+                <Subtitle
+                  variant="soft"
+                  icon={HiSparkles}
+                  iconClassName="text-primary"
+                  className="mb-6 max-lg:mx-auto"
+                >
                   Industry Leader
-                </span>
+                </Subtitle>
               </motion.div>
-              <motion.h3
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.1 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-6 text-gray-900"
+                className="mb-6"
               >
-                {title ||
-                  "Western Book Publishing The Top Book Ghostwriting Publishing Company You'll Ever Need"}
-              </motion.h3>
+                <Title
+                  as="h3"
+                  variant="black"
+                  title={displayTitle}
+                  highlight={highlightText}
+                  className="text-left max-lg:text-center"
+                />
+              </motion.div>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -96,25 +114,7 @@ const Sec2 = ({ title, text }) => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="size-80 lg:w-[420px] lg:h-[420px] rounded-full border border-primary-200/20" />
               </div>
-              {[
-                { icon: "??", position: "top-0 left-1/4", delay: 0 },
-                { icon: "?", position: "top-1/4 right-0", delay: 1 },
-                { icon: "??", position: "bottom-1/4 left-0", delay: 2 },
-                { icon: "??", position: "bottom-0 right-1/4", delay: 3 },
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 + item.delay * 0.1 }}
-                  className={`absolute ${item.position} text-3xl z-10`}
-                >
-                  <div className="bg-white rounded-full p-3 shadow-xl">
-                    {item.icon}
-                  </div>
-                </motion.div>
-              ))}
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -127,31 +127,12 @@ const Sec2 = ({ title, text }) => {
                   <img
                     src="/images/books/1.avif"
                     alt="Book cover"
-                    className="relative z-1 w-[280px] h-[400px] lg:w-[320px] lg:h-[460px] object-cover rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.3)] border-4 border-white"
+                    className="relative z-1 "
                     style={{
                       transformStyle: "preserve-3d",
                       transform: "perspective(1000px) rotateY(-5deg)",
                     }}
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-white via-transparent to-transparent rounded-2xl opacity-20" />
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
-                className="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 z-30"
-              >
-                <div className="relative">
-                  <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-full bg-linear-to-br from-primary to-accent-600 flex items-center justify-center shadow-2xl">
-                    <div className="text-center">
-                      <div className="text-2xl font-black text-white">10+</div>
-                      <div className="text-[10px] font-bold text-white/90 uppercase tracking-wide">
-                        Years
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             </div>

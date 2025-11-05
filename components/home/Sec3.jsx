@@ -7,6 +7,8 @@ import { HiSparkles } from "react-icons/hi2";
 import { IoCheckmarkCircle } from "react-icons/io5";
 import { RiCustomerServiceFill } from "react-icons/ri";
 import Button from "../ui/Button";
+import Subtitle from "../ui/Subtitle";
+import Title from "../ui/Title";
 
 const Sec3 = () => {
   const { openPopup } = usePopup();
@@ -33,23 +35,30 @@ const Sec3 = () => {
           className="flex items-center justify-center gap-2 mb-4"
         >
           <div className="h-px w-12 bg-linear-to-r from-transparent to-primary" />
-          <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200 shadow-lg">
-            <HiSparkles className="text-primary text-lg" />
-            <span className="text-sm font-bold text-gray-900 uppercase tracking-wider">
-              Premium Publishing
-            </span>
-          </div>
+          <Subtitle
+            variant="neutral"
+            icon={HiSparkles}
+            iconClassName="text-primary text-lg"
+          >
+            Premium Publishing
+          </Subtitle>
           <div className="h-px w-12 bg-linear-to-l from-transparent to-primary" />
         </motion.div>
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-black text-center mb-4 bg-linear-to-r from-gray-900 via-primary to-gray-900 bg-clip-text text-transparent leading-tight"
+          className="mb-4"
         >
-          Western Book Publishing
-        </motion.h2>
+          <Title
+            as="h2"
+            variant="black"
+            title="Western Book Publishing"
+            highlight="Book Publishing"
+            className="text-center"
+          />
+        </motion.div>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

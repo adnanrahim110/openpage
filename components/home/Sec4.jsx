@@ -8,6 +8,8 @@ import { HiSparkles } from "react-icons/hi2";
 import { IoTrendingUp } from "react-icons/io5";
 import { RiCustomerServiceFill } from "react-icons/ri";
 import Button from "../ui/Button";
+import Subtitle from "../ui/Subtitle";
+import Title from "../ui/Title";
 
 const Sec4 = () => {
   const { openPopup } = usePopup();
@@ -113,37 +115,41 @@ const Sec4 = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-primary-50 to-accent-50 rounded-full border border-primary-200 mb-6"
             >
-              <HiSparkles className="text-primary text-lg" />
-              <span className="text-sm font-bold text-primary tracking-wide uppercase">
+              <Subtitle
+                variant="soft"
+                icon={HiSparkles}
+                iconClassName="text-primary text-lg"
+                className="mb-6"
+              >
                 Your Publishing Partner
-              </span>
+              </Subtitle>
             </motion.div>
 
-            <motion.h2
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6"
+              className="mb-6"
             >
-              <span className="text-gray-900">
-                Get Ready To Publish Your Book
-              </span>{" "}
-              <span className="relative inline-block">
-                <span className="bg-linear-to-r from-primary to-accent-600 bg-clip-text text-transparent">
-                  With a Single Tap
-                </span>
+              <div className="relative inline-block">
+                <Title
+                  as="h2"
+                  variant="black"
+                  title="Get Ready To Publish Your Book With a Single Tap"
+                  highlight="With a Single Tap"
+                  className="leading-tight"
+                />
                 <motion.div
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="absolute -bottom-2 left-0 right-0 h-1 bg-linear-to-r from-primary to-accent-600 rounded-full origin-left"
+                  className="absolute -bottom-2 left-0 right-0 h-1 bg-primary rounded-full origin-left"
                 />
-              </span>
-            </motion.h2>
+              </div>
+            </motion.div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

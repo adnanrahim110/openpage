@@ -28,7 +28,7 @@ const Button = ({
     ? "border-secondary-900 disabled:border-neutral-700"
     : "border-primary-950 disabled:border-neutral-700";
 
-  const classes = `uppercase ${bgColor} relative text-white disabled:cursor-not-allowed flex font-dm items-center border ${borderColor} overflow-hidden cursor-pointer transition-all duration-300 group ${className} ${
+  const classes = `uppercase ${bgColor} relative text-white disabled:cursor-not-allowed flex font-barlow items-center border ${borderColor} overflow-hidden cursor-pointer transition-all duration-300 group ${className} ${
     small ? "text-xl h-10 pl-5 pr-16" : "text-2xl h-12 pl-8 pr-20"
   }`;
 

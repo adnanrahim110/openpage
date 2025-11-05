@@ -3,62 +3,81 @@ import { FaAlignLeft, FaBook, FaBookOpen, FaBullhorn, FaEdit, FaGlobe, FaImage, 
 import { IoCallOutline, IoLocationOutline, IoMailOutline } from "react-icons/io5";
 import { PiBuildingOfficeDuotone } from "react-icons/pi";
 
+
+export const contactDetails = [
+  {
+    name: "Call Us",
+    href: "tel:+19292664429",
+    text: "+1 (929) 266 4429",
+    icon: IoCallOutline,
+  },
+  {
+    name: "Email Us",
+    href: "mailto:info@inknestpublishing.com",
+    text: "info@inknestpublishing.com",
+    icon: IoMailOutline,
+  },
+  {
+    name: "Location",
+    href: false,
+    text: "39 Broadway 12th floor, New York, NY 10004",
+    icon: IoLocationOutline,
+  },
+];
+
 export const navigation = [
   {
     title: "Home",
     link: "/",
+  },
+
+  {
+    title: "Book Publishing",
+    link: "/book-publishing",
+    dropdown: [
+      {
+        title: "E-Book Publishing",
+        link: "/ebook-publishing"
+      },
+      {
+        title: "Self Publishing",
+        link: "/self-publishing"
+      },
+    ]
+  },
+  {
+    title: "Children's Book Publishing",
+    link: "/childrens-book-publishing"
+  },
+  {
+    title: "Audio Book Publishing",
+    link: "/audio-book-services"
+  },
+  {
+    title: "Book Marketing",
+    link: "/book-marketing-services",
+    dropdown: [
+      {
+        title: "Book SEO and SEM",
+        link: "/book-seo-and-sem"
+      },
+      {
+        title: "Digital Marketing",
+        link: "/digital-marketing"
+      },
+    ]
   },
   {
     title: "Services",
     link: false,
     dropdown: [
       {
-        title: "Book Publishing and Distribution",
-        link: "/book-publishing",
-        submenu: [
-          {
-            title: "E-Book Publishing",
-            link: "/ebook-publishing"
-          },
-          {
-            title: "Self Publishing",
-            link: "/self-publishing"
-          },
-          {
-            title: "Children's Book Publishing",
-            link: "/childrens-book-publishing"
-          },
-          {
-            title: "Barnes & Noble",
-            link: "/barnes-and-noble"
-          },
-        ]
-      },
-      {
-        title: "Amazon Publishing",
-        link: "/amazon-publishing"
+        title: "Ghost Writing",
+        link: "/ghost-writing"
       },
       {
         title: "Proofreading and Editing",
         link: "/proofreading-and-editing"
-      },
-      {
-        title: "Book Promotions and Marketing",
-        link: "/book-marketing-services",
-        submenu: [
-          {
-            title: "Amazon Paid Ads",
-            link: "/amazon-paid-ads"
-          },
-          {
-            title: "Book SEO and SEM",
-            link: "/book-seo-and-sem"
-          },
-          {
-            title: "Digital Marketing",
-            link: "/digital-marketing"
-          },
-        ]
       },
       {
         title: "Author Website",
@@ -73,57 +92,14 @@ export const navigation = [
         link: "/book-cover-art"
       },
       {
-        title: "Audio Book Narration and Publishing",
-        link: "/audio-book-services"
-      },
-      {
         title: "formatting and Layout",
         link: "/formatting-and-layout"
       },
-      {
-        title: "Ghost Writing",
-        link: "/ghost-writing"
-      }
     ],
   },
   {
     title: "About Us",
     link: "/about",
-  },
-  {
-    title: "Reviews",
-    link: "/reviews"
-  },
-  {
-    title: "Contact Us",
-    link: "/contact",
-  }
-];
-
-export const contactDetails = [
-  {
-    name: "Call Us",
-    href: "tel:+13462967813",
-    text: "+1 346 296 7813",
-    icon: IoCallOutline
-  },
-  {
-    name: "Email Us",
-    href: "mailto:info@westernbookpublishing.com",
-    text: "info@westernbookpublishing.com",
-    icon: IoMailOutline
-  },
-  {
-    name: "Location",
-    href: false,
-    text: "5718 Westheimer Road, Houston, TX, 77057 USA.",
-    icon: IoLocationOutline
-  },
-  {
-    name: "Office",
-    href: false,
-    text: "Finance Off: 1500 N Grant St STE R Denver, CO, 80203",
-    icon: PiBuildingOfficeDuotone
   },
 ];
 

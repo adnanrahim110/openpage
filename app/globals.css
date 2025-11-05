@@ -7,6 +7,9 @@
 }
 
 @theme {
+  --font-barlow: "Barlow Semi Condensed", sans-serif;
+  --font-manrope: "Manrope", sans-serif;
+  --font-sitka: "sitka", sans-serif;
 
   --color-primary: #197BBC;
   --color-primary-50: #f2f8fd;
@@ -49,10 +52,6 @@
 
   --scroll-behavior: smooth;
   --will-change: transform;
-
-  --font-dm: var(--font-dm-sans), sans-serif;
-  --font-montserrat: var(--font-montserrat), sans-serif;
-  --font-sitka: "sitka", sans-serif;
 
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -270,7 +269,8 @@
   }
 
   body {
-    @apply text-neutral-800 font-montserrat text-base overflow-x-hidden;
+    @apply text-neutral-800 text-base overflow-x-hidden;
+    font-family: var(--font-manrope);
   }
 
   img {
@@ -278,7 +278,7 @@
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
-    @apply font-dm font-medium uppercase leading-[0.9];
+    @apply font-bold leading-[0.9] font-barlow;
   }
 
   :is(button, a, input, textarea, select) {
@@ -335,11 +335,7 @@
   }
 
   .subtitle {
-    @apply font-montserrat font-medium text-xl relative lg:pl-10 uppercase tracking-wider text-secondary lg:before:absolute lg:before:left-0 lg:before:top-1/2 lg:before:-translate-y-1/2 lg:before:h-0.5 lg:before:w-7 lg:before:bg-secondary;
-  }
-
-  .subtitle.s2 {
-    @apply lg:after:absolute lg:after:right-0 px-7 before:bg-white lg:after:bg-white lg:after:top-1/2 lg:after:-translate-y-1/2 lg:after:h-0.5 before:w-4 lg:after:w-4;
+    @apply font-manrope font-medium text-xl relative uppercase tracking-wider text-secondary;
   }
 
   .form_white :where(input, textarea, select) {
@@ -565,72 +561,4 @@
 .reviews_slider:hover .swiper-button-prev,
 .reviews_slider:hover .swiper-button-next {
   opacity: 1;
-}
-
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 100px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  * {
-    animation-duration: 0.3s;
-    transition-duration: 0.3s;
-  }
-}
-
-.gpu-accelerate {
-  transform: translateZ(0);
-  will-change: transform;
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-body {
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-@media (hover: hover) {
-  .hover-optimize {
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  }
-
-  .hover-optimize:hover {
-    transform: translateY(-4px);
-  }
-}
-
-.backdrop-blur-sm,
-.backdrop-blur {
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  will-change: auto;
-}
-
-.bg-linear-to-br,
-.bg-linear-to-r,
-.bg-linear-to-b,
-.bg-linear-to-l,
-.bg-linear-to-tl,
-.bg-linear-to-tr {
-  background-attachment: fixed;
-  will-change: auto;
 }
