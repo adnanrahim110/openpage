@@ -1,7 +1,7 @@
 "use client";
 
 import { roundSlider } from "@/constants";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { HiSparkles } from "react-icons/hi2";
 import { IoMdInfinite } from "react-icons/io";
@@ -9,282 +9,451 @@ import Subtitle from "../ui/Subtitle";
 import Title from "../ui/Title";
 
 const RoundSlider = () => {
-  const carouselRef = useRef(null);
-  const currDegRef = useRef(0);
-  const intervalIdRef = useRef(null);
-  const rotationInProgressRef = useRef(false);
-  const mouseDownXRef = useRef(null);
-  const mouseUpXRef = useRef(null);
-  const [zDepth, setZDepth] = useState(
-    () => (typeof window !== "undefined" && window.innerWidth < 786 ? 180 : 250)
-  );
+  const slides = Array.isArray(roundSlider) ? roundSlider.filter(Boolean) : [];
+  const slideCount = slides.length;
+
+  const descriptorPalette = [
+    {
+      label: "Collector's Edition",
+      accent: "Aurora Prism Series",
+      descriptor: "Foil-gilded hardback crafted for discerning bibliophiles.",
+      tone: "Hand-numbered and archival bound.",
+      accentGradient:
+        "linear-gradient(135deg, rgba(99,102,241,0.75), rgba(236,72,153,0.7), rgba(6,182,212,0.6))",
+      accentColor: "rgba(99,102,241,0.38)",
+    },
+    {
+      label: "Signature Bestseller",
+      accent: "Midnight Velvet Finish",
+      descriptor:
+        "Critically acclaimed prose wrapped in luxe satin lamination.",
+      tone: "Winner of three international awards.",
+      accentGradient:
+        "linear-gradient(135deg, rgba(79,70,229,0.75), rgba(30,64,175,0.65), rgba(147,197,253,0.6))",
+      accentColor: "rgba(79,70,229,0.35)",
+    },
+    {
+      label: "Illustrated Classic",
+      accent: "Gilded Edge Illustrations",
+      descriptor: "Hand-painted spreads breathing life into every chapter.",
+      tone: "Printed on archival cotton stock.",
+      accentGradient:
+        "linear-gradient(135deg, rgba(248,113,113,0.75), rgba(251,191,36,0.7), rgba(94,234,212,0.6))",
+      accentColor: "rgba(248,113,113,0.33)",
+    },
+    {
+      label: "Avant-Garde Debut",
+      accent: "Neon Reverie Palette",
+      descriptor: "Cutting-edge storytelling with iridescent spot UV accents.",
+      tone: "Edition limited to five hundred copies.",
+      accentGradient:
+        "linear-gradient(135deg, rgba(236,72,153,0.78), rgba(192,38,211,0.65), rgba(59,130,246,0.6))",
+      accentColor: "rgba(236,72,153,0.4)",
+    },
+    {
+      label: "Legacy Anthology",
+      accent: "Chronicle Luxe Binding",
+      descriptor:
+        "A treasury of award-winning voices curated into one compendium.",
+      tone: "Letterpress typography with bespoke foreword.",
+      accentGradient:
+        "linear-gradient(135deg, rgba(59,130,246,0.7), rgba(56,189,248,0.6), rgba(14,165,233,0.6))",
+      accentColor: "rgba(56,189,248,0.38)",
+    },
+    {
+      label: "Immersive Fantasy",
+      accent: "Celestial Nightfall Foil",
+      descriptor: "Epic saga enveloped in shimmering cosmic gradients.",
+      tone: "Fold-out maps and companion art portfolio enclosed.",
+      accentGradient:
+        "linear-gradient(135deg, rgba(14,116,144,0.78), rgba(79,70,229,0.65), rgba(216,180,254,0.6))",
+      accentColor: "rgba(14,116,144,0.42)",
+    },
+    {
+      label: "Literary Spotlight",
+      accent: "Ivory Silk Dust Jacket",
+      descriptor: "Modern classic celebrated by critics across the globe.",
+      tone: "Signed author plates available on request.",
+      accentGradient:
+        "linear-gradient(135deg, rgba(156,163,175,0.72), rgba(244,114,182,0.65), rgba(99,102,241,0.6))",
+      accentColor: "rgba(156,163,175,0.36)",
+    },
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(() =>
+    typeof window === "undefined" ? 1440 : window.innerWidth
+  );
+  const [isHovering, setIsHovering] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+  const autoplayRef = useRef(null);
+  const pointerStartRef = useRef(null);
+  const sliderRef = useRef(null);
 
-    const carouselEl = carouselRef.current;
-    if (!carouselEl) return;
+  const slideMeta = slides.map((src, index) => ({
+    id: `slide-${index}`,
+    src,
+    ...descriptorPalette[index % descriptorPalette.length],
+  }));
+  const metaCount = slideMeta.length;
+  const activeMeta = metaCount > 0 ? slideMeta[currentIndex % metaCount] : null;
 
-    const items = carouselEl.querySelectorAll(".item");
-    const rotateDeg = 360 / (roundSlider.length - 1);
-
-    const rotate = (direction) => {
-      if (rotationInProgressRef.current) return;
-      rotationInProgressRef.current = true;
-
-      if (direction === "n") {
-        currDegRef.current -= rotateDeg;
-        setCurrentIndex((prev) => (prev + 1) % roundSlider.length);
-      }
-      if (direction === "p") {
-        currDegRef.current += rotateDeg;
-        setCurrentIndex(
-          (prev) => (prev - 1 + roundSlider.length) % roundSlider.length
-        );
-      }
-
-      carouselEl.style.transform = `rotateY(${currDegRef.current}deg)`;
-      items.forEach((it) => {
-        it.style.transform = `rotateY(${-currDegRef.current}deg)`;
-      });
-
-      setTimeout(() => {
-        rotationInProgressRef.current = false;
-      }, 1000);
-    };
-
-    const startRotation = () => {
-      if (intervalIdRef.current === null) {
-        intervalIdRef.current = setInterval(() => {
-          rotate("n");
-        }, 2000);
-      }
-    };
-
-    const stopRotation = () => {
-      if (intervalIdRef.current !== null) {
-        clearInterval(intervalIdRef.current);
-        intervalIdRef.current = null;
-      }
-    };
-
-    const handleMouseDown = (e) => {
-      mouseDownXRef.current = e.pageX;
-      stopRotation();
-    };
-    const handleMouseMove = (e) => {
-      if (mouseDownXRef.current !== null) {
-        mouseUpXRef.current = e.pageX;
-      }
-    };
-    const handleMouseUp = () => {
-      if (mouseDownXRef.current !== null && mouseUpXRef.current !== null) {
-        const swipeDistance = mouseUpXRef.current - mouseDownXRef.current;
-        const threshold = 50;
-
-        if (swipeDistance > threshold) {
-          rotate("p");
-        } else if (swipeDistance < -threshold) {
-          rotate("n");
-        }
-      }
-
-      mouseDownXRef.current = null;
-      mouseUpXRef.current = null;
-      startRotation();
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "hidden") {
-        stopRotation();
-      } else {
-        startRotation();
-      }
-    };
-
-    carouselEl.addEventListener("mousedown", handleMouseDown);
-    carouselEl.addEventListener("mousemove", handleMouseMove);
-    carouselEl.addEventListener("mouseup", handleMouseUp);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    startRotation();
-
-    window.rotateCarousel = rotate;
-
-    return () => {
-      stopRotation();
-      carouselEl.removeEventListener("mousedown", handleMouseDown);
-      carouselEl.removeEventListener("mousemove", handleMouseMove);
-      carouselEl.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-      delete window.rotateCarousel;
-    };
+  const stopAutoplay = useCallback(() => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (typeof window === "undefined") return;
-      setZDepth(window.innerWidth < 786 ? 150 : 250);
-    };
+  const goNext = useCallback(() => {
+    if (slideCount <= 1) return;
+    setCurrentIndex((prev) => (prev + 1) % slideCount);
+  }, [slideCount]);
 
+  const goPrev = useCallback(() => {
+    if (slideCount <= 1) return;
+    setCurrentIndex((prev) => (prev - 1 + slideCount) % slideCount);
+  }, [slideCount]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const handleResize = () => setViewportWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const shouldPause = isHovering || isDragging;
+
+  useEffect(() => {
+    if (slideCount <= 1 || shouldPause) {
+      if (autoplayRef.current) {
+        clearInterval(autoplayRef.current);
+        autoplayRef.current = null;
+      }
+      return undefined;
+    }
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % slideCount);
+    }, 5200);
+
+    autoplayRef.current = interval;
+
+    return () => {
+      clearInterval(interval);
+      if (autoplayRef.current === interval) {
+        autoplayRef.current = null;
+      }
+    };
+  }, [slideCount, shouldPause]);
+
+  const getRelativeOffset = useCallback(
+    (index) => {
+      if (slideCount === 0) return 0;
+      let offset = index - currentIndex;
+      const half = Math.floor(slideCount / 2);
+      if (offset > half) offset -= slideCount;
+      if (offset < -half) offset += slideCount;
+      return offset;
+    },
+    [currentIndex, slideCount]
+  );
+
+  const helixRadius =
+    viewportWidth < 640 ? 110 : viewportWidth < 1024 ? 165 : 220;
+  const helixRise = viewportWidth < 768 ? 66 : viewportWidth < 1280 ? 82 : 94;
+  const depthOffset =
+    viewportWidth < 768 ? 260 : viewportWidth < 1280 ? 340 : 440;
+
+  const handlePointerDown = (event) => {
+    if (!slideCount) return;
+    const clientX = event.clientX ?? 0;
+    pointerStartRef.current = clientX;
+    setIsDragging(true);
+    setDragOffset(0);
+    stopAutoplay();
+
+    if (sliderRef.current?.setPointerCapture) {
+      try {
+        sliderRef.current.setPointerCapture(event.pointerId);
+      } catch (_) {}
+    }
+  };
+
+  const handlePointerMove = (event) => {
+    if (!isDragging || pointerStartRef.current === null) return;
+    const clientX = event.clientX ?? 0;
+    setDragOffset(clientX - pointerStartRef.current);
+  };
+
+  const finalizeDrag = (event) => {
+    if (!isDragging) return;
+    const clientX = event.clientX ?? pointerStartRef.current ?? 0;
+    const delta = clientX - (pointerStartRef.current ?? clientX);
+
+    pointerStartRef.current = null;
+    setDragOffset(0);
+    setIsDragging(false);
+
+    if (Math.abs(delta) > 60) {
+      if (delta < 0) {
+        goNext();
+      } else {
+        goPrev();
+      }
+    }
+
+    if (sliderRef.current?.releasePointerCapture) {
+      try {
+        sliderRef.current.releasePointerCapture(event.pointerId);
+      } catch (_) {}
+    }
+  };
+
+  const handlePointerUp = (event) => {
+    finalizeDrag(event);
+  };
+
+  const handlePointerCancel = (event) => {
+    finalizeDrag(event);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    stopAutoplay();
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    if (isDragging) {
+      setIsDragging(false);
+      pointerStartRef.current = null;
+      setDragOffset(0);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (!slideCount) return;
+
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      event.preventDefault();
+      stopAutoplay();
+      goNext();
+    }
+
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      event.preventDefault();
+      stopAutoplay();
+      goPrev();
+    }
+
+    if (event.key === "Home") {
+      event.preventDefault();
+      stopAutoplay();
+      setCurrentIndex(0);
+    }
+
+    if (event.key === "End") {
+      event.preventDefault();
+      stopAutoplay();
+      setCurrentIndex(slideCount - 1);
+    }
+  };
+
+  const maxVisible =
+    slideCount > 5 ? 3 : Math.max(1, Math.floor(slideCount / 2));
+
   return (
-    <section className="py-24 overflow-hidden relative">
-      <div className="absolute inset-0 bg-linear-to-br from-gray-50 via-white to-gray-100" />
-
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-linear-to-br from-primary/15 to-purple-500/15 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-linear-to-tr from-blue-500/15 to-primary/15 rounded-full blur-3xl" />
-
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage:
-            "radial-linear(circle at 1px 1px, gray 1px, transparent 0)",
-          backgroundSize: "40px 40px",
-        }}
-      />
+    <section className="relative overflow-hidden py-24">
+      <div className="absolute inset-0 bg-linear-to-b from-slate-50 via-white to-slate-100" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(148,163,184,0.18),transparent_58%)]" />
+      <div className="pointer-events-none absolute inset-0 mix-blend-soft-light opacity-70 bg-[linear-gradient(115deg,rgba(255,255,255,0.32)_0%,rgba(148,163,184,0.12)_45%,rgba(15,23,42,0.18)_100%)]" />
+      <div className="absolute -top-52 right-[-15%] h-[520px] w-[520px] rounded-full bg-linear-to-br from-primary/25 via-purple-500/20 to-sky-400/20 blur-3xl opacity-80" />
+      <div className="absolute -bottom-48 left-[-12%] h-[580px] w-[580px] rounded-full bg-linear-to-tr from-sky-500/20 via-primary/18 to-violet-500/18 blur-3xl opacity-75" />
+      <div className="pointer-events-none absolute inset-0 opacity-35 bg-[linear-gradient(0deg,rgba(148,163,184,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.12)_1px,transparent_1px)] bg-size-[120px_120px]" />
 
       <div className="container relative z-10">
         <div className="row justify-center mb-16">
-          <div className="lg:w-10/12 xl:w-9/12">
-            <div className="text-center space-y-6">
+          <div className="lg:w-10/12 xl:w-8/12">
+            <div className="space-y-6 text-center">
               <Subtitle
                 variant="halo"
                 icon={HiSparkles}
                 endIcon={IoMdInfinite}
                 iconClassName="text-primary text-xl animate-pulse"
                 endIconClassName="text-primary text-xl"
-                className="inline-flex shadow-lg"
-                textClassName="text-sm font-bold text-primary tracking-wider uppercase"
+                className="inline-flex bg-white/70 shadow-2xl backdrop-blur border border-white/40"
+                textClassName="text-sm font-bold text-primary tracking-[0.45em] uppercase"
               >
-                Our Masterpieces
+                Celestial Showcase
               </Subtitle>
 
               <Title
                 as="h2"
                 variant="black"
-                title="Portfolio of the Best Book Publishers"
-                highlight="Book Publishers"
-                className="text-center text-4xl md:text-5xl lg:text-6xl"
+                title="Where Iconic Covers Orbit in Luxury"
+                highlight="Iconic Covers"
+                className="text-center text-4xl leading-tight md:text-5xl lg:text-6xl"
               />
 
-              <p className="mx-auto max-w-3xl text-gray-700 font-medium text-lg leading-relaxed">
-                Peek behind the curtain at the storytelling magic we craft every
-                day. At Western Book Publishing, we do not simply publish books,
-                but <span className="text-primary font-bold">legacies</span>.
-                Our catalog is eloquent, with titles that have not only
-                dominated charts but also set new standards in publishing.
+              <p className="mx-auto max-w-3xl text-gray-700 text-lg md:text-xl font-medium leading-relaxed">
+                Experience a museum-grade carousel of jacket art that shimmers
+                with depth and motion. Each rotation invites guests to pause,
+                revel in the craft, and imagine the story waiting beyond the
+                cover.
               </p>
-
-              <div className="flex flex-wrap justify-center gap-6 pt-2">
-                {[
-                  { label: "Books Published", value: "500+" },
-                  { label: "Happy Authors", value: "300+" },
-                  { label: "Awards Won", value: "50+" },
-                ].map((stat, idx) => (
-                  <div
-                    key={idx}
-                    className="px-6 py-3 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-lg transition-shadow duration-300 hover:shadow-xl"
-                  >
-                    <div className="text-2xl font-black text-primary">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
 
-        <div className="row">
-          <div className="w-full">
-            <div className="relative">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] bg-linear-to-r from-primary/5 to-purple-500/5 rounded-full blur-3xl -z-10" />
+        <div className="row justify-center">
+          <div className="flex w-full flex-col items-center gap-14">
+            <div className="relative w-full max-w-6xl">
+              <div className="pointer-events-none absolute inset-0 -z-10">
+                <div className="absolute left-1/2 top-1/2 h-[540px] w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/40 shadow-[0_0_90px_rgba(148,163,184,0.35)]" />
 
-              <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-4 lg:px-12 z-20 pointer-events-none">
-                <button
-                  onClick={() => window.rotateCarousel?.("p")}
-                  className="pointer-events-auto w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white shadow-2xl border-2 border-primary/20 flex items-center justify-center text-primary transition-all duration-300 group hover:-translate-x-1 hover:bg-primary hover:text-white"
-                  aria-label="Previous"
-                >
-                  <FaChevronLeft className="text-xl lg:text-2xl transition-transform group-hover:scale-110" />
-                </button>
-
-                <button
-                  onClick={() => window.rotateCarousel?.("n")}
-                  className="pointer-events-auto w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white shadow-2xl border-2 border-primary/20 flex items-center justify-center text-primary transition-all duration-300 group hover:translate-x-1 hover:bg-primary hover:text-white"
-                  aria-label="Next"
-                >
-                  <FaChevronRight className="text-xl lg:text-2xl transition-transform group-hover:scale-110" />
-                </button>
+                <div className="absolute left-1/2 top-1/2 h-[840px] w-[840px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[conic-gradient(from_120deg_at_50%_50%,rgba(59,130,246,0.18),rgba(244,114,182,0.0),rgba(99,102,241,0.2),rgba(59,130,246,0.12))] blur-3xl opacity-60 animate-[spin_48s_linear_infinite]" />
+                <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-linear-to-br from-primary/20 via-sky-400/12 to-violet-500/20 blur-2xl opacity-80" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.08),transparent_60%)]" />
               </div>
 
-              <div className="w-[120px] h-60 lg:w-[150px] lg:h-[280px] mx-auto relative perspective-distant lg:perspective-normal mt-12">
-                <div className="absolute inset-0 bg-linear-to-b from-white/50 via-transparent to-white/50 rounded-full blur-2xl scale-150 pointer-events-none" />
+              <div
+                ref={sliderRef}
+                role="region"
+                aria-roledescription="carousel"
+                aria-label="Portfolio highlight carousel"
+                tabIndex={0}
+                onFocus={handleMouseEnter}
+                onBlur={handleMouseLeave}
+                onKeyDown={handleKeyDown}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerLeave={handlePointerCancel}
+                onPointerCancel={handlePointerCancel}
+                className={`relative mx-auto h-[460px] select-none sm:h-[520px] lg:h-[540px] ${
+                  isDragging ? "cursor-grabbing" : "cursor-grab"
+                }`}
+                style={{ perspective: "1600px", transformStyle: "preserve-3d" }}
+              >
+                {slideMeta.map((meta, index) => {
+                  const offset = getRelativeOffset(index);
+                  const limitedOffset = Math.max(
+                    -maxVisible,
+                    Math.min(offset, maxVisible)
+                  );
+                  const angle = limitedOffset * 32;
+                  const radians = (angle * Math.PI) / 180;
+                  const isActive = offset === 0;
+                  const dragInfluence = Math.max(
+                    -160,
+                    Math.min(160, dragOffset)
+                  );
+                  const translateX =
+                    Math.sin(radians) * helixRadius +
+                    (isActive ? dragInfluence * 0.45 : dragInfluence * 0.12);
+                  const translateY =
+                    limitedOffset * -helixRise +
+                    (isActive ? dragInfluence * -0.08 : 0);
+                  const translateZ =
+                    -depthOffset +
+                    Math.cos(radians) * depthOffset * 0.55 -
+                    Math.abs(limitedOffset) * 36;
+                  const rotateY = angle * 0.9;
+                  const rotateX = limitedOffset * -6.2;
+                  const scale = isActive
+                    ? 1.08 + Math.min(Math.abs(dragInfluence) / 900, 0.05)
+                    : Math.max(0.58, 0.92 - Math.abs(limitedOffset) * 0.08);
+                  const opacity = isActive
+                    ? 1
+                    : Math.max(0.12, 1 - Math.abs(limitedOffset) * 0.24);
+                  const blur = Math.max(0, Math.abs(limitedOffset) * 1.25);
 
-                <div
-                  ref={carouselRef}
-                  className="carousel absolute size-full transform-3d transition-transform duration-1000 select-none"
-                >
-                  {roundSlider.map((item, idx) => {
-                    const deg = 360 / (roundSlider.length - 1);
-                    const angle = deg * idx;
-                    const isCenter = idx === currentIndex;
-
-                    return (
-                      <div
-                        key={idx}
-                        className="transform-3d"
-                        style={{
-                          transform: `rotateY(${angle}deg) translateZ(${zDepth}px) rotateY(-${angle}deg)`,
-                        }}
-                      >
-                        <div
-                          className={`block absolute w-[120px] h-60 lg:w-[150px] lg:h-[280px] item bg-center bg-no-repeat bg-contain size-full [transition:transform_1s,opacity_0.5s,filter_0.5s] rounded-2xl`}
-                          style={{
-                            backgroundImage: `url(${item})`,
-                            filter: isCenter
-                              ? "drop-shadow(0 20px 40px rgba(0,0,0,0.3))"
-                              : "drop-shadow(0 10px 20px rgba(0,0,0,0.2))",
-                          }}
-                        />
+                  return (
+                    <div
+                      key={meta.id ?? `${index}`}
+                      aria-hidden={!isActive}
+                      className="absolute left-1/2 top-1/2 h-80 w-[220px] will-change-transform transition-[transform,filter,opacity] duration-800 ease-out sm:h-[360px] sm:w-[260px] md:h-[420px] md:w-[300px] lg:h-[480px] lg:w-[340px]"
+                      style={{
+                        transform: `translate3d(-50%, -50%, 0) translate3d(${translateX}px, ${translateY}px, ${translateZ}px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${scale})`,
+                        opacity,
+                        filter: `blur(${blur}px)`,
+                        zIndex: 200 - Math.abs(offset) * 12,
+                      }}
+                    >
+                      <div className="relative size-full">
+                        <div className="relative size-full overflow-hidden">
+                          <div
+                            aria-hidden
+                            className="absolute inset-0 transition-transform bg-contain bg-center bg-no-repeat duration-700 ease-out"
+                            style={{
+                              backgroundImage: `url(${meta.src})`,
+                              transform: isActive
+                                ? "scale(1.04)"
+                                : "scale(1.08)",
+                            }}
+                          />
+                        </div>
                       </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="flex justify-center gap-2 mt-12">
-                {roundSlider.slice(0, -1).map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => {
-                      const diff = idx - currentIndex;
-                      const direction = diff > 0 ? "n" : "p";
-                      for (let i = 0; i < Math.abs(diff); i++) {
-                        setTimeout(
-                          () => window.rotateCarousel?.(direction),
-                          i * 1100
-                        );
-                      }
-                    }}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      idx === currentIndex
-                        ? "w-12 bg-primary"
-                        : "w-6 bg-gray-300 hover:bg-gray-400"
-                    }`}
-                    aria-label={`Go to slide ${idx + 1}`}
-                  />
-                ))}
+                    </div>
+                  );
+                })}
               </div>
             </div>
+
+            {slideCount > 0 && activeMeta && (
+              <div className="flex w-full flex-col items-center gap-12">
+                <div className="relative w-full max-w-3xl text-center">
+                  <div
+                    className="pointer-events-none absolute inset-0 -z-10 blur-3xl opacity-80"
+                    style={{
+                      background:
+                        activeMeta.accentGradient ??
+                        "linear-gradient(135deg, rgba(59,130,246,0.35), rgba(236,72,153,0.32))",
+                    }}
+                  />
+                </div>
+
+                <div className="flex flex-col items-center gap-7">
+                  <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-7">
+                    {slideMeta.map((meta, index) => {
+                      const isActive = index === currentIndex;
+                      return (
+                        <button
+                          key={meta.id ?? `${index}`}
+                          type="button"
+                          onClick={() => {
+                            stopAutoplay();
+                            setCurrentIndex(index);
+                          }}
+                          aria-label={`Reveal slide ${index + 1}`}
+                          className={`group relative h-20 w-13 transition-all duration-400 ${
+                            isActive
+                              ? "scale-125 -translate-y-2"
+                              : "opacity-75 hover:opacity-100"
+                          }`}
+                        >
+                          <span className="relative block size-full">
+                            <span
+                              className="block size-full transition-transform duration-400 bg-contain bg-center bg-no-repeat"
+                              style={{
+                                backgroundImage: `url(${meta.src})`,
+                              }}
+                            />
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

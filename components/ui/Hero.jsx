@@ -154,6 +154,7 @@ const Hero = ({
                     title={title}
                     highlight={titleHighlight}
                     variant="white"
+                    highlightColor="primary"
                     className="mb-6 text-balance text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"
                   />
                 </motion.div>

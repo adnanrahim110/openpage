@@ -99,7 +99,7 @@ export const navigation = [
   },
   {
     title: "About Us",
-    link: "/about",
+    link: "/about-us",
   },
 ];
 

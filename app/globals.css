@@ -37,18 +37,18 @@
   --color-accent-900: #174363;
   --color-accent-950: #0f2b42;
 
-  --color-secondary: #BD9523;
-  --color-secondary-50: #fbfaeb;
-  --color-secondary-100: #f6f5cb;
-  --color-secondary-200: #ede89b;
-  --color-secondary-300: #e3d661;
-  --color-secondary-400: #d9c236;
-  --color-secondary-500: #caac28;
-  --color-secondary-600: #bd9523;
-  --color-secondary-700: #8b651d;
-  --color-secondary-800: #74511f;
-  --color-secondary-900: #634420;
-  --color-secondary-950: #39240f;
+  --color-secondary: #7d22d8;
+  --color-secondary-50: #faf5ff;
+  --color-secondary-100: #f2e8ff;
+  --color-secondary-200: #e8d5ff;
+  --color-secondary-300: #d5b3ff;
+  --color-secondary-400: #bc83fd;
+  --color-secondary-500: #a254f8;
+  --color-secondary-600: #8d32eb;
+  --color-secondary-700: #7d22d8;
+  --color-secondary-800: #6620a9;
+  --color-secondary-900: #541b88;
+  --color-secondary-950: #380665;
 
   --scroll-behavior: smooth;
   --will-change: transform;

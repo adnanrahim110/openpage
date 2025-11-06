@@ -168,7 +168,7 @@ const Header = ({ setIsSidebar }) => {
       </div>
 
       <div
-        className={`bg-[#1f1f1f] transition-[padding] duration-300 ease-linear ${
+        className={`bg-primary-950 transition-[padding] duration-300 ease-linear ${
           atTop ? "py-2" : "py-0"
         }`}
       >
@@ -179,7 +179,7 @@ const Header = ({ setIsSidebar }) => {
               height={400}
               src={nav_logo}
               alt="Ink Nest Publishing"
-              className={`h-auto max-w-[180px] transition-all duration-300 ease-linear ${
+              className={`h-auto max-w-20 transition-all duration-300 ease-linear ${
                 atTop ? "-mt-12" : "mt-0"
               }`}
               priority
