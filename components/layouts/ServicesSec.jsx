@@ -79,12 +79,12 @@ const ServicesSec = () => {
               <div className="absolute -left-4 top-0 w-1 h-full bg-linear-to-b from-primary via-purple-500 to-primary rounded-full max-lg:hidden" />
               <p className="text-gray-700 font-medium text-base lg:text-lg leading-relaxed pl-6 max-lg:pl-0">
                 Discover the epitome of book publishing service providers with
-                Western Book Publishing- your reliable partner in the
-                publication venture. Would-be writers, here is your chance to
-                collaborate with one of the best book publishing teams. We
-                provide you with unequaled service in order to succeed in the
-                current competitive market. Allow your story to soar with one of
-                the best book writing and publishing companies in the business.
+                Open Page Publishing- your reliable partner in the publication
+                venture. Would-be writers, here is your chance to collaborate
+                with one of the best book publishing teams. We provide you with
+                unequaled service in order to succeed in the current competitive
+                market. Allow your story to soar with one of the best book
+                writing and publishing companies in the business.
               </p>
             </div>
           </motion.div>

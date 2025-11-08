@@ -1,70 +1,211 @@
 "use client";
 
+import { cn } from "@/utils/cn";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 const Button = ({
-  to,
-  onClick,
   children,
+  href,
+  onClick,
   type,
-  icon,
-  className,
-  btn2,
-  secondary,
   disabled,
-  iconClass,
-  small,
+  className = "",
   target,
+  tone = "primary",
+  variant = "solid",
+  contentClassName = "",
+  showArrow = true,
+  size = "md",
+  icon: Icon,
+  iconPosition = "left",
+  iconClassName = "",
 }) => {
-  const Tag = to ? Link : "button";
-  const Icon = icon;
+  const Tag = href ? Link : "button";
 
-  const bgColor = secondary
-    ? `bg-secondary hover:bg-secondary-900 disabled:bg-neutral-700`
-    : "bg-primary hover:bg-primary-950 disabled:bg-neutral-700";
+  const getSizeClasses = () => {
+    switch (size) {
+      case "sm":
+        return "px-6 py-2.5 text-sm";
+      case "lg":
+        return "px-10 py-4 text-lg";
+      case "xl":
+        return "px-12 py-5 text-xl";
+      default:
+        return "px-8 py-3 text-base";
+    }
+  };
 
-  const borderColor = secondary
-    ? "border-secondary-900 disabled:border-neutral-700"
-    : "border-primary-950 disabled:border-neutral-700";
+  const getIconSize = () => {
+    switch (size) {
+      case "sm":
+        return "w-4 h-4";
+      case "lg":
+        return "w-6 h-6";
+      case "xl":
+        return "w-7 h-7";
+      default:
+        return "w-5 h-5";
+    }
+  };
 
-  const classes = `uppercase ${bgColor} relative text-white disabled:cursor-not-allowed flex font-barlow items-center border ${borderColor} overflow-hidden cursor-pointer transition-all duration-300 group ${className} ${
-    small ? "text-xl h-10 pl-5 pr-16" : "text-2xl h-12 pl-8 pr-20"
-  }`;
+  const getVariantClasses = () => {
+    const baseClasses =
+      "shadow-lg hover:shadow-2xl transition-all duration-500 rounded-xl border-2";
 
-  const Iconbg = secondary
-    ? "bg-secondary-900 group-disabled:bg-neutral-500"
-    : "bg-primary-950 group-disabled:bg-neutral-500";
+    if (variant === "solid") {
+      switch (tone) {
+        case "primary":
+          return `${baseClasses} border-primary-600 bg-linear-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700`;
+        case "secondary":
+          return `${baseClasses} border-secondary-600 bg-linear-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700`;
+        case "dark":
+          return `${baseClasses} border-gray-900 bg-linear-to-r from-gray-900 to-black hover:from-black hover:to-gray-900`;
+        case "light":
+          return `${baseClasses} border-gray-100 bg-linear-to-r from-white to-gray-50 hover:from-gray-50 hover:to-white`;
+        default:
+          return `${baseClasses} border-primary-600 bg-linear-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700`;
+      }
+    } else {
+      switch (tone) {
+        case "primary":
+          return `${baseClasses} border-primary-500 hover:border-primary-600 bg-primary-50/50 hover:bg-primary-100/50`;
+        case "secondary":
+          return `${baseClasses} border-secondary-500 hover:border-secondary-600 bg-secondary-50/50 hover:bg-secondary-100/50`;
+        case "dark":
+          return `${baseClasses} border-gray-800 hover:border-black bg-gray-50/50 hover:bg-gray-100/50`;
+        case "light":
+          return `${baseClasses} bg-white/10 backdrop-blur-sm border-white/30 hover:border-white/50 hover:bg-white/20`;
+        default:
+          return `${baseClasses} border-primary-500 hover:border-primary-600 bg-primary-50/50 hover:bg-primary-100/50`;
+      }
+    }
+  };
+
+  const getTextColorClasses = () => {
+    if (variant === "outline") {
+      switch (tone) {
+        case "primary":
+          return "text-primary-600 group-hover/btn:text-white";
+        case "secondary":
+          return "text-secondary-600 group-hover/btn:text-white";
+        case "dark":
+          return "text-gray-900 group-hover/btn:text-white";
+        case "light":
+          return "text-white group-hover/btn:text-gray-900";
+        default:
+          return "text-primary-600 group-hover/btn:text-white";
+      }
+    } else {
+      switch (tone) {
+        case "primary":
+          return "text-white group-hover/btn:text-primary-600";
+        case "secondary":
+          return "text-white group-hover/btn:text-secondary-600";
+        case "dark":
+          return "text-white group-hover/btn:text-primary-600";
+        case "light":
+          return "text-gray-900 group-hover/btn:text-white";
+        default:
+          return "text-white group-hover/btn:text-primary-600";
+      }
+    }
+  };
+
+  const getAnimationBgClasses = () => {
+    if (variant === "solid") {
+      switch (tone) {
+        case "primary":
+          return "bg-white";
+        case "secondary":
+          return "bg-white";
+        case "dark":
+          return "bg-primary-500";
+        case "light":
+          return "bg-black";
+        default:
+          return "bg-white";
+      }
+    } else {
+      switch (tone) {
+        case "primary":
+          return "bg-primary-500";
+        case "secondary":
+          return "bg-secondary-500";
+        case "dark":
+          return "bg-black";
+        case "light":
+          return "bg-white";
+        default:
+          return "bg-primary-500";
+      }
+    }
+  };
 
   return (
     <Tag
-      {...(to
-        ? { href: to, target: target }
-        : { onClick: onClick, disabled: disabled, type: type })}
-      className={`${
-        btn2
-          ? `border text-center font-medium flex items-center justify-center group ${
-              secondary
-                ? "border-white bg-white text-black hover:bg-transparent hover:text-white"
-                : "border-black text-white bg-black hover:bg-transparent hover:text-black"
-            } ${
-              small ? "text-xl h-10 px-6" : "text-xl h-12 px-10"
-            } cursor-pointer transition-all duration-300`
-          : classes
-      }`}
-    >
-      <span>{children}</span>
-      {!btn2 && icon && (
-        <span
-          className={`absolute right-0 ${
-            small ? "size-10 text-xl" : "size-12 text-2xl"
-          } text-center flex items-center justify-center ${Iconbg} ${
-            to ? "group-hover:w-full" : "group-enabled:group-hover:w-full"
-          } transition-all duration-200 ease-linear`}
-        >
-          <Icon className={`group-disabled:animate-spin`} />
-        </span>
+      {...(href ? { href, target } : { onClick, type, disabled })}
+      className={cn(
+        "cursor-pointer font-semibold inline-flex items-center justify-center gap-2.5 overflow-hidden relative group/btn disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-lg",
+        getSizeClasses(),
+        getVariantClasses(),
+        className
       )}
+    >
+      <span
+        className={cn(
+          "relative z-20 font-semibold transition-all duration-500 flex items-center gap-2.5",
+          getTextColorClasses(),
+          contentClassName
+        )}
+      >
+        {Icon && iconPosition === "left" && (
+          <Icon
+            className={cn(
+              getIconSize(),
+              "transition-all duration-300",
+              iconClassName
+            )}
+          />
+        )}
+
+        <span className="inline-flex items-center justify-center gap-2">
+          {children}
+        </span>
+
+        {Icon && iconPosition === "right" && (
+          <Icon
+            className={cn(
+              getIconSize(),
+              "transition-all duration-300",
+              iconClassName
+            )}
+          />
+        )}
+
+        {showArrow && !Icon && (
+          <ArrowRight
+            className={cn(
+              "transition-all duration-300 group-hover/btn:translate-x-1",
+              getIconSize()
+            )}
+          />
+        )}
+      </span>
+
+      <span
+        className={cn(
+          "absolute w-full h-full -left-full top-0 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:left-0 transition-all duration-500",
+          getAnimationBgClasses()
+        )}
+      />
+
+      <span
+        className={cn(
+          "absolute w-full h-full -right-full top-0 -rotate-45 group-hover/btn:rotate-0 group-hover/btn:right-0 transition-all duration-500",
+          getAnimationBgClasses()
+        )}
+      />
     </Tag>
   );
 };

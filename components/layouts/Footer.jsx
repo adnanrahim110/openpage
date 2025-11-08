@@ -47,7 +47,7 @@ const Footer = () => {
                     width={500}
                     height={300}
                     src={nav_logo}
-                    alt="Western Book Publishing"
+                    alt="Open Page Publishing"
                     className="max-w-[200px]"
                   />
                   <p className="text-gray-700 font-medium text-sm leading-relaxed">

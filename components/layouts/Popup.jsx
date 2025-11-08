@@ -226,6 +226,10 @@ const Popup = ({ closePopup }) => {
                   type="submit"
                   disabled={loading}
                   icon={loading ? ImSpinner : BsFillSendFill}
+                  iconClassName={loading ? "animate-spin" : ""}
+                  tone="primary"
+                  variant="solid"
+                  size="md"
                 >
                   {loading ? "Sending..." : "Send Message"}
                 </Button>

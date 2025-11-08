@@ -157,8 +157,8 @@ const Sec4 = () => {
               transition={{ duration: 0.4, delay: 0.2 }}
               className="text-gray-700 font-medium text-lg leading-relaxed mb-6"
             >
-              At Western Book Publishing, collaboration isn't just another
-              cliched term; it's our{" "}
+              At Open Page Publishing, collaboration isn't just another cliched
+              term; it's our{" "}
               <span className="font-bold text-primary">secret sauce</span>. Our
               team listens, guides, and equips every author with personalized
               insight and precision.
@@ -213,12 +213,19 @@ const Sec4 = () => {
             >
               <Button
                 onClick={openPopup}
-                secondary
+                tone="secondary"
+                variant="solid"
+                size="lg"
                 icon={RiCustomerServiceFill}
               >
                 Start a Project
               </Button>
-              <Button onClick={() => Tawk_API.toggle()} btn2>
+              <Button
+                onClick={() => Tawk_API.toggle()}
+                tone="dark"
+                variant="outline"
+                size="lg"
+              >
                 Let's Chat
               </Button>
             </motion.div>

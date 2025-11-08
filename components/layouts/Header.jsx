@@ -1,13 +1,14 @@
 "use client";
 
 import { contactDetails, navigation } from "@/constants";
-import { nav_logo } from "@/public";
+import { nav_logo2 } from "@/public";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { LuArrowUpRight } from "react-icons/lu";
 import { RxTriangleDown } from "react-icons/rx";
+import Button from "../ui/Button";
 import DropdownMenu from "./DropdownMenu";
 
 const trimPath = (value = "") => {
@@ -169,25 +170,25 @@ const Header = ({ setIsSidebar }) => {
 
       <div
         className={`bg-primary-950 transition-[padding] duration-300 ease-linear ${
-          atTop ? "py-2" : "py-0"
+          atTop ? "pt-1 pb-0" : "py-1"
         }`}
       >
-        <div className="container mx-auto flex items-center gap-6 text-white">
+        <div className="container mx-auto flex items-center justify-between text-white">
           <Link href="/" className="flex items-center gap-3">
             <Image
               width={1080}
               height={400}
-              src={nav_logo}
+              src={nav_logo2}
               alt="Ink Nest Publishing"
-              className={`h-auto max-w-20 transition-all duration-300 ease-linear ${
-                atTop ? "-mt-12" : "mt-0"
+              className={`h-auto transition-all duration-300 ease-linear ${
+                atTop ? "-mt-9 -ml-6 w-[300px]" : "mt-0 w-60"
               }`}
               priority
             />
           </Link>
 
-          <nav className="hidden lg:flex flex-1 items-center justify-center">
-            <ul className="flex items-center gap-7 text-lg">
+          <nav className="hidden lg:flex items-center justify-center">
+            <ul className="flex items-center gap-5 text-lg">
               {navigation.map((item, idx) => {
                 const hasDropdown =
                   Array.isArray(item.dropdown) && item.dropdown.length > 0;
@@ -276,15 +277,15 @@ const Header = ({ setIsSidebar }) => {
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
-            <Link
+            <Button
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-primary pl-5 pr-2 py-2 font-semibold text-white transition-colors duration-150 hover:bg-primary-500"
+              tone="primary"
+              variant="solid"
+              size="sm"
+              showArrow={false}
             >
-              Contact us
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/30 text-white">
-                <LuArrowUpRight className="text-sm" />
-              </span>
-            </Link>
+              Contact Us
+            </Button>
           </div>
 
           <button

@@ -54,7 +54,7 @@ const Sec3 = () => {
           <Title
             as="h2"
             variant="black"
-            title="Western Book Publishing"
+            title="Open Page Publishing"
             highlight="Book Publishing"
             className="text-center"
           />
@@ -128,7 +128,7 @@ const Sec3 = () => {
             transition={{ duration: 0.6 }}
           >
             <p className="text-gray-700 font-medium text-lg leading-relaxed mb-8">
-              You are welcome to Western Book Publishing, one of the top ten
+              You are welcome to Open Page Publishing, one of the top ten
               publishing houses changing the way stories meet their audience. We
               are not merely keeping up with the trends; we set them. Our
               publishing services shatter boundaries and establish new standards
@@ -159,11 +159,17 @@ const Sec3 = () => {
                 </motion.div>
               ))}
             </div>
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               <Button
                 onClick={openPopup}
-                secondary
-                small
+                tone="secondary"
+                variant="solid"
+                size="md"
                 icon={RiCustomerServiceFill}
               >
                 Get a Free Consultation

@@ -71,22 +71,30 @@ const Hero = ({
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.9 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
       >
-        <Button icon={GiTalk} onClick={openPopup} type="button">
-          LAUNCH A PROJECT
+        <Button
+          icon={GiTalk}
+          onClick={openPopup}
+          type="button"
+          tone="primary"
+          variant="solid"
+          size="lg"
+        >
+          Launch A Project
         </Button>
       </motion.div>
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 1 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
       >
-        <Button onClick={() => Tawk_API.toggle()} secondary btn2>
-          Let us Talk
+        <Button
+          onClick={() => Tawk_API.toggle()}
+          tone="light"
+          variant="outline"
+          size="lg"
+        >
+          Let's Talk
         </Button>
       </motion.div>
     </div>
@@ -239,129 +247,210 @@ const Hero = ({
       <div className="absolute inset-0 size-full z-1 bg-radial from-transparent via-transparent to-black/80 pointer-events-none" />
     </section>
   ) : (
-    <section className="relative min-h-[620px] overflow-hidden size-full flex items-center justify-center">
-      <div className="absolute inset-0 -z-1">
+    <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
+      {/* Video Background with Clean Overlay */}
+      <div className="absolute inset-0">
         <div className="relative size-full">
           <video
-            src="/imgs/hero.webm"
+            src="/images/hero.webm"
             className="size-full object-cover object-center"
             muted
             autoPlay
             loop
             playsInline
           />
-          <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/70 to-black/80" />
-          <div className="absolute inset-0 bg-linear-to-r from-primary/10 to-transparent" />
+          {/* Sophisticated Gradient Overlay */}
+          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black/80" />
+          <div className="absolute inset-0 bg-primary/5" />
         </div>
       </div>
 
-      <div className="container relative z-10">
-        <div className="row max-lg:text-center">
-          <div className="w-full">
-            <div className="flex flex-col items-center justify-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <Subtitle
-                  variant="glass"
-                  icon={HiSparkles}
-                  iconClassName="text-primary text-xl animate-pulse"
-                  className="mb-6 shadow-[0_0_30px] shadow-primary/30"
-                  textClassName="subtitle max-lg:text-sm s2 text-white font-bold tracking-wider"
-                >
-                  {subtitle}
-                </Subtitle>
-              </motion.div>
+      {/* Subtle Background Accents */}
+      <div className="absolute top-1/4 left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
 
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.8,
-                  delay: 0.2,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
+      <div className="container relative z-10 px-6 py-24 md:pt-40 md:pb-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col items-center justify-center space-y-10">
+            {/* Subtitle with Clean Glass Effect */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Subtitle
+                variant="glass"
+                icon={HiSparkles}
+                iconClassName="text-primary"
+                className="mb-6 border border-white/20"
+                textClassName="subtitle text-sm lg:text-base font-bold tracking-[0.15em] uppercase"
               >
+                {subtitle}
+              </Subtitle>
+            </motion.div>
+
+            {/* Title with Clean Animation */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.15,
+              }}
+              className="text-center relative"
+            >
+              <div className="absolute inset-0 blur-2xl opacity-30">
                 <Title
                   as="h1"
                   title={title}
                   highlight={titleHighlight}
                   variant="white"
-                  className="mb-12 text-center text-5xl md:text-6xl lg:text-8xl xl:text-9xl tracking-wide"
+                  className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
                 />
-              </motion.div>
+              </div>
 
+              {/* Main Title */}
+              <div className="relative">
+                <Title
+                  as="h1"
+                  title={title}
+                  highlight={titleHighlight}
+                  variant="white"
+                  highlightColor="primary"
+                  className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl drop-shadow-2xl"
+                />
+              </div>
+            </motion.div>
+
+            {/* Description with Enhanced Typography */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 1,
+                delay: 0.4,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="w-full max-w-4xl"
+            >
+              <div className="relative group">
+                {/* Decorative Lines */}
+                <div className="absolute -left-4 top-0 bottom-0 w-1 bg-linear-to-b from-primary via-white/50 to-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute -right-4 top-0 bottom-0 w-1 bg-linear-to-b from-secondary via-white/50 to-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="relative backdrop-blur-sm bg-white/5 rounded-2xl p-8 border border-white/10">
+                  <div className="relative text-center">
+                    {textSlider ? (
+                      <Swiper
+                        modules={[Autoplay]}
+                        loop
+                        autoplay={{
+                          delay: 4500,
+                        }}
+                        slidesPerView={1}
+                        speed={1200}
+                        className="premium-text-swiper"
+                      >
+                        {text.map((item, index) => (
+                          <SwiperSlide key={index}>
+                            <p className="text-xl font-medium leading-relaxed text-white/95 md:text-2xl md:leading-relaxed drop-shadow-lg">
+                              {item}
+                            </p>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    ) : (
+                      <p className="text-xl font-medium leading-relaxed text-white/95 md:text-2xl md:leading-relaxed drop-shadow-lg">
+                        {text}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Premium Action Buttons */}
+            {actionBtns && (
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  duration: 0.8,
-                  delay: 0.4,
+                  duration: 1,
+                  delay: 0.6,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="relative w-full text-center text-neutral-200 lg:px-16 max-w-4xl"
+                className="flex flex-wrap items-center justify-center gap-5 pt-4"
               >
-                <div className="relative bg-black/30 backdrop-blur-sm rounded-2xl border border-white/10 px-8 py-6 shadow-[0_0_40px] shadow-black/50">
-                  {textSlider ? (
-                    <Swiper
-                      modules={[Autoplay, EffectFade]}
-                      loop
-                      effect="fade"
-                      autoplay={{ delay: 4000, disableOnInteraction: false }}
-                      slidesPerView={1}
-                      speed={1000}
-                    >
-                      {text.map((item, index) => (
-                        <SwiperSlide key={index}>
-                          <p className="text-lg lg:text-xl font-medium leading-relaxed">
-                            {item}
-                          </p>
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                  ) : (
-                    <p className="text-lg lg:text-xl font-medium leading-relaxed">
-                      {text}
-                    </p>
-                  )}
-                </div>
-              </motion.div>
-
-              {actionBtns && (
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.6,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="flex flex-wrap max-lg:justify-center gap-5 mt-12"
+                <Button
+                  onClick={openPopup}
+                  icon={GiTalk}
+                  tone="primary"
+                  variant="solid"
+                  size="xl"
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button icon={GiTalk} onClick={openPopup} type="button">
-                      Start a Project
-                    </Button>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button onClick={() => Tawk_API.toggle()} secondary btn2>
-                      Let's Talk
-                    </Button>
-                  </motion.div>
-                </motion.div>
-              )}
-            </div>
+                  Start a Project
+                </Button>
+
+                <Button
+                  onClick={() => Tawk_API.toggle()}
+                  tone="light"
+                  variant="outline"
+                  size="xl"
+                  showArrow={false}
+                  className="backdrop-blur-sm"
+                >
+                  Let's Talk
+                </Button>
+              </motion.div>
+            )}
+
+            {/* Scroll Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="pt-16"
+            >
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="flex flex-col items-center gap-3"
+              >
+                <div className="text-xs font-medium uppercase tracking-wider text-white/50">
+                  Scroll Down
+                </div>
+                <div className="h-10 w-px bg-linear-to-b from-white/30 to-transparent" />
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes shimmer {
+          0% {
+            background-position: -200% 0;
+          }
+          100% {
+            background-position: 200% 0;
+          }
+        }
+
+        .premium-text-swiper {
+          width: 100%;
+        }
+
+        .premium-text-swiper .swiper-slide {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100px;
+        }
+      `}</style>
     </section>
   );
 };

@@ -15,7 +15,7 @@ export default function Home() {
     <>
       <Hero
         title="Professional Book Publishing Services!"
-        subtitle="Western Book Publishing"
+        subtitle="Open Page Publishing"
         images={banners_library}
         titleHighlight="Book Publishing"
         text="Are you, where big thinking blends with daring to be different? We're not merely refining the old model of publishing; we're turning it upside down. Our pioneering spirit questions the predictable, establishes new, bold standards, and returns the creative control to the writer. With imagination, dexterity, and unstoppable enthusiasm, we are giving new breath to the process of how books come into the world. So buckle up and get ready: we are going to redefine the future of publishing where every voice is heard, where boundaries are behind us, and where storytelling has no regulations."

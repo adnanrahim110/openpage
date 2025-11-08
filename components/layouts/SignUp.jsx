@@ -1,13 +1,14 @@
 "use client";
 
-import { submitForm } from "@/utils/formSubmit";
 import { cn } from "@/utils/cn";
+import { submitForm } from "@/utils/formSubmit";
 import React, { useState } from "react";
 import { FaEnvelope, FaPaperPlane, FaPhone, FaUser } from "react-icons/fa6";
 import { ImSpinner } from "react-icons/im";
 import { IoShieldCheckmark } from "react-icons/io5";
 import { MdMessage } from "react-icons/md";
 import { toast } from "react-toastify";
+import Button from "../ui/Button";
 import Title from "../ui/Title";
 
 const halfWrapperClass = "w-full md:w-1/2";
@@ -263,27 +264,18 @@ const SignUp = () => {
           </div>
 
           <div className="pt-2">
-            <button
+            <Button
               type="submit"
               disabled={loading}
-              className={`w-full py-4 px-6 rounded-2xl font-bold text-base transition-all duration-300 shadow-lg flex items-center justify-center gap-3 ${
-                loading
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-linear-to-r from-primary to-purple-600 hover:from-primary hover:to-purple-700 hover:shadow-[0_10px_40px_rgba(var(--primary-rgb),0.35)] text-white"
-              }`}
+              icon={loading ? ImSpinner : FaPaperPlane}
+              iconClassName={loading ? "animate-spin" : ""}
+              tone="primary"
+              variant="solid"
+              size="lg"
+              className="w-full"
             >
-              {loading ? (
-                <>
-                  <ImSpinner className="text-xl animate-spin" />
-                  <span>Sending...</span>
-                </>
-              ) : (
-                <>
-                  <FaPaperPlane className="text-lg" />
-                  <span>Send Message</span>
-                </>
-              )}
-            </button>
+              {loading ? "Sending..." : "Send Message"}
+            </Button>
           </div>
         </form>
       </div>

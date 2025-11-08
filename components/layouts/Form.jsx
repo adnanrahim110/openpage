@@ -99,30 +99,30 @@ const Form = () => {
 
       <div className="container relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-2 lg:pr-8"
-          >
-            <Subtitle
-              variant="soft"
-              icon={HiSparkles}
-              iconClassName="text-primary text-lg"
-              className="mb-6"
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className=" lg:pr-8"
             >
-              Get In Touch
-            </Subtitle>
+              <Subtitle
+                variant="soft"
+                icon={HiSparkles}
+                iconClassName="text-primary text-lg"
+                className="mb-6"
+              >
+                Get In Touch
+              </Subtitle>
 
-            <Title
-              as="h2"
-              variant="black"
-              title="Interested in Working Together?"
-              highlight="Working Together?"
-              className="mb-6 text-4xl md:text-5xl"
-            />
+              <Title
+                as="h2"
+                variant="black"
+                title="Interested in Working Together?"
+                highlight="Working Together?"
+                className="mb-6 text-4xl md:text-5xl"
+              />
 
               <p className="text-gray-700 font-medium text-base leading-relaxed mb-8">
                 We are here to help you with any questions you may have about
@@ -176,13 +176,12 @@ const Form = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-3"
             >
               <form
                 onSubmit={handleSubmit}
-                className="form_black bg-white rounded-3xl shadow-2xl border-2 border-gray-100 p-8 md:p-10"
+                className="form_black bg-white rounded-3xl shadow-2xl border-2 border-gray-100 p-6"
               >
-                <div className="space-y-6">
+                <div className="space-y-4">
                   <div className="relative">
                     <label
                       htmlFor="name"
@@ -331,7 +330,7 @@ const Form = () => {
                     </label>
                     <textarea
                       name="message"
-                      rows={6}
+                      rows={5}
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your project..."
@@ -339,15 +338,15 @@ const Form = () => {
                     />
                   </div>
 
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
+                  <motion.div>
                     <Button
                       type="submit"
                       disabled={loading}
-                      hoverText="Send Now"
                       icon={loading ? ImSpinner : BsFillSendFill}
+                      iconClassName={loading ? "animate-spin" : ""}
+                      tone="primary"
+                      variant="solid"
+                      size="lg"
                       className="w-full"
                     >
                       {loading ? "Sending..." : "Send Message"}

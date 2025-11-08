@@ -9,7 +9,7 @@ import Subtitle from "../ui/Subtitle";
 import Title from "../ui/Title";
 
 const defaultTitle =
-  "Western Book Publishing The Top Book Ghostwriting Publishing Company You'll Ever Need";
+  "Open Page Publishing The Top Book Ghostwriting Publishing Company You'll Ever Need";
 
 const Sec2 = ({ title, text, titleHighlight }) => {
   const displayTitle = title || defaultTitle;
@@ -75,7 +75,7 @@ const Sec2 = ({ title, text, titleHighlight }) => {
                 <div className="absolute -left-4 top-0 w-1 h-full bg-linear-to-b from-primary via-purple-500 to-primary rounded-full" />
                 <p className="text-gray-700 font-medium text-base lg:text-lg leading-relaxed pl-6">
                   {text ||
-                    "Be in the limelight with Western Book Publishing, where we make sure to transform your idea into an interesting book. It is not just a publishing service, but your passport to worldwide recognition, creative fulfilment, and a lifetime of achievement. Are you just getting started with on demand Amazon self publishing, investigating ebook publishing services, or wanting to go all the way and find book publication services? With us, you have come to the right place to make your publishing vision a published reality. With a decade of experience under our belt and the support of one of the top publishing houses, we are bound to get you on the path to literary success. It is your time to make a difference, to innovate, and to make your mark in the world. Join us and bring a creative revolution, and light your way to success."}
+                    "Be in the limelight with Open Page Publishing, where we make sure to transform your idea into an interesting book. It is not just a publishing service, but your passport to worldwide recognition, creative fulfilment, and a lifetime of achievement. Are you just getting started with on demand Amazon self publishing, investigating ebook publishing services, or wanting to go all the way and find book publication services? With us, you have come to the right place to make your publishing vision a published reality. With a decade of experience under our belt and the support of one of the top publishing houses, we are bound to get you on the path to literary success. It is your time to make a difference, to innovate, and to make your mark in the world. Join us and bring a creative revolution, and light your way to success."}
                 </p>
               </motion.div>
               <motion.div
