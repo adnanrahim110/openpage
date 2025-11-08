@@ -2,7 +2,7 @@
 
 import { cn } from "@/utils/cn";
 import { submitForm } from "@/utils/formSubmit";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaEnvelope, FaPaperPlane, FaPhone, FaUser } from "react-icons/fa6";
 import { ImSpinner } from "react-icons/im";
 import { IoShieldCheckmark } from "react-icons/io5";

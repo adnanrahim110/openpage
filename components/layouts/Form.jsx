@@ -3,7 +3,7 @@
 import { banners_form_bg } from "@/public";
 import { submitForm } from "@/utils/formSubmit";
 import { motion } from "motion/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { BsFillSendFill } from "react-icons/bs";
 import { FaEnvelope, FaPhone, FaUser } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";

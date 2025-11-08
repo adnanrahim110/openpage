@@ -1,20 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { useReducedMotion } from "motion/react";
 
-const TiltImage = ({ src, alt = "", shadow = false }) => {
+const TiltImage = ({ src, alt = "", shadow = false, interactive = true }) => {
   const imgRef = useRef(null);
-  const shadowRef = useRef(null);
-
   const MAX_TILT = 12;
+  const prefersReducedMotion = useReducedMotion();
+  const enableTilt = interactive && !prefersReducedMotion;
 
   const [shadowPosition, setShadowPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+  const handleMouseMove = (event) => {
+    if (!enableTilt || !imgRef.current) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
     const midX = rect.width / 2;
     const midY = rect.height / 2;
 
@@ -26,37 +28,31 @@ const TiltImage = ({ src, alt = "", shadow = false }) => {
     const shadowX = (rotY / MAX_TILT) * 30;
     const shadowY = (rotX / MAX_TILT) * 30;
 
-    const maxShadowX = 50;
-    const maxShadowY = 30;
-
     setShadowPosition({
-      x: Math.min(Math.max(shadowX, -maxShadowX), maxShadowX),
-      y: Math.min(Math.max(shadowY, -maxShadowY), maxShadowY),
+      x: Math.min(Math.max(shadowX, -50), 50),
+      y: Math.min(Math.max(shadowY, -30), 30),
     });
   };
 
   const handleMouseLeave = () => {
+    if (!enableTilt || !imgRef.current) return;
     imgRef.current.style.transform = "rotateX(0deg) rotateY(0deg)";
     setShadowPosition({ x: 0, y: 0 });
   };
 
   return (
     <div
-      className="w-full h-full relative"
+      className="relative h-full w-full"
       style={{ perspective: "1200px" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       {shadow && (
         <div
-          ref={shadowRef}
-          className="absolute bg-black/75 rounded-full transform rotate-x-90 blur-[20px] left-1/2 top-full"
+          className="pointer-events-none absolute left-1/2 top-full h-12 w-1/2 -translate-x-1/2 rounded-full bg-black/40 blur-2xl"
           style={{
-            width: "50%",
-            height: "50px",
-            transform: `translateX(-50%) translate(${shadowPosition.x}px, ${shadowPosition.y}px) rotateX(90deg)`,
-            top: "calc(100% - 10px)",
-            zIndex: -1,
+            transform: `translate(${shadowPosition.x}px, ${shadowPosition.y}px)`,
+            opacity: enableTilt ? 0.5 : 0.35,
           }}
         />
       )}
@@ -67,7 +63,7 @@ const TiltImage = ({ src, alt = "", shadow = false }) => {
         ref={imgRef}
         src={src}
         alt={alt}
-        className="relative w-full h-full object-contain transition-transform duration-200 ease-out"
+        className="relative h-full w-full object-contain transition-transform duration-200 ease-out"
         style={{ transformStyle: "preserve-3d" }}
       />
     </div>

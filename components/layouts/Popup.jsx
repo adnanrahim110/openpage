@@ -2,7 +2,7 @@
 
 import { submitForm } from "@/utils/formSubmit";
 import { motion } from "motion/react";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { BsFillSendFill } from "react-icons/bs";
 import { ImSpinner } from "react-icons/im";
 import { IoMdClose } from "react-icons/io";

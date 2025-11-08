@@ -2,10 +2,9 @@
 
 import { faqs } from "@/constants";
 import { AnimatePresence, motion } from "motion/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaAngleDown, FaQuestionCircle } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
-import { IoCheckmarkCircle } from "react-icons/io5";
 import Subtitle from "../ui/Subtitle";
 import Title from "../ui/Title";
 

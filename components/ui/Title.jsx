@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/utils/cn";
-import React from "react";
+import { forwardRef } from "react";
 
 const SIZE_MAP = {
   h1: "text-5xl md:text-6xl lg:text-7xl",
@@ -34,7 +34,7 @@ const HIGHLIGHT_DEFAULT = {
   secondary: "primary",
 };
 
-const Title = React.forwardRef(
+const Title = forwardRef(
   (
     {
       as: Component = "h2",

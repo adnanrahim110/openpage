@@ -1,13 +1,7 @@
 "use client";
 
 import { roundSlider } from "@/constants";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HiSparkles } from "react-icons/hi2";
 import Subtitle from "../ui/Subtitle";
 import Title from "../ui/Title";

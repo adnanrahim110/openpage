@@ -4,7 +4,7 @@ import { testimonials } from "@/constants";
 import { banners_reviews_bg } from "@/public";
 import { motion } from "motion/react";
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaQuoteLeft, FaStar } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
 import { IoCheckmarkCircle } from "react-icons/io5";

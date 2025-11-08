@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import { cn } from "@/utils/cn";
+import { forwardRef } from "react";
 
 const BASE_CLASSES = {
   container:
@@ -42,7 +42,7 @@ const VARIANTS = {
 
 const getVariantStyles = (variant) => VARIANTS[variant] ?? VARIANTS.soft;
 
-const Subtitle = React.forwardRef(
+const Subtitle = forwardRef(
   (
     {
       as: Component = "div",
@@ -66,11 +66,7 @@ const Subtitle = React.forwardRef(
       variantStyles.container,
       className
     );
-    const textClass = cn(
-      BASE_CLASSES.text,
-      variantStyles.text,
-      textClassName
-    );
+    const textClass = cn(BASE_CLASSES.text, variantStyles.text, textClassName);
     const iconClass = cn(BASE_CLASSES.icon, variantStyles.icon, iconClassName);
     const endIconClass = cn(
       BASE_CLASSES.endIcon,

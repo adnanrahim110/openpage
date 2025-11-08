@@ -4,7 +4,6 @@ import { amazone, books_cta } from "@/public";
 import { fadeInLeft, fadeInRight, fadeInUp } from "@/utils/animations";
 import { motion } from "motion/react";
 import Image from "next/image";
-import React from "react";
 import { BiSupport } from "react-icons/bi";
 import { FaPhoneAlt } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";

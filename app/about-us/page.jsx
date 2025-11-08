@@ -5,7 +5,6 @@ import Cta from "@/components/layouts/Cta";
 import Form from "@/components/layouts/Form";
 import PortfolioSlider from "@/components/layouts/PortfolioSlider";
 import Hero from "@/components/ui/Hero";
-import React from "react";
 
 export const metadata = {
   title: "About Us - Open Page Publishing",

@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { LuArrowUpRight } from "react-icons/lu";
 import { RxTriangleDown } from "react-icons/rx";
 import Button from "../ui/Button";
 import DropdownMenu from "./DropdownMenu";

@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 const SwiperBtn = ({ direction, onClick, w_h, bg, mt }) => {
   const isPrev = direction === "prev";
 

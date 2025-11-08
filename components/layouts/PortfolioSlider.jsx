@@ -13,7 +13,7 @@ import {
 } from "@/public";
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { HiSparkles } from "react-icons/hi2";
 import "swiper/css";
 import "swiper/css/autoplay";

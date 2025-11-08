@@ -12,7 +12,6 @@ import {
   brands_9,
 } from "@/public";
 import Image from "next/image";
-import React from "react";
 import "swiper/css";
 import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";

@@ -5,7 +5,6 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
 import { contactDetails, navigation, servicesList } from "../../constants";

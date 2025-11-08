@@ -2,6 +2,30 @@
 import { icons_abp1, icons_abp2, icons_abp3, icons_apa1, icons_apa2, icons_apa3, icons_aw1, icons_aw2, icons_aw3, icons_bca1, icons_bca2, icons_bca3, icons_bpd1, icons_bpd2, icons_bpd3, icons_bpm1, icons_bpm2, icons_bpm3, icons_ci1, icons_ci2, icons_ci3, icons_ebp1, icons_ebp2, icons_ebp3, icons_fal1, icons_fal2, icons_fal3, icons_gw1, icons_gw2, icons_gw3, icons_pae1, icons_pae2, icons_pae3, services_s10_1, services_s10_2, services_s10_3, services_s1_1, services_s1_1_1, services_s1_1_2, services_s1_2, services_s1_2_1, services_s1_2_2, services_s1_3_1, services_s1_4_1, services_s1_4_2, services_s2_1, services_s2_2, services_s3_1, services_s3_2, services_s4_1, services_s4_2, services_s4_2_1, services_s4_3_1, services_s5_1, services_s5_2, services_s6_1, services_s7_1, services_s7_2, services_s7_3, services_s7_4, services_s8_1, services_s8_2, services_s9_1, services_s9_2, services_s9_3 } from "@/public";
 import { servicesList } from ".";
 
+const stripHtml = (value = "") =>
+  value.replace(/<br\s*\/?>/gi, " ").replace(/<\/?[^>]+(>|$)/g, "");
+
+const toArray = (value) =>
+  Array.isArray(value) ? value.filter(Boolean) : value ? [value] : [];
+
+const defaultBadges = [
+  "White-glove onboarding",
+  "Global distribution ready",
+  "Senior editorial pod",
+];
+
+const defaultStats = [
+  { label: "Projects delivered", value: "1.8k+" },
+  { label: "Markets launched", value: "35+" },
+  { label: "Author CSAT", value: "4.9/5" },
+];
+
+const defaultPulses = [
+  { label: "Average sprint", value: "4–8 weeks" },
+  { label: "Dedicated leads", value: "3+" },
+  { label: "Launch coverage", value: "Global" },
+];
+
 const getServicesWithoutIcons = (ids) => {
   if (!Array.isArray(servicesList)) {
     console.error('servicesList is not an array:', servicesList);
@@ -12,7 +36,7 @@ const getServicesWithoutIcons = (ids) => {
     .map(({ icon, ...rest }) => rest);
 };
 
-export const services = [
+const rawServices = [
   {
     title: "Book Publishing and Distribution",
     link: "/book-publishing",
@@ -1066,3 +1090,96 @@ export const services = [
     ]
   }
 ];
+
+const buildBenefitSlides = (benefits = {}) =>
+  toArray(benefits.text).map((copy, index) => ({
+    id: `benefit-${index + 1}`,
+    eyebrow: benefits.eyebrow ?? "Author Advantage",
+    title:
+      benefits.headings?.[index] ??
+      `Advantage ${String(index + 1).padStart(2, "0")}`,
+    copy,
+    footnote: benefits.footnotes?.[index],
+  }));
+
+const formatBenefits = (benefits = {}) => {
+  if (!benefits) return benefits;
+
+  return {
+    ...benefits,
+    carousel:
+      benefits.carousel?.length > 0
+        ? benefits.carousel
+        : buildBenefitSlides(benefits),
+    list:
+      benefits.list?.length > 0 ? benefits.list : toArray(benefits.text ?? []),
+    chips: benefits.chips ?? [],
+    metrics:
+      benefits.metrics ??
+      [
+        { label: "Author rating", value: "4.9/5" },
+        { label: "Success ratio", value: "98%" },
+        { label: "Launch uplift", value: "+63%" },
+      ],
+  };
+};
+
+const formatBlocks = (sections = []) =>
+  sections.map((section, index) => ({
+    id: section.id ?? `block-${index + 1}`,
+    kicker: section.kicker ?? `0${index + 1}`,
+    title: section.title,
+    copy: toArray(section.copy ?? section.text),
+    bullets: toArray(section.bullets ?? section.points),
+    media: {
+      src: section.media?.src ?? section.img,
+      alt: section.media?.alt ?? section.title,
+      shadow: section.media?.shadow ?? Boolean(section.shadow),
+    },
+  }));
+
+const enrichService = (service, index) => {
+  const experience = service.experience ?? {};
+  const storyline = service.storyline ?? {};
+  const serviceName = service.title ?? "this service";
+
+  const blocks =
+    storyline.blocks?.length > 0
+      ? storyline.blocks
+      : formatBlocks(service.service_body ?? []);
+
+  const ribbons =
+    experience.ribbons ??
+    service.wwd?.map(({ title }) => title).filter(Boolean) ??
+    [];
+
+  return {
+    ...service,
+    slug: service.slug ?? service.link.replace(/^\//, ""),
+    experience: {
+      eyebrow:
+        experience.eyebrow ??
+        `Signature ${String(index + 1).padStart(2, "0")}`,
+      strapline: experience.strapline ?? service.title,
+      summary:
+        experience.summary ?? stripHtml(service.hero?.text ?? service.sec2?.text ?? ""),
+      badges: experience.badges ?? defaultBadges,
+      stats: experience.stats ?? defaultStats,
+      ribbons,
+    },
+    storyline: {
+      eyebrow: storyline.eyebrow ?? "Publishing workflow",
+      headline:
+        storyline.headline ??
+        `A concierge workflow for ${serviceName.toLowerCase()}`,
+      summary:
+        storyline.summary ?? stripHtml(service.sec2?.text ?? service.hero?.text ?? ""),
+      blocks,
+      pulses: storyline.pulses ?? defaultPulses,
+    },
+    benefits: formatBenefits(service.benefits),
+    relatedServices: service.relatedServices ?? service.servicesCard ?? [],
+  };
+};
+
+export const services = rawServices.map(enrichService);

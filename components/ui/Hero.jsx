@@ -11,7 +11,7 @@ import { IoMdCheckmarkCircle } from "react-icons/io";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
-import { Autoplay, EffectFade } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SignUp from "../layouts/SignUp";
 import Button from "./Button";

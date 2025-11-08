@@ -4,7 +4,7 @@ import { icons_books, icons_literature, icons_pen, icons_rate } from "@/public";
 import { fadeInUp } from "@/utils/animations";
 import { motion } from "motion/react";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HiSparkles } from "react-icons/hi2";
 import Subtitle from "../ui/Subtitle";
 import Title from "../ui/Title";

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 
 import { navigation } from "@/constants";

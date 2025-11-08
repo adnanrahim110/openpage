@@ -2,7 +2,6 @@
 
 import { fadeInRight, fadeInUp } from "@/utils/animations";
 import { motion } from "motion/react";
-import { FaAward, FaBookOpen, FaRocket } from "react-icons/fa6";
 import { HiSparkles } from "react-icons/hi2";
 import { IoCheckmarkCircle } from "react-icons/io5";
 import Subtitle from "../ui/Subtitle";

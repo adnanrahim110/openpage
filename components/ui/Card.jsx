@@ -2,7 +2,7 @@
 
 import { fadeInUp } from "@/utils/animations";
 import { motion } from "motion/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Card = ({ card, tilt = false, shadow = false, idx }) => {
   const [bgStyle, setBgStyle] = useState({});
