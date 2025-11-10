@@ -2,14 +2,13 @@
 
 import { usePopup } from "@/context/PopupProvider";
 import {
-  portfolio_sq1,
-  portfolio_sq2,
-  portfolio_sq3,
-  portfolio_sq4,
-  portfolio_sq5,
-  portfolio_sq6,
+  books_1_3,
+  books_2_3,
+  books_3_3,
+  books_4_3,
+  books_5_3,
+  books_6_3,
 } from "@/public";
-// FIX: Corrected import from framer-motion
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
@@ -61,12 +60,12 @@ const Cta = () => {
   }, [mouseX, mouseY]);
 
   const books = [
-    { img: portfolio_sq1 },
-    { img: portfolio_sq2 },
-    { img: portfolio_sq3 },
-    { img: portfolio_sq4 },
-    { img: portfolio_sq5 },
-    { img: portfolio_sq6 },
+    { img: books_1_3 },
+    { img: books_2_3 },
+    { img: books_3_3 },
+    { img: books_4_3 },
+    { img: books_5_3 },
+    { img: books_6_3 },
   ];
 
   const orbitConfig = {

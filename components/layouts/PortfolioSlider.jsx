@@ -173,11 +173,8 @@ const PortfolioSlider = ({ bg }) => {
                     className="portfolio-swiper pb-12!"
                   >
                     {portfolioItems.map((img, idx) => (
-                      <SwiperSlide
-                        key={idx}
-                        className="w-[280px]! md:w-[320px]! lg:w-[350px]!"
-                      >
-                        <div className="relative group cursor-pointer h-[450px] md:h-[500px] rounded-2xl overflow-hidden">
+                      <SwiperSlide key={idx} className="w-[273px]!">
+                        <div className="relative group cursor-pointer h-[387px] overflow-hidden">
                           <div className="relative h-full w-full">
                             <Image
                               width={600}
