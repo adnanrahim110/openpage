@@ -1,10 +1,9 @@
 "use client";
 
 import { usePopup } from "@/context/PopupProvider";
-import { banners_noisy_bg, icons_curve_line, testi } from "@/public";
+import { banners_noisy_bg, testi } from "@/public";
 import { motion } from "motion/react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { GiTalk } from "react-icons/gi";
 import { HiSparkles } from "react-icons/hi2";
 import { IoMdCheckmarkCircle } from "react-icons/io";
@@ -13,7 +12,6 @@ import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SignUp from "../layouts/SignUp";
 import Button from "./Button";
 import Subtitle from "./Subtitle";
 import Title from "./Title";
@@ -26,229 +24,301 @@ const Hero = ({
   textSlider = false,
   actionBtns,
   comp = false,
-  contentLg = false,
   images,
   titleHighlight,
 }) => {
   const { openPopup } = usePopup();
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const TrustedBy = () => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.8 }}
-      className="mt-8 flex max-lg:justify-center lg:w-4/5"
-    >
-      <div className="group relative overflow-hidden bg-linear-to-br from-primary/20 via-primary/10 to-transparent backdrop-blur-md rounded-2xl border border-primary/30 px-6 py-4 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_30px] shadow-primary/30">
-        <div className="absolute inset-0 bg-linear-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <div className="relative flex items-center gap-5">
-          <div className="flex items-center gap-2">
-            <IoMdCheckmarkCircle className="text-primary text-xl animate-pulse" />
-            <span className="font-sitka lg:text-lg text-neutral-300 font-semibold">
-              Trusted By:
-            </span>
-          </div>
-          <Image
-            width={1080}
-            height={500}
-            src={testi}
-            alt="Trusted partners"
-            className="max-h-9 lg:h-14 h-full w-auto"
-          />
-        </div>
-      </div>
-    </motion.div>
-  );
-
-  const ActionBtns = () => (
-    <div className="flex flex-wrap max-lg:justify-center gap-5 mt-12">
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.9 }}
-      >
-        <Button
-          icon={GiTalk}
-          onClick={openPopup}
-          type="button"
-          tone="primary"
-          variant="solid"
-          size="lg"
-        >
-          Launch A Project
-        </Button>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 1 }}
-      >
-        <Button
-          onClick={() => Tawk_API.toggle()}
-          tone="light"
-          variant="outline"
-          size="lg"
-        >
-          Let's Talk
-        </Button>
-      </motion.div>
-    </div>
-  );
 
   const primaryImage = Array.isArray(images) ? images[0] : images;
 
   return !hero2 ? (
-    <section className="relative hero_Slider overflow-hidden size-full">
+    <section className="relative hero_Slider overflow-hidden size-full min-h-screen flex items-center justify-center">
       <div className="absolute inset-0">
         <div className="relative size-full">
           {primaryImage ? (
             <Image
-              width={1440}
-              height={900}
+              width={1920}
+              height={1080}
               src={primaryImage}
               className="size-full object-cover object-center"
               alt=""
               priority
             />
           ) : (
-            <div className="size-full bg-black" aria-hidden="true" />
+            <div className="size-full bg-linear-to-br from-gray-900 via-black to-gray-900" />
           )}
-          <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/90 via-black/70 to-black/90" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/80 via-transparent to-black/80" />
         </div>
       </div>
 
-      <div className="relative pt-44 pb-20 size-full bg-linear-to-r from-black/70 via-black/50 to-black/40 flex items-center justify-center flex-col z-2">
-        <div className="container h-full flex flex-col items-center justify-center">
-          <div className="row justify-between gap-y-10 items-center max-lg:text-center">
-            <div className={`${contentLg ? "lg:w-[55%]" : "lg:w-[55%]"} z-1`}>
-              <div className="flex flex-col text-white h-full justify-center relative">
-                <div className="absolute -inset-4 bg-linear-to-r from-primary/20 to-transparent blur-3xl rounded-full opacity-30 animate-pulse" />
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div
+          className="size-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(25, 123, 188, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(25, 123, 188, 0.3) 1px, transparent 1px)",
+            backgroundSize: "50px 50px",
+          }}
+        />
+      </div>
 
-                {subtitle && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative"
-                  >
-                    <Subtitle
-                      variant="glass"
-                      icon={HiSparkles}
-                      iconClassName="text-primary"
-                      className="mb-6 shadow-[0_0_20px] shadow-primary/20"
-                      textClassName="subtitle text-sm lg:text-base font-semibold tracking-wide"
-                    >
-                      {subtitle}
-                    </Subtitle>
-                  </motion.div>
-                )}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px]"
+        />
+      </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.2,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                >
-                  <Title
-                    as="h1"
-                    title={title}
-                    highlight={titleHighlight}
-                    variant="white"
-                    highlightColor="primary"
-                    className="mb-6 text-balance text-5xl md:text-6xl lg:text-7xl xl:text-[80px]"
-                  />
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.4,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                >
-                  <p
-                    className="text-neutral-300 font-medium text-lg lg:text-xl max-w-2xl"
-                    dangerouslySetInnerHTML={{ __html: text }}
-                  />
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                  className="w-full flex flex-col relative"
-                >
-                  {actionBtns ? (
-                    <>
-                      {comp && <TrustedBy />}
-                      <ActionBtns />
-                    </>
-                  ) : (
-                    <TrustedBy />
-                  )}
-                </motion.div>
-              </div>
-            </div>
-
-            <div className="lg:w-[45%]">
+      <div className="relative z-10 container px-6 pt-44 pb-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col items-center text-center">
+            {subtitle && (
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="lg:pl-10 relative"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="relative mb-5"
               >
-                <motion.div
-                  animate={{
-                    rotate: [0, 360],
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="max-lg:hidden absolute right-[94%] top-[35%] z-0"
-                >
-                  <Image
-                    width={1080}
-                    height={1080}
-                    src={icons_curve_line}
-                    className="opacity-40 drop-shadow-[0_0_15px] shadow-primary/50"
-                    alt=""
+                <div className="flex items-center gap-4">
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="h-px w-12 bg-linear-to-r from-transparent to-primary"
                   />
-                </motion.div>
-
-                <div className="absolute inset-0 bg-linear-to-tr from-primary/30 to-transparent blur-3xl rounded-full opacity-20" />
-
-                <div className="relative">
-                  <SignUp />
+                  <Subtitle
+                    variant="glass"
+                    icon={HiSparkles}
+                    iconClassName="text-primary"
+                    className="backdrop-blur-2xl bg-linear-to-r from-white/10 to-white/5 border border-white/20"
+                    textClassName="text-sm lg:text-base font-bold tracking-[0.2em] uppercase"
+                  >
+                    {subtitle}
+                  </Subtitle>
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="h-px w-12 bg-linear-to-l from-transparent to-primary"
+                  />
                 </div>
               </motion.div>
-            </div>
+            )}
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative mb-5"
+            >
+              <Title
+                as="h1"
+                title={title}
+                highlight={titleHighlight}
+                variant="white"
+                highlightColor="primary"
+                className="xl:text-5xl"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-linear-to-r from-primary/5 via-transparent to-secondary/5 transform -skew-y-1" />
+
+                <div className="relative backdrop-blur-xl bg-white/3 border-y border-white/10 py-8 px-6 lg:px-12">
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-16 bg-linear-to-b from-primary to-secondary" />
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-16 bg-linear-to-b from-secondary to-primary" />
+
+                  <p
+                    className="text-neutral-200 font-medium text-base lg:text-xl"
+                    dangerouslySetInnerHTML={{ __html: text }}
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+            {actionBtns && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex flex-wrap items-center justify-center gap-6 pt-6"
+              >
+                <Button
+                  icon={GiTalk}
+                  onClick={openPopup}
+                  type="button"
+                  tone="primary"
+                  variant="solid"
+                  size="lg"
+                  className="shadow-[0_0_50px_0] shadow-primary/40 hover:shadow-primary/60 transition-all duration-300"
+                >
+                  Launch A Project
+                </Button>
+                <Button
+                  onClick={() => Tawk_API.toggle()}
+                  tone="light"
+                  variant="outline"
+                  size="lg"
+                  className="backdrop-blur-xl bg-white/5 hover:bg-white/10 border-2"
+                >
+                  Let's Talk
+                </Button>
+              </motion.div>
+            )}
+
+            {comp && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+                className="pt-8 inline-block"
+              >
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-linear-to-r from-transparent via-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative backdrop-blur-xl bg-white/2 border border-white/10 rounded-full px-8 py-4 flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6">
+                    <div className="flex items-center gap-3">
+                      <IoMdCheckmarkCircle className="text-primary text-xl" />
+                      <span className="font-sitka text-base text-neutral-300 font-semibold">
+                        Trusted By:
+                      </span>
+                    </div>
+                    <div className="h-px lg:h-6 w-24 lg:w-px bg-white/20" />
+                    <Image
+                      width={1080}
+                      height={500}
+                      src={testi}
+                      alt="Trusted partners"
+                      className="max-h-8 lg:h-10 h-full w-auto opacity-90"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="w-full pt-12"
+            >
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                {[
+                  { number: "500+", text: "Books Published" },
+                  { number: "98%", text: "Success Rate" },
+                  { number: "50+", text: "Awards Won" },
+                  { number: "15+", text: "Years Experience" },
+                ].map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
+                    className="group relative"
+                  >
+                    <div className="absolute inset-0 bg-linear-to-br from-primary/20 to-secondary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+
+                    <div className="relative h-full backdrop-blur-2xl bg-white/2 border border-white/10 rounded-xl p-6 hover:border-primary/30 hover:bg-white/5 transition-all duration-300">
+                      <div className="flex flex-col items-center justify-center space-y-2">
+                        <motion.div
+                          initial={{ scaleX: 0 }}
+                          whileInView={{ scaleX: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, delay: 1 + index * 0.1 }}
+                          className="w-12 h-0.5 bg-linear-to-r from-primary to-secondary mb-2"
+                        />
+
+                        <div className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white">
+                          {stat.number}
+                        </div>
+
+                        <div className="text-xs lg:text-sm text-neutral-400 font-medium tracking-wider uppercase text-center">
+                          {stat.text}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.2 }}
+              className="pt-20"
+            >
+              <div className="flex flex-col items-center gap-4">
+                <motion.div
+                  animate={{
+                    y: [0, 10, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="relative"
+                >
+                  <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
+                    <motion.div
+                      animate={{
+                        y: [0, 12, 0],
+                        opacity: [1, 0.3, 1],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="w-1.5 h-1.5 bg-white rounded-full"
+                    />
+                  </div>
+                </motion.div>
+                <span className="text-xs uppercase tracking-widest text-white/30 font-medium">
+                  Scroll to Explore
+                </span>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
 
       <div
-        className="absolute inset-0 size-full z-1 opacity-20 bg-center bg-repeat mix-blend-overlay"
+        className="absolute inset-0 size-full z-5 opacity-[0.08] bg-center bg-repeat mix-blend-overlay pointer-events-none"
         style={{ backgroundImage: `url(${banners_noisy_bg})` }}
       />
 
-      <div className="absolute inset-0 size-full z-1 bg-radial from-transparent via-transparent to-black/80 pointer-events-none" />
+      <div className="absolute inset-0 size-full z-6 pointer-events-none">
+        <div className="absolute inset-0 bg-radial from-transparent via-transparent to-black/80" />
+        <div className="absolute top-0 left-0 right-0 h-32 bg-linear-to-b from-black/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-black to-transparent" />
+      </div>
     </section>
   ) : (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
-      {/* Video Background with Clean Overlay */}
       <div className="absolute inset-0">
         <div className="relative size-full">
           <video
@@ -259,20 +329,17 @@ const Hero = ({
             loop
             playsInline
           />
-          {/* Sophisticated Gradient Overlay */}
           <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black/80" />
           <div className="absolute inset-0 bg-primary/5" />
         </div>
       </div>
 
-      {/* Subtle Background Accents */}
       <div className="absolute top-1/4 left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
 
       <div className="container relative z-10 px-6 py-24 md:pt-40 md:pb-24">
         <div className="mx-auto max-w-6xl">
-          <div className="flex flex-col items-center justify-center space-y-10">
-            {/* Subtitle with Clean Glass Effect */}
+          <div className="flex flex-col items-center justify-center space-y-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -289,7 +356,6 @@ const Hero = ({
               </Subtitle>
             </motion.div>
 
-            {/* Title with Clean Animation */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -299,17 +365,6 @@ const Hero = ({
               }}
               className="text-center relative"
             >
-              <div className="absolute inset-0 blur-2xl opacity-30">
-                <Title
-                  as="h1"
-                  title={title}
-                  highlight={titleHighlight}
-                  variant="white"
-                  className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
-                />
-              </div>
-
-              {/* Main Title */}
               <div className="relative">
                 <Title
                   as="h1"
@@ -317,12 +372,11 @@ const Hero = ({
                   highlight={titleHighlight}
                   variant="white"
                   highlightColor="primary"
-                  className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl drop-shadow-2xl"
+                  className="text-2xl md:text-3xl lg:text-5xl xl:text-6xl drop-shadow-2xl"
                 />
               </div>
             </motion.div>
 
-            {/* Description with Enhanced Typography */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -334,7 +388,6 @@ const Hero = ({
               className="w-full max-w-4xl"
             >
               <div className="relative group">
-                {/* Decorative Lines */}
                 <div className="absolute -left-4 top-0 bottom-0 w-1 bg-linear-to-b from-primary via-white/50 to-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute -right-4 top-0 bottom-0 w-1 bg-linear-to-b from-secondary via-white/50 to-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -369,7 +422,6 @@ const Hero = ({
               </div>
             </motion.div>
 
-            {/* Premium Action Buttons */}
             {actionBtns && (
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -404,7 +456,6 @@ const Hero = ({
               </motion.div>
             )}
 
-            {/* Scroll Indicator */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

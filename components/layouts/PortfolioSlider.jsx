@@ -1,15 +1,18 @@
 "use client";
 
 import {
-  portfolio_p10,
-  portfolio_p2,
-  portfolio_p3,
-  portfolio_p4,
-  portfolio_p5,
-  portfolio_p6,
-  portfolio_p7,
-  portfolio_p8,
-  portfolio_p9,
+  books_1_1,
+  books_1_2,
+  books_2_1,
+  books_2_2,
+  books_3_1,
+  books_3_2,
+  books_4_1,
+  books_4_2,
+  books_5_1,
+  books_5_2,
+  books_6_1,
+  books_6_2,
 } from "@/public";
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
@@ -35,15 +38,18 @@ const PortfolioSlider = ({ bg }) => {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   const portfolioItems = [
-    portfolio_p2,
-    portfolio_p3,
-    portfolio_p4,
-    portfolio_p5,
-    portfolio_p6,
-    portfolio_p7,
-    portfolio_p8,
-    portfolio_p9,
-    portfolio_p10,
+    books_1_1,
+    books_2_1,
+    books_3_1,
+    books_4_1,
+    books_5_1,
+    books_6_1,
+    books_1_2,
+    books_2_2,
+    books_3_2,
+    books_4_2,
+    books_5_2,
+    books_6_2,
   ];
 
   return (

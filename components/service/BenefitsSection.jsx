@@ -1,5 +1,7 @@
 "use client";
 
+import Subtitle from "@/components/ui/Subtitle";
+import Title from "@/components/ui/Title";
 import { useMemo, useState } from "react";
 import { FaArrowRight, FaStar } from "react-icons/fa";
 
@@ -107,16 +109,22 @@ const BenefitsSection = ({ service }) => {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_420px]">
           <div>
             <div className="flex items-center gap-4">
-              <span className="rounded-3xl bg-gradient-to-br from-blue-500 to-purple-500 p-4 text-white shadow-xl">
+              <span className="rounded-3xl bg-linear-to-br from-blue-500 to-purple-500 p-4 text-white shadow-xl">
                 <FaStar size={28} />
               </span>
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
-                  Value Stack
-                </p>
-                <h2 className="text-4xl font-semibold leading-tight text-slate-900">
-                  {benefits.title}
-                </h2>
+              <div className="space-y-2">
+                <Subtitle
+                  variant="neutral"
+                  className="bg-white border-slate-200 text-slate-600"
+                  textClassName="tracking-[0.3em]"
+                >
+                  {benefits.eyebrow || "Value Stack"}
+                </Subtitle>
+                <Title
+                  as="h2"
+                  title={benefits.title}
+                  className="text-slate-900"
+                />
               </div>
             </div>
 
@@ -147,7 +155,7 @@ const BenefitsSection = ({ service }) => {
                     <span className="text-slate-900">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <div className="h-px flex-1 bg-gradient-to-r from-blue-500/50 to-transparent" />
+                    <div className="h-px flex-1 bg-linear-to-r from-blue-500/50 to-transparent" />
                     <span>Insight</span>
                   </div>
                   <p className="mt-3 text-base text-slate-600">{detail}</p>
@@ -157,7 +165,7 @@ const BenefitsSection = ({ service }) => {
           </div>
 
           <div className="space-y-8">
-            <div className="rounded-[32px] border border-white/60 bg-white/90 p-8 shadow-2xl backdrop-blur-xl">
+            <div className="rounded-4xl border border-white/60 bg-white/90 p-8 shadow-2xl backdrop-blur-xl">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs uppercase tracking-[0.3em] text-blue-500">

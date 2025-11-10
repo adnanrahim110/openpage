@@ -1,8 +1,8 @@
 "use client";
 
+import Subtitle from "@/components/ui/Subtitle";
 import TiltImage from "@/components/ui/TiltImage";
 import Title from "@/components/ui/Title";
-import Subtitle from "@/components/ui/Subtitle";
 import { useMemo } from "react";
 import { FaCheck } from "react-icons/fa6";
 
@@ -24,17 +24,21 @@ const legacyBlocks = (service) =>
   }));
 
 const ServiceBody = ({ service }) => {
-  const storyline = service?.storyline ?? {};
+  const workflow = service?.workflow ?? {};
+  const legacyStoryline = service?.storyline ?? {};
   const blocks = useMemo(() => {
-    if (storyline.blocks?.length) return storyline.blocks;
+    if (workflow.blocks?.length) return workflow.blocks;
+    if (legacyStoryline.blocks?.length) return legacyStoryline.blocks;
     return legacyBlocks(service);
-  }, [service, storyline.blocks]);
+  }, [service, workflow.blocks, legacyStoryline.blocks]);
 
   if (!blocks.length) return null;
 
   const pulses =
-    storyline.pulses?.length > 0
-      ? storyline.pulses
+    workflow.pulses?.length > 0
+      ? workflow.pulses
+      : legacyStoryline.pulses?.length > 0
+      ? legacyStoryline.pulses
       : [
           { label: "Average sprint", value: "4-8 weeks" },
           { label: "Dedicated leads", value: "3+" },
@@ -77,13 +81,13 @@ const ServiceBody = ({ service }) => {
               className="bg-white border-slate-200 text-slate-600"
               textClassName="tracking-[0.3em]"
             >
-              {storyline.eyebrow || "Operational blueprint"}
+              {workflow.eyebrow || "Operational blueprint"}
             </Subtitle>
           </div>
           <Title
             as="h2"
             title={
-              storyline.headline ||
+              workflow.headline ||
               `A concierge workflow for ${
                 service?.title?.toLowerCase() ?? "this service"
               }`
@@ -91,7 +95,8 @@ const ServiceBody = ({ service }) => {
             className="text-slate-900"
           />
           <p className="text-lg text-slate-600 leading-relaxed">
-            {storyline.summary ||
+            {workflow.summary ||
+              legacyStoryline.summary ||
               service?.sec2?.text ||
               "Every engagement moves through dedicated pods that pair editorial, design, and distribution so you can stay focused on authorship."}
           </p>
@@ -116,7 +121,7 @@ const ServiceBody = ({ service }) => {
                     <span className="text-slate-900">
                       {block.kicker || `0${index + 1}`}
                     </span>
-                    <div className="h-px flex-1 bg-gradient-to-r from-blue-500/40 to-transparent" />
+                    <div className="h-px flex-1 bg-linear-to-r from-blue-500/40 to-transparent" />
                     <span>{block.badge || "Phase"}</span>
                   </div>
 
@@ -156,16 +161,12 @@ const ServiceBody = ({ service }) => {
                   className={`lg:col-span-6 ${isReversed ? "lg:order-1" : ""}`}
                 >
                   {(media.src || media.image) && (
-                    <div className="rounded-[32px] border border-slate-200 bg-white/80 p-3 shadow-xl backdrop-blur">
-                      <div className="rounded-[28px] bg-slate-50 p-6">
-                        <TiltImage
-                          src={media.src ?? media.image}
-                          alt={media.alt ?? block.title}
-                          shadow={media.shadow ?? false}
-                          interactive={false}
-                        />
-                      </div>
-                    </div>
+                    <TiltImage
+                      src={media.src ?? media.image}
+                      alt={media.alt ?? block.title}
+                      shadow={media.shadow ?? false}
+                      interactive={false}
+                    />
                   )}
                 </div>
               </div>
@@ -173,7 +174,7 @@ const ServiceBody = ({ service }) => {
           })}
         </div>
 
-        <div className="mt-20 grid gap-6 rounded-[32px] border border-slate-200 bg-slate-50/70 p-8 md:grid-cols-3">
+        <div className="mt-20 grid gap-6 rounded-4xl border border-slate-200 bg-slate-50/70 p-8 md:grid-cols-3">
           {pulses.map(({ label, value }) => (
             <div
               key={`${label}-${value}`}

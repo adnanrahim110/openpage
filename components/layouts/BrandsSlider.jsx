@@ -26,7 +26,6 @@ const BrandsSlider = ({ className }) => {
         <div className="row">
           <div className="w-full">
             <div className="relative">
-              {/* Fade Edges */}
               <div className="absolute left-0 top-0 bottom-0 w-20 bg-linear-to-r from-gray-50/50 to-transparent z-10 pointer-events-none" />
               <div className="absolute right-0 top-0 bottom-0 w-20 bg-linear-to-l from-gray-50/50 to-transparent z-10 pointer-events-none" />
 
@@ -64,7 +63,7 @@ const BrandsSlider = ({ className }) => {
                         height={100}
                         src={b}
                         alt={`brand ${idx + 1}`}
-                        className="size-full max-h-8 object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                        className="size-full max-h-8 object-contain "
                       />
                     </div>
                   </SwiperSlide>

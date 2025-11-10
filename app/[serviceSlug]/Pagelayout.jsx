@@ -26,12 +26,13 @@ const Pagelayout = ({ service }) => {
         actionBtns
         comp
         images={banners_portfolio}
+        subtitle={service.title}
         title={service.hero.title}
         text={service.hero.text}
         qoute={service.hero.qoute}
       />
 
-      <BrandsSlider className="bg-primary-50" />
+      <BrandsSlider />
 
       <TitleMarquee service={service} />
 

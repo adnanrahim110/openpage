@@ -1,4 +1,4 @@
-import { reviews_m1, reviews_m2, reviews_m3, reviews_m4, reviews_w1, reviews_w2, services_1, services_10, services_2, services_3, services_4, services_5, services_6, services_7, services_8, services_9 } from "@/public";
+import { books_hs1, books_hs2, books_hs3, reviews_m1, reviews_m2, reviews_m3, reviews_m4, reviews_w1, reviews_w2, services_1, services_10, services_2, services_3, services_4, services_5, services_6, services_7, services_8, services_9 } from "@/public";
 import { FaAlignLeft, FaBook, FaBookOpen, FaBullhorn, FaEdit, FaGlobe, FaImage, FaMicrophone, FaPalette, FaPen } from "react-icons/fa";
 import { IoCallOutline, IoLocationOutline, IoMailOutline } from "react-icons/io5";
 
@@ -112,6 +112,46 @@ export const roundSlider = [
   "/images/portfolio/7.avif",
 ];
 
+
+export const homeSec3 = [
+  {
+    title: "Ghost Writing Services for Biography",
+    text: "Capture someone’s real-life journey with dignity, accuracy, and storytelling finesse. Our biography ghost writing service transforms timelines and milestones into a legacy worth reading.",
+    url: "/ghostwriting/biography",
+    img: books_hs1,
+  },
+  {
+    title: "Ghost Writing Services for Autobiography",
+    text: "Your story, told your way. Ink Nest Publishing helps you narrate your life’s experiences with emotional depth and personal voice. We guide you through the process with compassion and clarity.",
+    url: "/ghostwriting/autobiography",
+    img: books_hs2,
+  },
+  {
+    title: "Ghost Writing Services for Memoir",
+    text: "Our memoir ghost writing services focus on reflection and meaning. Perfect for those seeking to share personal challenges, life lessons, or defining moments with vulnerability and purpose.",
+    url: "/ghostwriting/memoir",
+    img: books_hs3,
+  },
+  {
+    title: "Ghost Writing Services for Fiction",
+    text: "Let imagination take the lead. From plot arcs to character dialogue, our fiction ghost writers help craft novels that engage and entertain, while staying true to your original concept.",
+    url: "/ghostwriting/fiction",
+    img: books_hs1,
+  },
+  {
+    title: "Ghost Writing Services for Business Books",
+    text: "Position yourself as a thought leader. Whether you’re a startup founder or an industry expert, our business book ghost writing service helps you share strategies, systems, and insights professionally.",
+    url: "/ghostwriting/informative",
+    img: books_hs2,
+  },
+  {
+    title: "Ghost Writing Services for Self-Help & Personal Growth",
+    text: "Inspire transformation. Our self-help ghost writers assist in framing your expertise and motivation in a way that empowers readers. Together, we’ll turn guidance into growth.",
+    url: "/ghostwriting/non-fiction",
+    img: books_hs3,
+  },
+];
+
 export const servicesList = [
   {
     id: 1,
@@ -207,45 +247,45 @@ export const servicesList = [
 
 export const testimonials = [
   {
-    author: "Nini Karlina",
-    title: "Author of Ignite Your Motivation in 7 Days",
-    img: reviews_w1,
+    name: "Nini Karlina",
+    role: "Author of Ignite Your Motivation in 7 Days",
+    avatar: reviews_w1,
     comment:
       "As a first-time author, I was overwhelmed by the process of turning my ideas into a published book—but Open Page Publishing simplified everything. Their team helped me organize my content, format the manuscript for Kindle, and even provided feedback to make the structure more impactful. Thanks to their support, my book looks polished, reads smoothly, and is now live on Amazon. I’m incredibly grateful for their professionalism and would absolutely work with them again.",
   },
   {
-    author: "Larry J. Kachik",
-    title: "M.D. – Author of Dying Was Easy (Zachary Zander Series)",
-    img: reviews_m1,
+    name: "Larry J. Kachik",
+    role: "M.D. – Author of Dying Was Easy (Zachary Zander Series)",
+    avatar: reviews_m1,
     comment:
       "Working with Open Page Publishing, and especially my project manager Casper William, was one of the best decisions I made for my book. Casper understood the tone and complexity of my medical thriller and made sure every detail—from manuscript formatting to cover design—reflected the intensity and professionalism I envisioned. The entire team was responsive, reliable, and genuinely cared about getting it right. I’m proud of what we created together, and I look forward to continuing the series with them.",
   },
   {
-    author: "Nate Stack",
-    title: "Author of Voodoo War",
-    img: reviews_w2,
+    name: "Nate Stack",
+    role: "Author of Voodoo War",
+    avatar: reviews_w2,
     comment:
       "From the first call to the final upload, Open Page Publishing delivered exactly what they promised. Chris Parker, my front-line manager, ensured the onboarding was smooth, clearly explained the independent publishing process, and helped me retain full rights and royalties to my work. He walked me through every step, making sure I understood the options and had full control. The back-end team was equally sharp—fast, responsive, and skilled. I couldn’t have asked for a better crew to bring Voodoo War to life.",
   },
   {
-    author: "Daniel DellaVecchia",
-    title: "Author of The Adventures of the Doppelganger Kids",
-    img: reviews_m2,
+    name: "Daniel DellaVecchia",
+    role: "Author of The Adventures of the Doppelganger Kids",
+    avatar: reviews_m2,
     comment:
       "Creating a meaningful children’s book with both heart and message required more than just words—it needed the right visuals too. Frank Mile from Open Page Publishing was instrumental in guiding my illustrator through every requirement, helping us align on style, emotion, and message. He really understood my vision and worked closely with us to bring it to life. Thanks to Frank and the team, The Adventures of the Doppelganger Kids came out exactly how I imagined—vibrant, thoughtful, and impactful.",
   },
   {
-    author: "Duo Farsi Kids Books",
-    title: "Author of Koja Hasti – Where Are You?",
-    img: reviews_m3,
+    name: "Duo Farsi Kids Books",
+    role: "Author of Koja Hasti – Where Are You?",
+    avatar: reviews_m3,
     comment:
       "Bringing a bilingual Persian-English children’s book to life was a challenge we didn’t want to trust just anyone with—but Open Page Publishing exceeded expectations in every way. Their team handled the complexities of Persian script, phonetics, and layout with care and precision. From typesetting to page design to adding audio resources, they helped us create a vibrant, accessible, and educational experience for young readers. Thanks to their multilingual publishing capabilities, Koja Hasti – Where Are You? is now reaching families across the world in multiple languages.",
   },
   {
-    author: "Niels Larsson",
-    title: "Author of The Shield Wall: Book One of The Saga of Yggdrasil",
+    name: "Niels Larsson",
+    role: "Author of The Shield Wall: Book One of The Saga of Yggdrasil",
 
-    img: reviews_m4,
+    avatar: reviews_m4,
     comment:
       "Writing an epic like The Shield Wall—with its mix of Norse mythology, science fiction, and layered world-building—was one thing. Turning it into a clean, immersive Kindle edition was another challenge entirely. Open Page Publishing handled the formatting, structure, and pacing with complete professionalism. They respected the complexity of my vision and ensured everything—from chapter breaks to psychic warfare terminology—was perfectly aligned. Their insight made my debut not only readable, but truly impactful. I trusted them with my saga, and they delivered.",
   },

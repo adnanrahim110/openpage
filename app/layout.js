@@ -1,5 +1,5 @@
 import AppShell from "@/components/system/AppShell";
-import { Barlow_Semi_Condensed, Cinzel, Manrope } from "next/font/google";
+import { Barlow_Semi_Condensed, Cinzel, Playfair } from "next/font/google";
 import "./globals.css";
 
 const barlow = Barlow_Semi_Condensed({
@@ -14,12 +14,11 @@ const cinzel = Cinzel({
   weight: ["400", "500", "600", "700", "800", "900"],
 })
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const playfair = Playfair({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-  display: "swap",
-});
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -30,7 +29,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${barlow.variable} ${cinzel.variable} ${manrope.variable} antialiased overflow-x-hidden`}
+        className={`${barlow.variable} ${cinzel.variable} ${playfair.variable} antialiased overflow-x-hidden`}
       >
         <AppShell>{children}</AppShell>
       </body>

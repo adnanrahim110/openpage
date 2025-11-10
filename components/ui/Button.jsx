@@ -26,13 +26,13 @@ const Button = ({
   const getSizeClasses = () => {
     switch (size) {
       case "sm":
-        return "px-6 py-2.5 text-sm";
+        return "px-6 py-2.5 text-base";
       case "lg":
-        return "px-10 py-4 text-lg";
+        return "px-10 py-4 text-xl";
       case "xl":
-        return "px-12 py-5 text-xl";
+        return "px-12 py-5 text-2xl";
       default:
-        return "px-8 py-3 text-base";
+        return "px-8 py-3 text-lg";
     }
   };
 

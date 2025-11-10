@@ -39,13 +39,12 @@ const ServicesSec = () => {
       />
 
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+        <div className="text-center mx-auto max-w-7xl mb-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-lg:text-center"
           >
             <Subtitle
               variant="halo"
@@ -61,11 +60,8 @@ const ServicesSec = () => {
               variant="black"
               title="Leave Your Print in the World of Literature"
               highlight="World of Literature"
-              className="mb-6"
+              className="mb-2 font-normal"
             />
-            <p className="text-gray-700 font-medium text-lg leading-relaxed">
-              with the Best Book Writing Services
-            </p>
           </motion.div>
 
           <motion.div
@@ -76,8 +72,7 @@ const ServicesSec = () => {
             className="flex items-center"
           >
             <div className="relative">
-              <div className="absolute -left-4 top-0 w-1 h-full bg-linear-to-b from-primary via-purple-500 to-primary rounded-full max-lg:hidden" />
-              <p className="text-gray-700 font-medium text-base lg:text-lg leading-relaxed pl-6 max-lg:pl-0">
+              <p className="text-gray-700 font-medium">
                 Discover the epitome of book publishing service providers with
                 Open Page Publishing- your reliable partner in the publication
                 venture. Would-be writers, here is your chance to collaborate
@@ -158,10 +153,10 @@ const ServiceCard = ({ service, index, hoveredIndex, setHoveredIndex }) => {
             </div>
 
             <div className="mb-4">
-              <h5 className="text-xl font-black text-gray-900 mb-3 group-hover:text-primary transition-colors">
+              <h5 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary transition-colors">
                 {service.title}
               </h5>
-              <p className="text-gray-600 font-medium text-sm leading-relaxed">
+              <p className="text-gray-600 font-medium text-base">
                 {service.text}
               </p>
             </div>

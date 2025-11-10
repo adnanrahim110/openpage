@@ -1,6 +1,8 @@
 "use client";
 
 import { roundSlider } from "@/constants";
+import { banners_texture } from "@/public";
+import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HiSparkles } from "react-icons/hi2";
 import Subtitle from "../ui/Subtitle";
@@ -103,7 +105,14 @@ const RoundSlider = () => {
   }, [goNext, goPrev]);
 
   return (
-    <section className="relative overflow-hidden bg-white py-20 md:py-32">
+    <section className="relative overflow-hidden  py-20 md:pb-32 md:pt-24">
+      <Image
+        src={banners_texture}
+        width={2000}
+        height={1001}
+        alt=""
+        className="absolute inset-0 size-full object-cover brightness-125 object-top"
+      />
       <div className="absolute inset-0 opacity-[0.015]">
         <div
           className="size-full"
@@ -117,12 +126,17 @@ const RoundSlider = () => {
 
       <div className="container relative">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-10 space-y-4 text-center md:mb-14">
+          <div className="mb-10 space-y-4 text-center md:mb-8">
             <Subtitle variant="halo" icon={HiSparkles}>
               Portfolio
             </Subtitle>
 
-            <Title as="h2" variant="black" title="Selected Works" />
+            <Title
+              as="h2"
+              variant="black"
+              title="Selected Works"
+              className="font-normal"
+            />
 
             <div className="flex items-center justify-center gap-3 pt-4">
               <div className="h-px w-8 bg-black/10" />
@@ -136,7 +150,7 @@ const RoundSlider = () => {
 
           <div
             ref={containerRef}
-            className="relative"
+            className="relative text-center"
             onMouseMove={handleMouseMove}
             onMouseLeave={() => setMousePos({ x: 0, y: 0 })}
           >
@@ -166,32 +180,30 @@ const RoundSlider = () => {
                   translateY = 25 + mousePos.y * 6;
                   translateX = 280 + mousePos.x * 8;
                   scale = 0.88;
-                  opacity = 0.5;
+                  opacity = 1;
                   zIndex = 20;
                   rotateZ = 3;
                 } else if (isPrev) {
                   translateY = 25 + mousePos.y * 6;
                   translateX = -280 + mousePos.x * 8;
                   scale = 0.88;
-                  opacity = 0.5;
+                  opacity = 1;
                   zIndex = 20;
                   rotateZ = -3;
                 } else if (offset === 2) {
                   translateY = 50;
                   translateX = 520;
                   scale = 0.78;
-                  opacity = 0.25;
+                  opacity = 1;
                   zIndex = 10;
                   rotateZ = 4;
-                  blur = 1;
                 } else if (offset === total - 2) {
                   translateY = 50;
                   translateX = -520;
                   scale = 0.78;
-                  opacity = 0.25;
+                  opacity = 1;
                   zIndex = 10;
                   rotateZ = -4;
-                  blur = 1;
                 }
 
                 return (
@@ -239,13 +251,13 @@ const RoundSlider = () => {
               })}
             </div>
 
-            <div className="flex items-center justify-center gap-12">
+            <div className="inline-flex items-center justify-center gap-12 bg-black/5 backdrop-blur-xs p-2">
               <button
                 onClick={goPrev}
                 className="group relative flex h-12 w-12 items-center justify-center"
                 aria-label="Previous"
               >
-                <div className="absolute inset-0 border border-black/5 transition-all duration-300 group-hover:border-black/20 group-hover:scale-110" />
+                <div className="absolute inset-0 border border-black/20 transition-all duration-300 group-hover:border-black group-hover:scale-110" />
                 <svg
                   className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5"
                   fill="none"
@@ -268,7 +280,7 @@ const RoundSlider = () => {
                     {index === currentIndex ? (
                       <div className="h-0.5 w-12 bg-black transition-all duration-500" />
                     ) : (
-                      <div className="h-1 w-1 rounded-full bg-black/20 transition-all duration-300 group-hover:bg-black/40" />
+                      <div className="h-1 w-1 rounded-full bg-black/30 transition-all duration-300 group-hover:bg-black/50" />
                     )}
                   </button>
                 ))}
@@ -279,7 +291,7 @@ const RoundSlider = () => {
                 className="group relative flex h-12 w-12 items-center justify-center"
                 aria-label="Next"
               >
-                <div className="absolute inset-0 border border-black/5 transition-all duration-300 group-hover:border-black/20 group-hover:scale-110" />
+                <div className="absolute inset-0 border border-black/20 transition-all duration-300 group-hover:border-black group-hover:scale-110" />
                 <svg
                   className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
                   fill="none"
@@ -290,12 +302,6 @@ const RoundSlider = () => {
                   <path d="M9 5l7 7-7 7" />
                 </svg>
               </button>
-            </div>
-
-            <div className="text-center">
-              <p className="font-mono text-[10px] font-light tracking-wider text-black/20">
-                Use ← → keys or drag to navigate
-              </p>
             </div>
           </div>
         </div>

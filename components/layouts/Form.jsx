@@ -92,7 +92,6 @@ const Form = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
         style={{ backgroundImage: `url(${banners_form_bg})` }}
       />
-      <div className="absolute inset-0 bg-linear-to-b from-gray-50 via-white to-gray-50" />
 
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-linear-to-br from-primary-100/50 to-accent-100/50 rounded-full blur-3xl opacity-60" />
       <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-linear-to-tl from-primary-100/50 to-accent-200/50 rounded-full blur-3xl opacity-60" />
@@ -199,7 +198,7 @@ const Form = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 transition-all focus:outline-none focus:ring-2 focus:ring-primary/20 ${
+                        className={`w-full pl-12 pr-4 py-2.5 rounded-xl border-2 transition-all focus:outline-none focus:ring-2 focus:ring-primary/20 ${
                           errors.name
                             ? "border-red-500 focus:border-red-500"
                             : "border-gray-200 focus:border-primary"
@@ -231,7 +230,7 @@ const Form = () => {
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="john@example.com"
-                          className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 transition-all focus:outline-none focus:ring-2 focus:ring-primary/20 ${
+                          className={`w-full pl-12 pr-4 py-2.5 rounded-xl border-2 transition-all focus:outline-none focus:ring-2 focus:ring-primary/20 ${
                             errors.email
                               ? "border-red-500 focus:border-red-500"
                               : "border-gray-200 focus:border-primary"
@@ -262,7 +261,7 @@ const Form = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="+1 (555) 000-0000"
-                          className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 transition-all focus:outline-none focus:ring-2 focus:ring-primary/20 ${
+                          className={`w-full pl-12 pr-4 py-2.5 rounded-xl border-2 transition-all focus:outline-none focus:ring-2 focus:ring-primary/20 ${
                             errors.phone
                               ? "border-red-500 focus:border-red-500"
                               : "border-gray-200 focus:border-primary"
@@ -334,7 +333,7 @@ const Form = () => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your project..."
-                      className="w-full px-4 py-4 rounded-xl border-2 border-gray-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+                      className="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                     />
                   </div>
 

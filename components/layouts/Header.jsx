@@ -94,7 +94,7 @@ const Header = ({ setIsSidebar }) => {
     atTop
       ? "translate-y-0"
       : scrollingUp
-      ? "-translate-y-10"
+      ? "-translate-y-12"
       : "-translate-y-full",
     atTop ? "" : "shadow-[0_12px_24px_rgba(0,0,0,0.18)]",
   ]
@@ -168,8 +168,8 @@ const Header = ({ setIsSidebar }) => {
       </div>
 
       <div
-        className={`bg-primary-950 transition-[padding] duration-300 ease-linear ${
-          atTop ? "pt-1 pb-0" : "py-1"
+        className={`transition-[padding] duration-300 ease-linear ${
+          atTop ? "py-2 bg-black/5 backdrop-blur-xs" : "py-1 bg-primary-950"
         }`}
       >
         <div className="container mx-auto flex items-center justify-between text-white">
@@ -239,7 +239,7 @@ const Header = ({ setIsSidebar }) => {
 
                     {dropdownOpen && (
                       <DropdownMenu
-                        extraClasses="absolute left-1/2 top-full mt-4 -translate-x-1/2 overflow-hidden rounded-xl bg-white shadow-[0_18px_45px] shadow-black/25 min-w-[220px] font-manrope font-medium"
+                        extraClasses="absolute left-1/2 top-full mt-4 -translate-x-1/2 overflow-hidden rounded-xl bg-white shadow-[0_18px_45px] shadow-black/25 min-w-[220px] font-playfair font-medium"
                         visible
                       >
                         {item.dropdown.map((dropdownItem, dropdownIdx) => {

@@ -8,7 +8,7 @@
 
 @theme {
   --font-barlow: "Barlow Semi Condensed", sans-serif;
-  --font-manrope: "Manrope", sans-serif;
+  --font-playfair: "Playfair", serif;
   --font-sitka: "sitka", sans-serif;
   --font-cinzel: "Cinzel", serif;
 
@@ -270,8 +270,8 @@
   }
 
   body {
-    @apply text-neutral-800 text-base overflow-x-hidden;
-    font-family: var(--font-manrope);
+    @apply text-neutral-800 text-lg lg:text-xl overflow-x-hidden;
+    font-family: var(--font-playfair);
   }
 
   img {
@@ -279,7 +279,7 @@
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
-    @apply font-normal leading-[0.9] font-cinzel;
+    @apply font-normal leading-[1.2] font-cinzel;
   }
 
   :is(button, a, input, textarea, select) {
@@ -336,7 +336,7 @@
   }
 
   .subtitle {
-    @apply font-manrope font-medium text-xl relative uppercase tracking-wider text-secondary;
+    @apply font-playfair font-medium text-xl relative uppercase tracking-wider text-secondary;
   }
 
   .form_white :where(input, textarea, select) {
@@ -562,4 +562,33 @@
 .reviews_slider:hover .swiper-button-prev,
 .reviews_slider:hover .swiper-button-next {
   opacity: 1;
+}
+
+
+.sec3_slider .swiper-pagination {
+  @apply relative mt-20;
+}
+
+.sec3_slider .swiper-pagination-bullet {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.sec3_slider .swiper-pagination-bullet-active {
+  @apply w-5 rounded-3xl bg-primary;
+}
+
+.sec3_slider .swiper-slide {
+  @apply scale-95 opacity-70 shadow-[-7px_7px_10px] shadow-black/10 transition-all duration-500 ease-in-out;
+}
+
+.sec3_slider .swiper-slide-active {
+  @apply scale-110 opacity-100 shadow-[-7px_7px_20px] shadow-black/10;
+}
+
+.sec3_slider .swiper-slide .bg_hlf {
+  @apply w-1/4 h-full absolute z-0 left-0 top-0 opacity-0 transition-all duration-400 ease-in-out;
+}
+
+.sec3_slider .swiper-slide-active .bg_hlf {
+  @apply opacity-100;
 }

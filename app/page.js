@@ -1,4 +1,4 @@
-import Sec2 from "@/components/home/Sec2";
+import BooksSlider from "@/components/home/BooksSlider";
 import Sec3 from "@/components/home/Sec3";
 import Sec4 from "@/components/home/Sec4";
 import BrandsSlider from "@/components/layouts/BrandsSlider";
@@ -22,7 +22,7 @@ export default function Home() {
       />
       <BrandsSlider />
       <RoundSlider />
-      <Sec2 />
+      <BooksSlider />
       <Sec3 />
       <ServicesSec />
       <Sec4 />

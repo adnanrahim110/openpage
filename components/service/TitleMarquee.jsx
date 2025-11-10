@@ -6,31 +6,9 @@ const stripHtml = (value = "") =>
   value.replace(/<br\s*\/?>/gi, " ").replace(/<\/?[^>]+(>|$)/g, "");
 
 const TitleMarquee = ({ service }) => {
-  const experience = service?.experience ?? {};
-  const ribbons =
-    experience.ribbons?.filter(Boolean) ??
-    service?.wwd?.map((item) => item.title) ??
-    [];
-  const badges = experience.badges?.filter(Boolean) ?? [];
-  const stats = experience.stats?.filter(Boolean) ?? [];
-  const heroSummary =
-    experience.summary ?? stripHtml(service?.hero?.text ?? "");
-
-  const badgeSet =
-    badges.length > 0
-      ? badges
-      : [
-          "White-glove onboarding",
-          "Global distribution ready",
-          "Editorial leads",
-        ];
-
-  const statFallback = [
-    { label: "Projects delivered", value: "1.8k+" },
-    { label: "Markets launched", value: "35+" },
-    { label: "Author CSAT", value: "4.9/5" },
-  ];
-  const statSet = stats.length > 0 ? stats : statFallback;
+  const overview = service?.overview ?? {};
+  const ribbons = overview.ribbons ?? [];
+  const heroSummary = overview.summary ?? stripHtml(service?.hero?.text ?? "");
 
   const marqueeRibbons = useMemo(() => {
     if (ribbons.length > 0) return ribbons.slice(0, 6);
@@ -64,49 +42,20 @@ const TitleMarquee = ({ service }) => {
         <div className="grid gap-16 lg:grid-cols-[minmax(0,1.1fr)_480px] items-center">
           <div className="space-y-10">
             <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-500 shadow-sm">
-              {experience.eyebrow || "Signature Program"}
+              {overview.eyebrow || "Signature Program"}
               <span className="inline-flex h-1.5 w-1.5 rounded-full bg-linear-to-r from-blue-500 to-purple-500" />
               {(service?.link ?? "/service").replace("/", "").toUpperCase()}
             </div>
 
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl font-semibold leading-tight text-slate-900">
-                {experience.strapline || service?.title}
+                {overview.strapline || service?.title}
               </h1>
               <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
                 {heroSummary ||
                   service?.subtitle ||
                   "Premium publishing services tailored to your creative vision."}
               </p>
-            </div>
-
-            <div className="h-1 max-w-full rounded-full bg-linear-to-r from-blue-500 via-purple-500 to-transparent transition-all duration-500" />
-
-            <div className="flex flex-wrap gap-3">
-              {badgeSet.map((badge) => (
-                <span
-                  key={badge}
-                  className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-200"
-                >
-                  {badge}
-                </span>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-2 gap-5 sm:grid-cols-3">
-              {statSet.map(({ label, value }) => (
-                <div
-                  key={label}
-                  className="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-sm backdrop-blur"
-                >
-                  <div className="text-3xl font-semibold text-slate-900">
-                    {value}
-                  </div>
-                  <p className="mt-2 text-xs uppercase tracking-[0.2em] text-slate-500">
-                    {label}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
 

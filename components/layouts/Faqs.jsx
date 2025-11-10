@@ -13,7 +13,7 @@ const Faqs = ({ qouestionare = faqs }) => {
 
   return (
     <section className="relative py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-b from-white via-gray-50 to-white" />
+      <div className="absolute inset-0 bg-primary-50" />
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
@@ -26,7 +26,7 @@ const Faqs = ({ qouestionare = faqs }) => {
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-linear-to-tl from-primary-100/50 to-accent-200/50 rounded-full blur-3xl opacity-60" />
 
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -34,28 +34,13 @@ const Faqs = ({ qouestionare = faqs }) => {
             transition={{ duration: 0.5 }}
             className="lg:sticky lg:top-32"
           >
-            <Subtitle
-              variant="soft"
-              icon={HiSparkles}
-              iconClassName="text-primary text-lg"
-              className="mb-6"
-            >
-              FAQ Section
-            </Subtitle>
-
             <motion.div className="mb-6">
               <Title
                 as="h2"
                 variant="black"
                 title="Frequently Asked Questions"
                 highlight="Questions"
-              />
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="mt-2 h-1 w-24 rounded-full bg-primary"
+                className="font-normal"
               />
             </motion.div>
 
@@ -67,7 +52,11 @@ const Faqs = ({ qouestionare = faqs }) => {
             </p>
 
             <motion.div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white">
-              <img src="/images/faq.avif" alt="FAQ" className="w-full h-auto" />
+              <img
+                src="/images/book_mockups/5.avif"
+                alt="FAQ"
+                className="w-full h-auto"
+              />
             </motion.div>
           </motion.div>
 

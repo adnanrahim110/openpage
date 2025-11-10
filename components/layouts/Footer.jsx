@@ -18,13 +18,17 @@ const Footer = () => {
           pathname === "/thankyou" ? "hidden" : ""
         }`}
       >
-        <div className="absolute inset-0 bg-linear-to-b from-white via-gray-50 to-white" />
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "radial-linear(circle at 2px 2px, #000 1px, transparent 0)",
-            backgroundSize: "40px 40px",
+        <div className="absolute inset-0 bg-linear-to-b from-white via-primary-50 to-white" />
+        <motion.div
+          className="absolute opacity-[0.035] -inset-[200%] w-[400%] h-[400%] bg-[url(/images/banners/noisy_bg.avif)]"
+          animate={{
+            x: ["0%", "-20%", "20%", "0%"],
+            y: ["0%", "20%", "-20%", "0%"],
+          }}
+          transition={{
+            duration: 1,
+            ease: "linear",
+            repeat: Infinity,
           }}
         />
 
@@ -47,9 +51,9 @@ const Footer = () => {
                     height={300}
                     src={nav_logo}
                     alt="Open Page Publishing"
-                    className="max-w-[200px]"
+                    className="max-w-[290px]"
                   />
-                  <p className="text-gray-700 font-medium text-sm leading-relaxed">
+                  <p className="text-gray-700 font-medium text-base">
                     We help storytellers turn passion into pages. Whether you're
                     starting fresh or revisiting a dream, we're here with tools,
                     trust, and a touch of magic. Give your story the voice it
@@ -76,7 +80,7 @@ const Footer = () => {
                 <div className="flex flex-col gap-6">
                   <div className="flex items-center gap-3">
                     <div className="w-1 h-8 bg-linear-to-b from-primary to-purple-600 rounded-full" />
-                    <h5 className="text-xl font-black text-gray-900">
+                    <h5 className="text-xl font-medium text-gray-900">
                       Our Services
                     </h5>
                   </div>
@@ -92,7 +96,7 @@ const Footer = () => {
                       >
                         <Link
                           href={service.link}
-                          className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors group"
+                          className="flex items-center gap-2 text-base text-gray-600 hover:text-black transition-colors group"
                         >
                           <FaArrowRight className="text-primary text-xs opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                           <span className="group-hover:translate-x-1 transition-transform">
@@ -115,7 +119,7 @@ const Footer = () => {
                 <div className="flex flex-col gap-6">
                   <div className="flex items-center gap-3">
                     <div className="w-1 h-8 bg-linear-to-b from-primary to-purple-600 rounded-full" />
-                    <h5 className="text-xl font-black text-gray-900">
+                    <h5 className="text-xl font-medium text-gray-900">
                       Quick Links
                     </h5>
                   </div>
@@ -136,7 +140,7 @@ const Footer = () => {
                         >
                           <Link
                             href={item.link}
-                            className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                            className="flex items-center gap-2 text-base text-gray-600 hover:text-black transition-colors"
                           >
                             <FaArrowRight className="text-primary text-xs opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                             <span className="group-hover:translate-x-1 transition-transform">
@@ -159,7 +163,7 @@ const Footer = () => {
                 <div className="flex flex-col gap-6">
                   <div className="flex items-center gap-3">
                     <div className="w-1 h-8 bg-linear-to-b from-primary to-purple-600 rounded-full" />
-                    <h5 className="text-xl font-black text-gray-900">
+                    <h5 className="text-xl font-medium text-gray-900">
                       Contact Us
                     </h5>
                   </div>
@@ -193,7 +197,7 @@ const Footer = () => {
                               <Icon className="text-lg" />
                             </div>
                             <div className="flex-1">
-                              <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors block leading-relaxed">
+                              <span className="text-base text-gray-600 group-hover:text-black transition-colors block leading-relaxed">
                                 {item.text}
                               </span>
                             </div>

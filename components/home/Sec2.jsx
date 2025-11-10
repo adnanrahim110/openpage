@@ -108,7 +108,8 @@ const Sec2 = ({ title, text, titleHighlight }) => {
                 <div className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] rounded-full bg-linear-to-br from-primary-100/30 to-accent-100/30 blur-2xl" />
               </div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[280px] h-[280px] lg:w-[380px] lg:h-[380px] rounded-full border-2 border-dashed border-primary/30" />
+                <div className="w-[280px] h-[280px] lg:size-[540px] aspect-square rounded-full border-2 border-dashed border-primary/30" />
+                <div className="absolute top-1/2 left-1/2 -translate-1/2 size-[520px] aspect-square rounded-full bg-radial from-primary via-secondary to-primary" />
               </div>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="size-80 lg:w-[420px] lg:h-[420px] rounded-full border border-primary-200/20" />
@@ -124,7 +125,7 @@ const Sec2 = ({ title, text, titleHighlight }) => {
                 <div className="relative">
                   <div className="absolute inset-0 bg-linear-to-br from-primary-100/50 to-accent-100/50 blur-3xl scale-110 rounded-3xl" />
                   <img
-                    src="/images/books/1.avif"
+                    src="/images/book_mockups/bc_sec2.avif"
                     alt="Book cover"
                     className="relative z-1 "
                     style={{

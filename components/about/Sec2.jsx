@@ -1,6 +1,6 @@
 "use client";
 
-import { amazone, books_cta } from "@/public";
+import { amazone, book_mockups_8, books_cta } from "@/public";
 import { fadeInLeft, fadeInRight, fadeInUp } from "@/utils/animations";
 import { motion } from "motion/react";
 import Image from "next/image";
@@ -45,7 +45,6 @@ const Sec2 = () => {
                 variants={fadeInUp()}
                 className="group relative overflow-hidden bg-linear-to-br from-black via-slate-900 to-black p-8 shadow-2xl rounded-2xl border border-white/10 md:p-12"
               >
-                {/* Corner Decorations */}
                 <div className="absolute left-0 top-0 h-16 w-16">
                   <div className="absolute left-0 top-0 h-px w-full bg-linear-to-r from-primary/50 to-transparent" />
                   <div className="absolute left-0 top-0 h-full w-px bg-linear-to-b from-primary/50 to-transparent" />
@@ -138,7 +137,7 @@ const Sec2 = () => {
                   <Image
                     width={1080}
                     height={1080}
-                    src={amazone}
+                    src={book_mockups_8}
                     className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                     alt="Amazon Publishing"
                   />

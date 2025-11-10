@@ -1,5 +1,7 @@
 "use client";
 
+import Subtitle from "@/components/ui/Subtitle";
+import Title from "@/components/ui/Title";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
@@ -7,11 +9,11 @@ import { useMemo } from "react";
 const ServicesShowcase = ({ service, pathname }) => {
   const related = useMemo(() => {
     const pool =
-      service?.relatedServices?.length > 0
-        ? service.relatedServices
+      service?.related?.cards?.length > 0
+        ? service.related.cards
         : service?.servicesCard ?? [];
     return pool.filter((card) => card.link !== pathname);
-  }, [pathname, service?.relatedServices, service?.servicesCard]);
+  }, [pathname, service?.related?.cards, service?.servicesCard]);
 
   if (!related.length) return null;
 
@@ -19,7 +21,7 @@ const ServicesShowcase = ({ service, pathname }) => {
   const restCards = related.slice(1);
 
   return (
-    <section className="relative overflow-hidden bg-linear-to-br from-white via-slate-50 to-blue-50/30 py-32">
+    <section className="relative overflow-hidden bg-primary-50 py-32">
       <div className="pointer-events-none absolute inset-0 opacity-50">
         <div
           className="absolute inset-0"
@@ -35,25 +37,34 @@ const ServicesShowcase = ({ service, pathname }) => {
       </div>
 
       <div className="container relative z-10">
-        <div className="flex flex-col gap-6 text-center">
-          <p className="text-xs uppercase tracking-[0.4em] text-slate-500">
-            Companion Services
-          </p>
-          <h2 className="text-4xl font-semibold leading-tight text-slate-900">
-            Extend your {service?.title?.toLowerCase()} stack
-          </h2>
+        <div className="flex flex-col gap-6 text-center items-center">
+          <Subtitle
+            variant="neutral"
+            className="bg-white border-slate-200 text-slate-600"
+            textClassName="tracking-[0.4em]"
+          >
+            {service?.related?.eyebrow || "Companion Services"}
+          </Subtitle>
+          <Title
+            as="h2"
+            title={
+              service?.related?.headline ||
+              `Extend your ${service?.title?.toLowerCase() ?? "service"} stack`
+            }
+            className="text-slate-900"
+          />
           <p className="mx-auto max-w-2xl text-lg text-slate-600">
-            Modular services crafted to plug directly into your publishing
-            workflow—each managed by the same concierge team.
+            {service?.related?.summary ||
+              "Modular services crafted to plug directly into your publishing workflow—each managed by the same concierge team."}
           </p>
         </div>
 
         <div className="mt-16 grid gap-6 lg:grid-cols-3">
           <Link
             href={heroCard.link}
-            className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-slate-200 bg-white p-8 shadow-2xl"
+            className="group relative flex h-full flex-col overflow-hidden rounded-4xl border border-slate-200 bg-white p-8 shadow-2xl"
           >
-            <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">
+            <div className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-blue-500/10 to-purple-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">
               Spotlight
               <span className="text-blue-500">↗</span>
             </div>
@@ -76,7 +87,7 @@ const ServicesShowcase = ({ service, pathname }) => {
               Explore service
               <span className="transition group-hover:translate-x-1">→</span>
             </div>
-            <div className="pointer-events-none absolute inset-0 rounded-[32px] border border-transparent transition group-hover:border-blue-200" />
+            <div className="pointer-events-none absolute inset-0 rounded-4xl border border-transparent transition group-hover:border-blue-200" />
           </Link>
 
           <div className="lg:col-span-2">

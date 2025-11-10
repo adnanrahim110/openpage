@@ -36,7 +36,7 @@ const getServicesWithoutIcons = (ids) => {
     .map(({ icon, ...rest }) => rest);
 };
 
-const rawServices = [
+const legacyServices = [
   {
     title: "Book Publishing and Distribution",
     link: "/book-publishing",
@@ -1138,48 +1138,95 @@ const formatBlocks = (sections = []) =>
     },
   }));
 
-const enrichService = (service, index) => {
-  const experience = service.experience ?? {};
-  const storyline = service.storyline ?? {};
-  const serviceName = service.title ?? "this service";
+const rawServices = legacyServices;
 
-  const blocks =
-    storyline.blocks?.length > 0
-      ? storyline.blocks
-      : formatBlocks(service.service_body ?? []);
+const normalizeService = (legacy, index) => {
+  const slug =
+    legacy.slug ?? legacy.link?.replace(/^\//, "") ?? `service-${index + 1}`;
+  const hero = legacy.hero ?? {};
 
-  const ribbons =
-    experience.ribbons ??
-    service.wwd?.map(({ title }) => title).filter(Boolean) ??
+  const overview = {
+    eyebrow:
+      legacy.overview?.eyebrow ??
+      legacy.experience?.eyebrow ??
+      `Signature ${String(index + 1).padStart(2, "0")}`,
+    strapline:
+      legacy.overview?.strapline ??
+      legacy.experience?.strapline ??
+      hero.title ??
+      legacy.title,
+    summary:
+      legacy.overview?.summary ??
+      legacy.experience?.summary ??
+      stripHtml(hero.text ?? legacy.sec2?.text ?? ""),
+    badges:
+      legacy.overview?.badges ??
+      legacy.experience?.badges ??
+      defaultBadges,
+    stats:
+      legacy.overview?.stats ??
+      legacy.experience?.stats ??
+      defaultStats,
+    ribbons:
+      legacy.overview?.ribbons ??
+      legacy.experience?.ribbons ??
+      (legacy.wwd?.map(({ title }) => title).filter(Boolean) ?? []),
+  };
+
+  const workflowSource =
+    legacy.storyline?.blocks?.length > 0
+      ? legacy.storyline.blocks
+      : legacy.service_body ?? [];
+
+  const workflow = {
+    eyebrow: legacy.storyline?.eyebrow ?? "Operational blueprint",
+    headline:
+      legacy.storyline?.headline ??
+      `A concierge workflow for ${
+        legacy.title?.toLowerCase?.() ?? "this service"
+      }`,
+    summary:
+      legacy.storyline?.summary ??
+      stripHtml(legacy.sec2?.text ?? hero.text ?? ""),
+    blocks: formatBlocks(workflowSource),
+    pulses: legacy.storyline?.pulses ?? defaultPulses,
+  };
+
+  const benefits = legacy.benefits ? formatBenefits(legacy.benefits) : null;
+  const relatedCards =
+    legacy.related?.cards ??
+    legacy.relatedServices ??
+    legacy.servicesCard ??
     [];
 
+  const offerings = {
+    sections: legacy.service_body ?? [],
+    capabilities: legacy.wwd ?? [],
+    secondary: legacy.sec2 ?? null,
+  };
+
   return {
-    ...service,
-    slug: service.slug ?? service.link.replace(/^\//, ""),
-    experience: {
-      eyebrow:
-        experience.eyebrow ??
-        `Signature ${String(index + 1).padStart(2, "0")}`,
-      strapline: experience.strapline ?? service.title,
-      summary:
-        experience.summary ?? stripHtml(service.hero?.text ?? service.sec2?.text ?? ""),
-      badges: experience.badges ?? defaultBadges,
-      stats: experience.stats ?? defaultStats,
-      ribbons,
-    },
-    storyline: {
-      eyebrow: storyline.eyebrow ?? "Publishing workflow",
+    id: legacy.id ?? slug,
+    slug,
+    title: legacy.title,
+    link: legacy.link,
+    hero,
+    overview,
+    workflow,
+    benefits,
+    offerings,
+    related: {
       headline:
-        storyline.headline ??
-        `A concierge workflow for ${serviceName.toLowerCase()}`,
-      summary:
-        storyline.summary ?? stripHtml(service.sec2?.text ?? service.hero?.text ?? ""),
-      blocks,
-      pulses: storyline.pulses ?? defaultPulses,
+        legacy.related?.headline ??
+        legacy.relatedHeadline ??
+        "Explore more services",
+      cards: relatedCards,
     },
-    benefits: formatBenefits(service.benefits),
-    relatedServices: service.relatedServices ?? service.servicesCard ?? [],
+    servicesCard: relatedCards,
+    sec2: legacy.sec2,
+    faq: legacy.faq,
+    qouestionare: legacy.qouestionare,
   };
 };
 
-export const services = rawServices.map(enrichService);
+export const services = rawServices.map(normalizeService);
