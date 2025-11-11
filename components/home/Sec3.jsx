@@ -40,7 +40,7 @@ const Sec3 = () => {
             icon={HiSparkles}
             iconClassName="text-primary text-lg"
           >
-            Premium Publishing
+            Premium PublishingOpen Page Publishing
           </Subtitle>
           <div className="h-px w-12 bg-linear-to-l from-transparent to-primary" />
         </motion.div>
@@ -54,8 +54,8 @@ const Sec3 = () => {
           <Title
             as="h2"
             variant="black"
-            title="Open Page Publishing"
-            highlight="Book Publishing"
+            title="Professional Book Publishing Services in the USA"
+            highlight="Book Publishing Services"
             className="text-center font-normal"
           />
         </motion.div>
@@ -66,7 +66,9 @@ const Sec3 = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center text-gray-600 font-medium max-w-3xl mx-auto mb-16"
         >
-          Best Book Publishing Services To Opt For in USA
+          Welcome to Open Page Publishing, where creativity meets precision. As
+          one of the leading book publishing companies in the USA, we help
+          authors bring their stories to life with passion and purpose.
         </motion.p>
 
         <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -134,14 +136,11 @@ const Sec3 = () => {
             transition={{ duration: 0.6 }}
           >
             <p className="text-gray-700 font-medium mb-8">
-              You are welcome to Open Page Publishing, one of the top ten
-              publishing houses changing the way stories meet their audience. We
-              are not merely keeping up with the trends; we set them. Our
-              publishing services shatter boundaries and establish new standards
-              with daring innovation and a passion to excel. Whether through
-              Amazon self publishing or our full-spectrum book publication
-              services, we believe in empowering authors, creativity, and making
-              a difference in the world.
+              We don’t follow trends we set them. Our publishing experts combine
+              innovation, global reach, and proven strategies to help every
+              author shine. Whether through Amazon self-publishing or our
+              complete book publication services, we empower you to publish
+              confidently and connect with readers worldwide.
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
               {[
@@ -149,6 +148,7 @@ const Sec3 = () => {
                 "Award-Winning Team",
                 "24/7 Support",
                 "Global Reach",
+                "24/7 Support",
               ].map((item, idx) => (
                 <motion.div
                   key={idx}

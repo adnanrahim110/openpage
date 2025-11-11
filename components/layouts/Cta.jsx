@@ -163,7 +163,7 @@ const Cta = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <h2 className="text-4xl lg:text-[52px] font-bold text-gray-800 leading-tight">
+                <h2 className="text-4xl lg:text-[52px] font-bold text-gray-800">
                   Ready To Publish Your Book
                   <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
                     Globally?
@@ -176,10 +176,10 @@ const Cta = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
-                  Transform your manuscript into a professionally published
-                  masterpiece with our comprehensive suite of ghostwriting,
-                  editing, publishing, and marketing services.
+                <p className="text-lg text-gray-600  max-w-2xl">
+                  Your story has the power to reach readers worldwide. With Open
+                  Page Publishing, you can publish, distribute, and promote your
+                  book effortlessly all under one roof.
                 </p>
               </motion.div>
               <motion.div

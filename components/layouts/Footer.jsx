@@ -197,7 +197,7 @@ const Footer = () => {
                               <Icon className="text-lg" />
                             </div>
                             <div className="flex-1">
-                              <span className="text-base text-gray-600 group-hover:text-black transition-colors block leading-relaxed">
+                              <span className="text-base text-gray-600 group-hover:text-black transition-colors block ">
                                 {item.text}
                               </span>
                             </div>

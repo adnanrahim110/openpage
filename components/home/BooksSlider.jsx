@@ -1,7 +1,6 @@
 "use client";
 
 import { homeSec3 } from "@/constants";
-import { motion } from "motion/react";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa6";
 import { HiSparkles } from "react-icons/hi2";
@@ -19,19 +18,20 @@ const BooksSlider = () => {
           <div className="w-full lg:w-8/12 text-center">
             <Title
               as="h2"
-              title="Complete Ghost Writing Solutions"
-              highlight="Ghost Writing"
-              highlightColor="primary"
+              title="Your Story, Perfectly Written"
               className="font-normal"
             />
+            <p className="lg:text-xl mb-2">
+              At Open Page Publishing, ghostwriting is more than putting words
+              on a page it’s about bringing your unique voice and story to life.
+              We create manuscripts that sound authentic, feel personal, and
+              truly reflect who you are as an author.
+            </p>
             <p className="lg:text-xl">
-              Ink Nest Publishing, ghost writing isn’t just about producing a
-              manuscript. It’s about creating something that sounds like you,
-              feels like you, and truly represents your story. We also offer
-              book editing, formatting, and optional book marketing services to
-              support you beyond the writing stage. Whether you’re
-              self-publishing or planning a broader launch, we’ll help you
-              promote your book with confidence, ethically and creatively.
+              Beyond writing, we offer expert editing, professional formatting,
+              and strategic book marketing to help your story shine. Whether
+              you’re self-publishing or preparing for a wider release, we make
+              sure your book connects with readers and leaves a lasting impact.
             </p>
           </div>
         </div>
@@ -80,11 +80,11 @@ const BooksSlider = () => {
                           </div>
 
                           <div className="flex-1 flex flex-col">
-                            <h5 className="text-xl lg:text-2xl font-bold text-gray-900 mb-3 capitalize leading-tight">
+                            <h5 className="text-xl lg:text-2xl font-bold text-gray-900 mb-3 capitalize">
                               {card.title}
                             </h5>
 
-                            <p className="text-sm lg:text-base text-gray-600 leading-relaxed mb-6 flex-1">
+                            <p className="text-sm lg:text-base text-gray-600  mb-6 flex-1">
                               {card.text}
                             </p>
 

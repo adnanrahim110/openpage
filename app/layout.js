@@ -1,5 +1,5 @@
 import AppShell from "@/components/system/AppShell";
-import { Barlow_Semi_Condensed, Cinzel, Playfair } from "next/font/google";
+import { Barlow_Semi_Condensed, Cinzel, Open_Sans } from "next/font/google";
 import "./globals.css";
 
 const barlow = Barlow_Semi_Condensed({
@@ -14,10 +14,10 @@ const cinzel = Cinzel({
   weight: ["400", "500", "600", "700", "800", "900"],
 })
 
-const playfair = Playfair({
-  variable: "--font-playfair",
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 })
 
 export const metadata = {
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${barlow.variable} ${cinzel.variable} ${playfair.variable} antialiased overflow-x-hidden`}
+        className={`${barlow.variable} ${cinzel.variable} ${openSans.variable} antialiased overflow-x-hidden`}
       >
         <AppShell>{children}</AppShell>
       </body>

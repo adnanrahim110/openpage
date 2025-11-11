@@ -105,7 +105,7 @@ const PortfolioSlider = ({ bg }) => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-gray-700 font-medium text-lg leading-relaxed mb-8"
+                className="text-gray-700 font-medium text-lg  mb-8"
               >
                 We pride ourselves on our ability to produce quality and
                 creative content at a fraction of the cost. We have a long

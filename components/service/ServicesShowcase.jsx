@@ -2,23 +2,28 @@
 
 import Subtitle from "@/components/ui/Subtitle";
 import Title from "@/components/ui/Title";
+import { servicesList } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 
+const getServicesWithoutIcons = (ids) => {
+  if (!Array.isArray(servicesList)) {
+    console.error("servicesList is not an array:", servicesList);
+    return [];
+  }
+  return servicesList
+    .filter(({ id }) => ids.includes(id))
+    .map(({ icon, ...rest }) => rest);
+};
+
 const ServicesShowcase = ({ service, pathname }) => {
   const related = useMemo(() => {
-    const pool =
-      service?.related?.cards?.length > 0
-        ? service.related.cards
-        : service?.servicesCard ?? [];
+    const pool = getServicesWithoutIcons([1, 2, 3, 6, 7, 9, 10]);
     return pool.filter((card) => card.link !== pathname);
   }, [pathname, service?.related?.cards, service?.servicesCard]);
 
   if (!related.length) return null;
-
-  const heroCard = related[0];
-  const restCards = related.slice(1);
 
   return (
     <section className="relative overflow-hidden bg-primary-50 py-32">
@@ -41,93 +46,54 @@ const ServicesShowcase = ({ service, pathname }) => {
           <Subtitle
             variant="neutral"
             className="bg-white border-slate-200 text-slate-600"
-            textClassName="tracking-[0.4em]"
           >
-            {service?.related?.eyebrow || "Companion Services"}
+            Explore More Publishing Solutions
           </Subtitle>
           <Title
             as="h2"
-            title={
-              service?.related?.headline ||
-              `Extend your ${service?.title?.toLowerCase() ?? "service"} stack`
-            }
+            title={`Extend your ${
+              service?.title?.toLowerCase() ?? "service"
+            } stack`}
             className="text-slate-900"
           />
-          <p className="mx-auto max-w-2xl text-lg text-slate-600">
-            {service?.related?.summary ||
-              "Modular services crafted to plug directly into your publishing workflow—each managed by the same concierge team."}
-          </p>
+          <div className="mx-auto max-w-5xl space-y-1">
+            <p className="text-lg text-slate-600">
+              Discover everything you need to build your author brand. From
+              ghostwriting and editing to audiobook production and marketing, we
+              offer services that complement your self-publishing journey and
+              maximize your book’s success.
+            </p>
+          </div>
         </div>
 
         <div className="mt-16 grid gap-6 lg:grid-cols-3">
-          <Link
-            href={heroCard.link}
-            className="group relative flex h-full flex-col overflow-hidden rounded-4xl border border-slate-200 bg-white p-8 shadow-2xl"
-          >
-            <div className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-blue-500/10 to-purple-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">
-              Spotlight
-              <span className="text-blue-500">↗</span>
-            </div>
-            <h3 className="mt-6 text-3xl font-semibold text-slate-900">
-              {heroCard.title}
-            </h3>
-            <p className="mt-4 flex-1 text-base leading-relaxed text-slate-600">
-              {heroCard.text}
-            </p>
-            {heroCard.img && (
-              <div className="mt-8 rounded-3xl bg-slate-50 p-4">
-                <Image
-                  src={heroCard.img}
-                  alt={heroCard.title}
-                  className="h-40 w-full rounded-2xl object-cover"
-                />
+          {related.map((card) => (
+            <Link
+              key={card.link}
+              href={card.link}
+              className="group flex h-full flex-col rounded-[28px] border border-slate-200 bg-white/90 p-6 shadow-lg transition hover:-translate-y-1 hover:border-blue-200"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <h4 className="text-xl font-semibold text-slate-900">
+                  {card.title}
+                </h4>
               </div>
-            )}
-            <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-600">
-              Explore service
-              <span className="transition group-hover:translate-x-1">→</span>
-            </div>
-            <div className="pointer-events-none absolute inset-0 rounded-4xl border border-transparent transition group-hover:border-blue-200" />
-          </Link>
-
-          <div className="lg:col-span-2">
-            <div className="grid gap-6 md:grid-cols-2">
-              {restCards.map((card) => (
-                <Link
-                  key={card.link}
-                  href={card.link}
-                  className="group flex h-full flex-col rounded-[28px] border border-slate-200 bg-white/90 p-6 shadow-lg transition hover:-translate-y-1 hover:border-blue-200"
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <h4 className="text-xl font-semibold text-slate-900">
-                      {card.title}
-                    </h4>
-                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500">
-                      {card.link.replace("/", "")}
-                    </span>
-                  </div>
-                  <p className="mt-3 flex-1 text-sm text-slate-600">
-                    {card.text}
-                  </p>
-                  {card.img && (
-                    <div className="mt-5 overflow-hidden rounded-2xl bg-slate-50">
-                      <Image
-                        src={card.img}
-                        alt={card.title}
-                        className="h-36 w-full object-cover transition duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                  )}
-                  <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
-                    View details
-                    <span className="transition group-hover:translate-x-1">
-                      →
-                    </span>
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
+              <p className="mt-3 flex-1 text-sm text-slate-600">{card.text}</p>
+              {card.img && (
+                <div className="mt-5 overflow-hidden rounded-2xl bg-slate-50">
+                  <Image
+                    src={card.img}
+                    alt={card.title}
+                    className="h-36 w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                </div>
+              )}
+              <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
+                View details
+                <span className="transition group-hover:translate-x-1">→</span>
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

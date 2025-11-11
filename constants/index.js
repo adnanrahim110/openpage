@@ -160,7 +160,7 @@ export const servicesList = [
     img: services_1,
     icon: FaBook,
     text:
-      "Your manuscript, one global launch. Publish once and have a worldwide presence with a hassle-free distribution through one of the top ten publishing companies."
+      "Launch globally with confidence. We handle everything from print to digital distribution, ensuring your book reaches readers everywhere."
   },
   {
     id: 2,
@@ -169,7 +169,7 @@ export const servicesList = [
     img: services_2,
     icon: FaBookOpen,
     text:
-      "We take your eBook through the process, whether in editing or marketing, across all platforms. Publish your work with our state-of-the-art ebook publishing service to the world."
+      "Publish your eBook seamlessly across all major platforms with our expert formatting, design, and marketing support."
   },
   {
     id: 3,
@@ -178,7 +178,7 @@ export const servicesList = [
     img: services_3,
     icon: FaEdit,
     text:
-      "We transform scrap drafts into gold literature. Our professional editors make sure that your story is clean, clear, and convincing."
+      "Our professional editors refine your words to perfection, delivering clarity, polish, and impact on every page."
   },
   {
     id: 4,
@@ -187,7 +187,7 @@ export const servicesList = [
     img: services_4,
     icon: FaBullhorn,
     text:
-      "We ignite visibility for any title we work on. Through clever strategies or social buzz, our marketing rekindles reader curiosity and sales."
+      "We create tailored marketing strategies that boost visibility, attract readers, and increase book sales."
   },
   {
     id: 5,
@@ -196,7 +196,7 @@ export const servicesList = [
     img: services_5,
     icon: FaGlobe,
     text:
-      "There should be a home for every author online. We design beautiful online platforms that present your work, help you establish your online presence, and bring you close to your viewers."
+      "Showcase your author brand with a beautifully designed website that connects you with your audience."
   },
   {
     id: 6,
@@ -205,7 +205,7 @@ export const servicesList = [
     img: services_6,
     icon: FaPalette,
     text:
-      "Make imagination come alive. Our artists create artworks that are appealing and that match the spirit of your story."
+      "Bring your imagination to life with bespoke illustrations that match your story’s tone and style."
   },
   {
     id: 7,
@@ -214,7 +214,7 @@ export const servicesList = [
     img: services_7,
     icon: FaImage,
     text:
-      "The first impression is everything; we believe in that. Our designers produce eye-catching covers, which are attention-grabbing and curiosity-provoking."
+      "Make a memorable first impression with eye-catching, professionally designed covers."
   },
   {
     id: 8,
@@ -223,7 +223,7 @@ export const servicesList = [
     img: services_8,
     icon: FaMicrophone,
     text:
-      "Turn the page on sound. We give your book a voice of a professional narrator and broad distribution in audio."
+      "Give your story a voice. We produce and publish high-quality audiobooks for a wider audience."
   },
   {
     id: 9,
@@ -232,7 +232,7 @@ export const servicesList = [
     img: services_9,
     icon: FaAlignLeft,
     text:
-      "Slick and businesslike, cover to content. We customize designs to perfection, both in print and digital."
+      "From layout to typography, we create clean, professional designs that elevate your book’s presentation."
   },
   {
     id: 10,
@@ -241,7 +241,7 @@ export const servicesList = [
     img: services_10,
     icon: FaPen,
     text:
-      "Have the story but not the time? Our best-in-class ghostwriters create influential books under your name, and they are ready to meet the world."
+      "No time to write? Our expert ghostwriters craft compelling books in your voice ready for publication and success."
   }
 ];
 

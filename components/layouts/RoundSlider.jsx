@@ -140,7 +140,7 @@ const RoundSlider = () => {
 
             <div className="flex items-center justify-center gap-3 pt-4">
               <div className="h-px w-8 bg-black/10" />
-              <p className="font-mono text-sm font-light tracking-wider text-black/40">
+              <p className="font-mono text-sm font-light text-black/40">
                 {String(currentIndex + 1).padStart(2, "0")} /{" "}
                 {String(total).padStart(2, "0")}
               </p>

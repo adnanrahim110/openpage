@@ -37,6 +37,7 @@ const Pagelayout = ({ service }) => {
       <TitleMarquee service={service} />
 
       <ServiceBody service={service} />
+
       <BenefitsSection service={service} />
 
       <ServicesShowcase service={service} pathname={pathname} />

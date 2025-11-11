@@ -45,7 +45,7 @@ const TicketCard = ({ comment, name, role, avatar }) => (
         </div>
       </div>
 
-      <blockquote className="relative pl-4 text-base text-gray-700 leading-relaxed border-l-2 border-gray-200 transition-colors duration-300 group-[.swiper-slide-active]:border-primary">
+      <blockquote className="relative pl-4 text-base text-gray-700  border-l-2 border-gray-200 transition-colors duration-300 group-[.swiper-slide-active]:border-primary">
         {comment}
       </blockquote>
 
@@ -98,8 +98,8 @@ const Testimonials = () => {
             <Title
               as="h2"
               variant="black"
-              title="Hear It From Our Clients"
-              highlight="Clients"
+              title="Why Authors Love Working with Us"
+              highlight="Working with Us"
               className="text-center font-normal"
             />
           </motion.div>
@@ -109,12 +109,14 @@ const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto"
+            className="text-gray-700 text-lg  max-w-3xl mx-auto"
           >
-            We could definitely rave about our services, but it would be even
-            better if our clients could tell their success stories themselves.
-            Hear what authors are saying about their experiences with Western
-            Book Publishing.
+            Our authors are the heart of everything we do. From first drafts to
+            published bestsellers, we’ve helped countless writers bring their
+            stories to life with creativity, precision, and passion.
+            <br />
+            Here’s what they say about working with Open Page Publishing their
+            success is our greatest achievement.
           </motion.p>
         </div>
 

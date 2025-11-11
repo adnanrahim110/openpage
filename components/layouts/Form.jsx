@@ -118,15 +118,20 @@ const Form = () => {
               <Title
                 as="h2"
                 variant="black"
-                title="Interested in Working Together?"
-                highlight="Working Together?"
+                title="Let’s Bring Your Book to Life"
+                highlight="Book to Life"
                 className="mb-6 text-4xl md:text-5xl"
               />
 
-              <p className="text-gray-700 font-medium text-base leading-relaxed mb-8">
-                We are here to help you with any questions you may have about
-                our services. Our team of experts is always ready to answer your
-                questions and provide you with the information you need.
+              <p className="text-gray-700 font-medium text-base  mb-1">
+                Ready to share your story with the world? At Open Page
+                Publishing, we make publishing simple, creative, and rewarding.
+                Whether you need ghostwriting, editing, or full publishing
+                support, our team is here to guide you every step of the way.
+              </p>
+              <p className="text-gray-700 font-medium text-base  mb-8">
+                Let’s turn your vision into a book that inspires readers and
+                defines your author’s journey.
               </p>
 
               <div className="space-y-4 mb-8">

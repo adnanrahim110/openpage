@@ -60,7 +60,7 @@ const Sec2 = () => {
                     icon={HiSparkles}
                     endIcon={IoMdInfinite}
                     className="inline-flex border border-white/20 bg-white/10 backdrop-blur-md"
-                    textClassName="text-[10px] font-semibold tracking-[0.25em] uppercase text-white/90"
+                    textClassName="text-[10px] font-semibold uppercase text-white/90"
                     iconClassName="text-primary text-sm"
                     endIconClassName="text-primary text-sm"
                   >
@@ -73,10 +73,10 @@ const Sec2 = () => {
                     highlight="Open Page Publishing"
                     variant="white"
                     highlightColor="primary"
-                    className="text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl"
+                    className="text-3xl font-bold md:text-4xl lg:text-5xl"
                   />
 
-                  <div className="space-y-4 text-base leading-relaxed text-neutral-200 md:text-lg">
+                  <div className="space-y-4 text-base text-neutral-200 md:text-lg">
                     <p>
                       Becoming an author starts a journey that goes well beyond
                       the writing of a single book. The spark of inventions has

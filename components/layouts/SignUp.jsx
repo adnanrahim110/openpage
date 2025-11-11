@@ -244,7 +244,7 @@ const SignUp = () => {
                 <IoShieldCheckmark className="absolute text-white text-sm opacity-0 peer-checked:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
               <div className="flex-1">
-                <p className="text-[10px] leading-relaxed text-gray-700 font-medium">
+                <p className="text-[10px]  text-gray-700 font-medium">
                   I agree to receive communications via SMS or email. By
                   submitting, I accept the{" "}
                   <span className="text-primary font-semibold hover:underline">

@@ -46,7 +46,6 @@ const CounterCard = ({ icon, number, text, hasStarted, idx }) => {
       className="group relative"
     >
       <div className="relative flex h-full min-h-56 flex-col justify-between overflow-hidden bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-500 hover:shadow-xl hover:border-primary/20 md:p-8">
-        {/* Icon Container */}
         <div className="relative z-10">
           <div className="inline-flex rounded-xl bg-primary/5 p-4 transition-all duration-300 group-hover:bg-primary/10">
             <Image
@@ -59,22 +58,20 @@ const CounterCard = ({ icon, number, text, hasStarted, idx }) => {
           </div>
         </div>
 
-        {/* Counter Display */}
         <div className="relative z-10 space-y-2">
           <div className="flex items-baseline gap-2">
-            <h3 className="font-mono text-5xl font-bold tracking-tight text-primary md:text-6xl">
+            <h3 className="font-mono text-5xl font-bold text-primary md:text-6xl">
               {count}
             </h3>
             <span className="text-3xl font-bold text-gray-400 md:text-4xl">
               +
             </span>
           </div>
-          <p className="font-semibold text-gray-600 text-sm uppercase tracking-wide md:text-base">
+          <p className="font-semibold text-gray-600 text-sm uppercase md:text-base">
             {text}
           </p>
         </div>
 
-        {/* Subtle accent */}
         <div className="absolute bottom-0 left-0 h-1 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
       </div>
     </motion.div>

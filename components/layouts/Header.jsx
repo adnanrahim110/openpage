@@ -239,7 +239,7 @@ const Header = ({ setIsSidebar }) => {
 
                     {dropdownOpen && (
                       <DropdownMenu
-                        extraClasses="absolute left-1/2 top-full mt-4 -translate-x-1/2 overflow-hidden rounded-xl bg-white shadow-[0_18px_45px] shadow-black/25 min-w-[220px] font-playfair font-medium"
+                        extraClasses="absolute left-1/2 top-full mt-4 -translate-x-1/2 overflow-hidden rounded-xl bg-white shadow-[0_18px_45px] shadow-black/25 min-w-[220px] font-open-sans font-medium"
                         visible
                       >
                         {item.dropdown.map((dropdownItem, dropdownIdx) => {

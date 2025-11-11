@@ -44,7 +44,7 @@ const Faqs = ({ qouestionare = faqs }) => {
               />
             </motion.div>
 
-            <p className="text-gray-700 font-medium text-lg leading-relaxed mb-10">
+            <p className="text-gray-700 font-medium text-lg  mb-10">
               Our customer care is here to serve you with any queries you have
               concerning our services. You can always rely on our team of
               experts, who will answer your questions and give you the necessary
@@ -150,7 +150,7 @@ const Faqs = ({ qouestionare = faqs }) => {
                             <div className="px-6 pb-6 pt-0">
                               <div className="pl-14 pr-12">
                                 <div className="h-px bg-linear-to-r from-primary/20 via-primary/50 to-primary/20 mb-4" />
-                                <p className="text-gray-700 font-medium text-base leading-relaxed">
+                                <p className="text-gray-700 font-medium text-base ">
                                   {faq.ans}
                                 </p>
                               </div>

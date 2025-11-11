@@ -109,7 +109,7 @@ const Hero = ({
                     icon={HiSparkles}
                     iconClassName="text-primary"
                     className="backdrop-blur-2xl bg-linear-to-r from-white/10 to-white/5 border border-white/20"
-                    textClassName="text-sm lg:text-base font-bold tracking-[0.2em] uppercase"
+                    textClassName="text-sm lg:text-base font-bold uppercase"
                   >
                     {subtitle}
                   </Subtitle>
@@ -150,11 +150,20 @@ const Hero = ({
                 <div className="relative backdrop-blur-xl bg-white/3 border-y border-white/10 py-8 px-6 lg:px-12">
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-16 bg-linear-to-b from-primary to-secondary" />
                   <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-16 bg-linear-to-b from-secondary to-primary" />
-
-                  <p
-                    className="text-neutral-200 font-medium text-base lg:text-xl"
-                    dangerouslySetInnerHTML={{ __html: text }}
-                  />
+                  {Array.isArray(text) ? (
+                    text.map((item, index) => (
+                      <p
+                        key={index}
+                        className="text-neutral-200 font-medium text-base lg:text-xl mb-4 last:mb-0"
+                        dangerouslySetInnerHTML={{ __html: item }}
+                      />
+                    ))
+                  ) : (
+                    <p
+                      className="text-neutral-200 font-medium text-base lg:text-xl"
+                      dangerouslySetInnerHTML={{ __html: text }}
+                    />
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -254,7 +263,7 @@ const Hero = ({
                           {stat.number}
                         </div>
 
-                        <div className="text-xs lg:text-sm text-neutral-400 font-medium tracking-wider uppercase text-center">
+                        <div className="text-xs lg:text-sm text-neutral-400 font-medium uppercase text-center">
                           {stat.text}
                         </div>
                       </div>
@@ -350,7 +359,7 @@ const Hero = ({
                 icon={HiSparkles}
                 iconClassName="text-primary"
                 className="mb-6 border border-white/20"
-                textClassName="subtitle text-sm lg:text-base font-bold tracking-[0.15em] uppercase"
+                textClassName="subtitle text-sm lg:text-base font-bold uppercase"
               >
                 {subtitle}
               </Subtitle>
@@ -406,14 +415,14 @@ const Hero = ({
                       >
                         {text.map((item, index) => (
                           <SwiperSlide key={index}>
-                            <p className="text-xl font-medium leading-relaxed text-white/95 md:text-2xl md:leading-relaxed drop-shadow-lg">
+                            <p className="text-xl font-medium  text-white/95 md:text-2xl md: drop-shadow-lg">
                               {item}
                             </p>
                           </SwiperSlide>
                         ))}
                       </Swiper>
                     ) : (
-                      <p className="text-xl font-medium leading-relaxed text-white/95 md:text-2xl md:leading-relaxed drop-shadow-lg">
+                      <p className="text-xl font-medium  text-white/95 md:text-2xl md: drop-shadow-lg">
                         {text}
                       </p>
                     )}

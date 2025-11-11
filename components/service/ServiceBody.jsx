@@ -25,25 +25,7 @@ const legacyBlocks = (service) =>
 
 const ServiceBody = ({ service }) => {
   const workflow = service?.workflow ?? {};
-  const legacyStoryline = service?.storyline ?? {};
-  const blocks = useMemo(() => {
-    if (workflow.blocks?.length) return workflow.blocks;
-    if (legacyStoryline.blocks?.length) return legacyStoryline.blocks;
-    return legacyBlocks(service);
-  }, [service, workflow.blocks, legacyStoryline.blocks]);
-
-  if (!blocks.length) return null;
-
-  const pulses =
-    workflow.pulses?.length > 0
-      ? workflow.pulses
-      : legacyStoryline.pulses?.length > 0
-      ? legacyStoryline.pulses
-      : [
-          { label: "Average sprint", value: "4-8 weeks" },
-          { label: "Dedicated leads", value: "3+" },
-          { label: "Launch coverage", value: "Global" },
-        ];
+  const blocks = legacyBlocks(service);
 
   return (
     <section className="relative overflow-hidden bg-white py-32">
@@ -79,27 +61,23 @@ const ServiceBody = ({ service }) => {
             <Subtitle
               variant="neutral"
               className="bg-white border-slate-200 text-slate-600"
-              textClassName="tracking-[0.3em]"
             >
               {workflow.eyebrow || "Operational blueprint"}
             </Subtitle>
           </div>
-          <Title
-            as="h2"
-            title={
-              workflow.headline ||
-              `A concierge workflow for ${
-                service?.title?.toLowerCase() ?? "this service"
-              }`
-            }
-            className="text-slate-900"
-          />
-          <p className="text-lg text-slate-600 leading-relaxed">
-            {workflow.summary ||
-              legacyStoryline.summary ||
-              service?.sec2?.text ||
-              "Every engagement moves through dedicated pods that pair editorial, design, and distribution so you can stay focused on authorship."}
-          </p>
+          <Title as="h2" title={workflow.title} className="text-slate-900" />
+          {Array.isArray(workflow.text) ? (
+            workflow.text.map((paragraph, idx) => (
+              <p
+                key={`workflow-summary-${idx}`}
+                className="text-lg text-slate-600 "
+              >
+                {paragraph}
+              </p>
+            ))
+          ) : (
+            <p className="text-lg text-slate-600 ">{workflow.text}</p>
+          )}
         </div>
 
         <div className="mt-16 space-y-24">
@@ -117,7 +95,7 @@ const ServiceBody = ({ service }) => {
                 <div
                   className={`lg:col-span-6 ${isReversed ? "lg:order-2" : ""}`}
                 >
-                  <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-slate-500">
+                  <div className="flex items-center gap-3 text-xs font-semibold uppercase text-slate-500">
                     <span className="text-slate-900">
                       {block.kicker || `0${index + 1}`}
                     </span>
@@ -134,7 +112,7 @@ const ServiceBody = ({ service }) => {
                   {copy.map((paragraph, idx) => (
                     <p
                       key={`${block.id}-copy-${idx}`}
-                      className="mt-4 text-base leading-relaxed text-slate-600"
+                      className="mt-4 text-base  text-slate-600"
                     >
                       {paragraph}
                     </p>
@@ -172,22 +150,6 @@ const ServiceBody = ({ service }) => {
               </div>
             );
           })}
-        </div>
-
-        <div className="mt-20 grid gap-6 rounded-4xl border border-slate-200 bg-slate-50/70 p-8 md:grid-cols-3">
-          {pulses.map(({ label, value }) => (
-            <div
-              key={`${label}-${value}`}
-              className="rounded-2xl border border-white bg-white/85 p-5 shadow-sm"
-            >
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
-                {label}
-              </p>
-              <div className="mt-3 text-2xl font-semibold text-slate-900">
-                {value}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@
 
 @theme {
   --font-barlow: "Barlow Semi Condensed", sans-serif;
-  --font-playfair: "Playfair", serif;
+  --font-open-sans: "Open Sans", sans-serif;
   --font-sitka: "sitka", sans-serif;
   --font-cinzel: "Cinzel", serif;
 
@@ -271,7 +271,7 @@
 
   body {
     @apply text-neutral-800 text-lg lg:text-xl overflow-x-hidden;
-    font-family: var(--font-playfair);
+    font-family: var(--font-open-sans);
   }
 
   img {
@@ -336,7 +336,7 @@
   }
 
   .subtitle {
-    @apply font-playfair font-medium text-xl relative uppercase tracking-wider text-secondary;
+    @apply font-open-sans font-medium text-xl relative uppercase tracking-wider text-secondary;
   }
 
   .form_white :where(input, textarea, select) {

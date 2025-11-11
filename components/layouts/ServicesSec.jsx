@@ -51,7 +51,7 @@ const ServicesSec = () => {
               icon={HiSparkles}
               iconClassName="text-primary animate-pulse"
               className="mb-6 max-lg:mx-auto shadow-lg"
-              textClassName="text-sm font-bold text-primary tracking-wide uppercase"
+              textClassName="text-sm font-bold text-primary uppercase"
             >
               Our Services
             </Subtitle>
@@ -73,13 +73,16 @@ const ServicesSec = () => {
           >
             <div className="relative">
               <p className="text-gray-700 font-medium">
-                Discover the epitome of book publishing service providers with
-                Open Page Publishing- your reliable partner in the publication
-                venture. Would-be writers, here is your chance to collaborate
-                with one of the best book publishing teams. We provide you with
-                unequaled service in order to succeed in the current competitive
-                market. Allow your story to soar with one of the best book
-                writing and publishing companies in the business.
+                Discover the power of professional publishing with Open Page
+                Publishing — your trusted partner in bringing stories to life.
+                Whether you’re a new or established author, we provide
+                end-to-end book publishing services designed to help your work
+                stand out in today’s market.
+              </p>
+              <p className="mt-4 text-gray-700 font-medium">
+                Collaborate with a team that values creativity, precision, and
+                innovation. Let’s turn your manuscript into a book that leaves a
+                lasting impression.
               </p>
             </div>
           </motion.div>

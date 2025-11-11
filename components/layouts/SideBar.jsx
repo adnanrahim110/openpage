@@ -79,7 +79,7 @@ const SideBar = ({ isSidebar, setIsSidebar }) => {
                   >
                     <Wrapper
                       {...(item.link ? { href: item.link } : {})}
-                      className={`px-5 w-full h-12 text-base font-medium tracking-[-0.01em] flex items-center justify-between flex-wrap gap-2 ${
+                      className={`px-5 w-full h-12 text-base font-medium flex items-center justify-between flex-wrap gap-2 ${
                         isActiveItem(item)
                           ? "bg-primary-100 text-secondary"
                           : isDropdownActive

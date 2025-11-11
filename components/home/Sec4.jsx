@@ -81,9 +81,8 @@ const Sec4 = () => {
                 <Title
                   as="h2"
                   variant="black"
-                  title="Get Ready To Publish Your Book With a Single Tap"
-                  highlight="With a Single Tap"
-                  className=""
+                  title="Launch Your Book with Confidence"
+                  highlight="Confidence"
                 />
               </div>
             </motion.div>
@@ -94,11 +93,11 @@ const Sec4 = () => {
               transition={{ duration: 0.4, delay: 0.2 }}
               className="text-gray-700 font-medium mb-6"
             >
-              At Open Page Publishing, collaboration isn't just another cliched
-              term; it's our{" "}
-              <span className="font-bold text-primary">secret sauce</span>. Our
-              team listens, guides, and equips every author with personalized
-              insight and precision.
+              At Open Page Publishing, we make publishing effortless. From
+              concept to completion, our team ensures every step is smooth,
+              transparent, and built around your goals. With just one step, you
+              can transform your manuscript into a beautifully published book —
+              crafted to stand out and succeed.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -107,13 +106,10 @@ const Sec4 = () => {
               transition={{ duration: 0.4, delay: 0.3 }}
               className="text-gray-700 font-medium mb-8"
             >
-              Your voice remains authentic. Our expertise polishes it into a
-              publishable masterpiece. With one of the most trusted{" "}
-              <span className="font-bold text-gray-900">
-                book publishing service
-              </span>{" "}
-              teams behind you, the result is a book that captivates, connects,
-              and resonates.
+              Whether you’re{" "}
+              <strong className="text-black">self-publishing</strong> or
+              planning a wider release, we help you launch with creativity,
+              precision, and confidence.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -134,7 +130,7 @@ const Sec4 = () => {
                   <div className="shrink-0 w-6 h-6 rounded-full bg-linear-to-br from-primary to-accent-600 flex items-center justify-center mt-0.5 group-hover:scale-110 transition-transform">
                     <FaCheckCircle className="text-white text-xs" />
                   </div>
-                  <p className="text-gray-700 font-medium text-base leading-relaxed group-hover:text-primary transition-colors">
+                  <p className="text-gray-700 font-medium text-base  group-hover:text-primary transition-colors">
                     {feature}
                   </p>
                 </motion.div>
