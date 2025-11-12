@@ -2,10 +2,7 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
-  webpack: (config) => {
-    config.resolve.extensions = ['.js', '.jsx', '.ts', '.tsx', '.json'];
-    return config;
-  },
+  turbopack: {},
 };
 
 export default nextConfig;
