@@ -6,20 +6,20 @@ import { IoCallOutline, IoLocationOutline, IoMailOutline } from "react-icons/io5
 export const contactDetails = [
   {
     name: "Call Us",
-    href: "tel:+19292664429",
-    text: "+1 (929) 266 4429",
+    href: "tel:+12145060709",
+    text: "+1 (214) 506 0709",
     icon: IoCallOutline,
   },
   {
     name: "Email Us",
-    href: "mailto:info@inknestpublishing.com",
-    text: "info@inknestpublishing.com",
+    href: "mailto:info@openpagepublishing.com",
+    text: "info@openpagepublishing.com",
     icon: IoMailOutline,
   },
   {
     name: "Location",
     href: false,
-    text: "39 Broadway 12th floor, New York, NY 10004",
+    text: "3502 Harvest Bounty Dr. Richmond TX 77406",
     icon: IoLocationOutline,
   },
 ];

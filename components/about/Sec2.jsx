@@ -1,6 +1,6 @@
 "use client";
 
-import { amazone, book_mockups_8, books_cta } from "@/public";
+import { book_mockups_5 } from "@/public";
 import { fadeInLeft, fadeInRight, fadeInUp } from "@/utils/animations";
 import { motion } from "motion/react";
 import Image from "next/image";
@@ -137,7 +137,7 @@ const Sec2 = () => {
                   <Image
                     width={1080}
                     height={1080}
-                    src={book_mockups_8}
+                    src={book_mockups_5}
                     className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                     alt="Amazon Publishing"
                   />
