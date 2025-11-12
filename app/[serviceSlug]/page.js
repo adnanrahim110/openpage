@@ -1,8 +1,8 @@
+import TermPageLayout from "@/app/[serviceSlug]/PageLayout";
+import ServicePageLayout from "@/app/[serviceSlug]/ServicePageLayout";
 import { terms } from "@/constants";
 import { services } from "@/constants/services";
 import { notFound } from "next/navigation";
-import TermPageLayout from "./PageLayout.jsx";
-import ServicePageLayout from "./ServicePageLayout.jsx";
 
 export async function generateStaticParams() {
   const serviceParams = services.map(({ link }) => ({
