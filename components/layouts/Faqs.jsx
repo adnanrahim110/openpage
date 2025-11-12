@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { FaAngleDown, FaQuestionCircle } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
+import Button from "../ui/Button";
 import Subtitle from "../ui/Subtitle";
 import Title from "../ui/Title";
 
@@ -12,7 +13,7 @@ const Faqs = ({ qouestionare = faqs }) => {
   const [openId, setOpenId] = useState(0);
 
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 bg-primary-50" />
       <div
         className="absolute inset-0 opacity-[0.02]"
@@ -26,14 +27,24 @@ const Faqs = ({ qouestionare = faqs }) => {
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-linear-to-tl from-primary-100/50 to-accent-200/50 rounded-full blur-3xl opacity-60" />
 
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:sticky lg:top-32"
+            className="lg:sticky lg:top-32 lg:col-span-5"
           >
+            <motion.div className="mb-2">
+              <Subtitle
+                variant="halo"
+                icon={HiSparkles}
+                iconClassName="text-primary text-lg"
+                className="mb-6 mx-auto"
+              >
+                FAQs Section
+              </Subtitle>
+            </motion.div>
             <motion.div className="mb-6">
               <Title
                 as="h2"
@@ -51,12 +62,23 @@ const Faqs = ({ qouestionare = faqs }) => {
               information to make the right decisions.
             </p>
 
-            <motion.div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white">
-              <img
-                src="/images/book_mockups/5.avif"
-                alt="FAQ"
-                className="w-full h-auto"
-              />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="mt-10 p-8 rounded-3xl bg-linear-to-br from-primary/10 via-primary-500/10 to-blue-500/10 border-2 border-primary/20 backdrop-blur-sm"
+            >
+              <div className="">
+                <h3 className="text-2xl font-black text-gray-900 mb-3">
+                  Still Have Questions?
+                </h3>
+                <p className="text-gray-700 font-medium mb-6">
+                  Our expert team is ready to help you with any additional
+                  queries
+                </p>
+                <Button>Contact Support</Button>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -65,6 +87,7 @@ const Faqs = ({ qouestionare = faqs }) => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="lg:col-span-7"
           >
             <div className="space-y-4">
               {qouestionare.map((faq, idx) => {
@@ -174,32 +197,6 @@ const Faqs = ({ qouestionare = faqs }) => {
                 );
               })}
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-10 p-8 rounded-3xl bg-linear-to-br from-primary/10 via-purple-500/10 to-blue-500/10 border-2 border-primary/20 backdrop-blur-sm"
-            >
-              <div className="text-center">
-                <h3 className="text-2xl font-black text-gray-900 mb-3">
-                  Still Have Questions?
-                </h3>
-                <p className="text-gray-700 font-medium mb-6">
-                  Our expert team is ready to help you with any additional
-                  queries
-                </p>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-primary to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all"
-                >
-                  <span>Contact Support</span>
-                  <HiSparkles className="text-lg" />
-                </motion.button>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>

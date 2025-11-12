@@ -14,11 +14,15 @@ export default function Home() {
   return (
     <>
       <Hero
-        title="Professional Book Publishing Services!"
+        title="Empowering Authors. Elevating Stories. Publishing Without Limits."
         subtitle="Open Page Publishing"
         images={banners_library}
         titleHighlight="Book Publishing"
-        text={["At Open Page Publishing, innovation meets imagination. We don’t follow the old publishing rules we create new ones. Our team blends creativity and expertise to give authors complete control and a truly modern publishing experience.", "We turn your vision into a beautifully crafted book that connects, inspires, and stands out in today’s market."]}
+        text={[
+          "Your trusted partner for professional book publishing, ghostwriting, and editing services — helping authors publish globally on Amazon, Barnes & Noble, and Audible.",
+          "Welcome to Open Page Publishing, where creativity meets professionalism.We’re more than just a publishing company — we’re your partners in turning ideas into books that inspire. Whether it’s your first manuscript or your next bestseller, our expert team is here to help you publish seamlessly across leading platforms, including Amazon, Barnes & Noble, and Audible.",
+          "We provide everything authors need — from editing, formatting, and ghostwriting to audiobook creation and children’s book publishing — ensuring your story reaches readers worldwide."
+        ]}
       />
       <BrandsSlider />
       <RoundSlider />

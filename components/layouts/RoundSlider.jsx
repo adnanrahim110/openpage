@@ -9,9 +9,9 @@ import Subtitle from "../ui/Subtitle";
 import Title from "../ui/Title";
 
 const FALLBACK_SLIDES = [
-  "/images/portfolio/1.avif",
-  "/images/portfolio/2.avif",
-  "/images/portfolio/3.avif",
+  "/images/books/1_4.avif",
+  "/images/books/2_4.avif",
+  "/images/books/3_4.avif",
 ];
 
 const RoundSlider = () => {
@@ -126,7 +126,7 @@ const RoundSlider = () => {
 
       <div className="container relative">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-10 space-y-4 text-center md:mb-8">
+          <div className="mb-10 space-y-4 text-center md:mb-8 mx-auto max-w-3xl">
             <Subtitle variant="halo" icon={HiSparkles}>
               Portfolio
             </Subtitle>
@@ -134,7 +134,8 @@ const RoundSlider = () => {
             <Title
               as="h2"
               variant="black"
-              title="Selected Works"
+              highlight="Stories That Inspire the World"
+              title="Our Published Authors — Stories That Inspire the World"
               className="font-normal"
             />
 

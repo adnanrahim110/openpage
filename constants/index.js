@@ -1,4 +1,4 @@
-import { books_hs1, books_hs2, books_hs3, reviews_m1, reviews_m2, reviews_m3, reviews_m4, reviews_w1, reviews_w2, services_1, services_10, services_2, services_3, services_4, services_5, services_6, services_7, services_8, services_9 } from "@/public";
+import { books_hs1, books_hs2, books_hs3, books_r1, books_r2, books_r3, reviews_m1, reviews_m2, reviews_m3, reviews_m4, reviews_w1, reviews_w2, services_1, services_10, services_2, services_3, services_4, services_5, services_6, services_7, services_8, services_9 } from "@/public";
 import { FaAlignLeft, FaBook, FaBookOpen, FaBullhorn, FaEdit, FaGlobe, FaImage, FaMicrophone, FaPalette, FaPen } from "react-icons/fa";
 import { IoCallOutline, IoLocationOutline, IoMailOutline } from "react-icons/io5";
 
@@ -103,15 +103,13 @@ export const navigation = [
 ];
 
 export const roundSlider = [
-  "/images/portfolio/1.avif",
-  "/images/portfolio/2.avif",
-  "/images/portfolio/3.avif",
-  "/images/portfolio/4.avif",
-  "/images/portfolio/5.avif",
-  "/images/portfolio/6.avif",
-  "/images/portfolio/7.avif",
+  "/images/books/1_4.avif",
+  "/images/books/2_4.avif",
+  "/images/books/3_4.avif",
+  "/images/books/4_4.avif",
+  "/images/books/5_4.avif",
+  "/images/books/6_4.avif",
 ];
-
 
 export const homeSec3 = [
   {
@@ -136,19 +134,19 @@ export const homeSec3 = [
     title: "Ghost Writing Services for Fiction",
     text: "Let imagination take the lead. From plot arcs to character dialogue, our fiction ghost writers help craft novels that engage and entertain, while staying true to your original concept.",
     url: "/ghostwriting/fiction",
-    img: books_hs1,
+    img: books_r1,
   },
   {
     title: "Ghost Writing Services for Business Books",
     text: "Position yourself as a thought leader. Whether you’re a startup founder or an industry expert, our business book ghost writing service helps you share strategies, systems, and insights professionally.",
     url: "/ghostwriting/informative",
-    img: books_hs2,
+    img: books_r2,
   },
   {
     title: "Ghost Writing Services for Self-Help & Personal Growth",
     text: "Inspire transformation. Our self-help ghost writers assist in framing your expertise and motivation in a way that empowers readers. Together, we’ll turn guidance into growth.",
     url: "/ghostwriting/non-fiction",
-    img: books_hs3,
+    img: books_r3,
   },
 ];
 
@@ -198,15 +196,15 @@ export const servicesList = [
     text:
       "Showcase your author brand with a beautifully designed website that connects you with your audience."
   },
-  {
-    id: 6,
-    title: "Customized Illustrations",
-    link: "/customized-illustrations",
-    img: services_6,
-    icon: FaPalette,
-    text:
-      "Bring your imagination to life with bespoke illustrations that match your story’s tone and style."
-  },
+  // {
+  //   id: 6,
+  //   title: "Customized Illustrations",
+  //   link: "/customized-illustrations",
+  //   img: services_6,
+  //   icon: FaPalette,
+  //   text:
+  //     "Bring your imagination to life with bespoke illustrations that match your story’s tone and style."
+  // },
   {
     id: 7,
     title: "Book Cover Art",
@@ -293,24 +291,24 @@ export const testimonials = [
 
 export const faqs = [
   {
-    title: " How are my royalties disbursed?",
-    ans: "We directly transfer your royalties to your bank account, with no deductions on our end. The only fee applied is from the marketplace (Amazon, Barnes & Noble, etc.)."
+    title: "Can I publish my book even if it's my first time?",
+    ans: "Absolutely! We specialize in helping first-time authors navigate every step — from editing to publishing."
   },
   {
-    title: "Can I select the ink quality, paperweight, and book size for my publication?",
-    ans: "Absolutely. You have full control over your book’s design specifications."
+    title: "Which platforms will my book be available on?",
+    ans: "We publish on Amazon, Barnes & Noble, Audible, and other global platforms for maximum reach."
   },
   {
-    title: "Where will my book be available for sale and distribution?",
-    ans: "Your book will be listed on top platforms including Amazon book publishing, Barnes & Noble, Kobo, Apple Books, and more."
+    title: "Do I retain the rights to my book?",
+    ans: "Yes. You maintain 100% ownership of your work. We're simply your professional publishing partner."
   },
   {
-    title: "Do I retain the copyright to my book?",
-    ans: "Yes, 100%. You own the full rights to your work."
+    title: "How long does the publishing process take?",
+    ans: "Depending on your package and manuscript readiness, the process typically takes 4–8 weeks."
   },
   {
-    title: "Are there any undisclosed expenses?",
-    ans: "None at all. We value transparency and will always provide a full breakdown of all costs."
+    title: "Do you offer marketing support?",
+    ans: "Yes! We provide optional book marketing and promotional services to help you reach more readers."
   },
 ];
 
@@ -359,7 +357,7 @@ export const terms = [
   {
     title: "Terms & Conditions",
     url: "/terms-and-conditions",
-    description: "These Terms and Conditions govern the use of <a class='link' href='https://westernbookpublishing.com'>www.westernbookpublishing.com</a> and the services provided by Open Page Publishing (“the Company,” “we,” “us,” or “our”). By using our website and services, you agree to these Terms in full. If you do not agree, you must not use our site or services.",
+    description: "These Terms and Conditions govern the use of <a class='link' href='https://openpagepublishing.com'>www.openpagepublishing.com</a> and the services provided by Open Page Publishing (“the Company,” “we,” “us,” or “our”). By using our website and services, you agree to these Terms in full. If you do not agree, you must not use our site or services.",
     text: [
       {
         title: 'Scope of Services',
@@ -379,7 +377,7 @@ export const terms = [
       },
       {
         title: "Cancellation and Refund Policy",
-        detail: "Open Page Publishing values clarity and fairness in its cancellation and refund procedures. \n 'Order Cancellations:' \n `Orders may be cancelled for any reason within 'one hour' of placement, in which case a 'full refund' will be issued. | Once the one-hour period has passed, the order will be treated as final and cannot be cancelled.` \n 'Refund Requests:' \n`Clients who are not satisfied with their completed order may request a refund within '30 days' of delivery. | All approved refunds will be issued 'with a 50% early termination deduction' to account for work already completed and resources allocated. | To request a refund, clients must contact <[mailto:support@westernbookpublishing.com]support@westernbookpublishing.com>, providing their order number, a description of the concern, and any relevant supporting details. | Refunds will be processed back to the original payment method within '10–14 business days' after approval.` \n 'Chargebacks and Disputes:' \n `By engaging our services, you agree not to initiate a chargeback or payment dispute for completed work. | If a chargeback or dispute is filed, Open Page Publishing reserves the right to: {Apply an administrative fee to cover the costs of handling the dispute. \\ Pursue legal remedies to recover outstanding amounts and related expenses.} `",
+        detail: "Open Page Publishing values clarity and fairness in its cancellation and refund procedures. \n 'Order Cancellations:' \n `Orders may be cancelled for any reason within 'one hour' of placement, in which case a 'full refund' will be issued. | Once the one-hour period has passed, the order will be treated as final and cannot be cancelled.` \n 'Refund Requests:' \n`Clients who are not satisfied with their completed order may request a refund within '30 days' of delivery. | All approved refunds will be issued 'with a 50% early termination deduction' to account for work already completed and resources allocated. | To request a refund, clients must contact <[mailto:support@openpagepublishing.com]support@openpagepublishing.com>, providing their order number, a description of the concern, and any relevant supporting details. | Refunds will be processed back to the original payment method within '10–14 business days' after approval.` \n 'Chargebacks and Disputes:' \n `By engaging our services, you agree not to initiate a chargeback or payment dispute for completed work. | If a chargeback or dispute is filed, Open Page Publishing reserves the right to: {Apply an administrative fee to cover the costs of handling the dispute. \\ Pursue legal remedies to recover outstanding amounts and related expenses.} `",
       },
       {
         title: "Unlimited Revisions Policy",

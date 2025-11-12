@@ -5,6 +5,7 @@ const TitleMarquee = ({ service }) => {
 
   return (
     <section className="relative overflow-hidden bg-linear-to-br from-white via-slate-50 to-blue-50 py-24">
+      <div className="absolute inset-0 bg-no-repeat bg-center bg-[url(/images/banners/reviews_bg.avif)] bg-blend-multiply" />
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div
           className="absolute inset-0"

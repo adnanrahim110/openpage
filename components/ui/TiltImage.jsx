@@ -1,10 +1,17 @@
 "use client";
 
+import { cn } from "@/utils/cn";
+import { useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { useReducedMotion } from "motion/react";
 
-const TiltImage = ({ src, alt = "", shadow = false, interactive = true }) => {
+const TiltImage = ({
+  src,
+  alt = "",
+  shadow = false,
+  interactive = true,
+  className = "",
+}) => {
   const imgRef = useRef(null);
   const MAX_TILT = 12;
   const prefersReducedMotion = useReducedMotion();
@@ -63,7 +70,10 @@ const TiltImage = ({ src, alt = "", shadow = false, interactive = true }) => {
         ref={imgRef}
         src={src}
         alt={alt}
-        className="relative h-full w-full object-contain transition-transform duration-200 ease-out"
+        className={cn(
+          "relative h-full w-full object-contain transition-transform duration-200 ease-out",
+          className
+        )}
         style={{ transformStyle: "preserve-3d" }}
       />
     </div>

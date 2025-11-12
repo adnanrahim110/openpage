@@ -56,7 +56,7 @@ const Sec3 = () => {
             variant="black"
             title="Professional Book Publishing Services in the USA"
             highlight="Book Publishing Services"
-            className="text-center font-normal"
+            className="text-center font-normal max-w-4xl mx-auto"
           />
         </motion.div>
         <motion.p

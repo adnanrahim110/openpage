@@ -164,7 +164,7 @@ const Cta = () => {
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
                 <h2 className="text-4xl lg:text-[52px] font-bold text-gray-800">
-                  Ready To Publish Your Book
+                  Ready To Publish Your Book{" "}
                   <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
                     Globally?
                   </span>

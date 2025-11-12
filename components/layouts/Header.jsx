@@ -2,6 +2,7 @@
 
 import { contactDetails, navigation } from "@/constants";
 import { nav_logo2 } from "@/public";
+import { cn } from "@/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -194,12 +195,7 @@ const Header = ({ setIsSidebar }) => {
                 const dropdownOpen = hasDropdown && activeDropdown === idx;
                 const itemActive = isItemActive(item);
                 const triggerBase =
-                  "inline-flex items-center gap-2 py-2 text-lg transition-colors duration-200";
-                const triggerClass = `${triggerBase} ${
-                  itemActive || dropdownOpen
-                    ? "text-secondary"
-                    : "text-white hover:text-secondary"
-                }`;
+                  "relative inline-flex items-center gap-2 py-2 text-lg transition-colors duration-200";
                 const triggerContent = renderTriggerContent(
                   item.title,
                   hasDropdown,
@@ -218,7 +214,21 @@ const Header = ({ setIsSidebar }) => {
                     {item.link ? (
                       <Link
                         href={item.link}
-                        className={triggerClass}
+                        className={cn(
+                          triggerBase,
+                          "after:absolute after:top-full after:left-0 after:h-px after:transition-all after:duration-300 after:ease-linear",
+                          atTop ? "after:bg-primary" : "after:bg-primary-300",
+                          itemActive || dropdownOpen
+                            ? atTop
+                              ? "text-primary-400"
+                              : "text-primary-300"
+                            : atTop
+                            ? "text-white"
+                            : "text-neutral-300",
+                          itemActive || dropdownOpen
+                            ? "after:w-full"
+                            : "after:w-0 hover:after:w-full"
+                        )}
                         onFocus={openDropdown}
                         onClick={() => setActiveDropdown(null)}
                       >
@@ -227,7 +237,7 @@ const Header = ({ setIsSidebar }) => {
                     ) : (
                       <button
                         type="button"
-                        className={triggerClass}
+                        className={cn(triggerBase)}
                         onFocus={openDropdown}
                         onClick={() =>
                           setActiveDropdown(dropdownOpen ? null : idx)
@@ -262,7 +272,9 @@ const Header = ({ setIsSidebar }) => {
                                 }`}
                                 onClick={() => setActiveDropdown(null)}
                               >
-                                <span>{dropdownItem.title}</span>
+                                <span className="whitespace-nowrap">
+                                  {dropdownItem.title}
+                                </span>
                               </Link>
                             </li>
                           );

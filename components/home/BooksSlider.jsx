@@ -84,20 +84,9 @@ const BooksSlider = () => {
                               {card.title}
                             </h5>
 
-                            <p className="text-sm lg:text-base text-gray-600  mb-6 flex-1">
+                            <p className="text-sm lg:text-base text-gray-600 flex-1">
                               {card.text}
                             </p>
-
-                            <Link
-                              href={card.url}
-                              className="inline-flex items-center gap-2 text-primary hover:text-primary-700 font-semibold text-sm lg:text-base group/link transition-colors duration-300"
-                            >
-                              <span className="relative">
-                                Learn More
-                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-700 group-hover/link:w-full transition-all duration-300" />
-                              </span>
-                              <FaArrowRight className="text-sm transform group-hover/link:translate-x-1 transition-transform duration-300" />
-                            </Link>
                           </div>
                         </div>
 

@@ -61,7 +61,7 @@ const TicketCard = ({ comment, name, role, avatar }) => (
 
 const Testimonials = () => {
   return (
-    <section className="relative py-32 overflow-hidden bg-gray-50">
+    <section className="relative py-20 overflow-hidden bg-gray-50">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.03]"
         style={{ backgroundImage: `url(${banners_reviews_bg})` }}
@@ -93,7 +93,7 @@ const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-6"
+            className="mb-3"
           >
             <Title
               as="h2"
@@ -109,7 +109,7 @@ const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-700 text-lg  max-w-3xl mx-auto"
+            className="text-gray-700 text-lg  max-w-4xl mx-auto"
           >
             Our authors are the heart of everything we do. From first drafts to
             published bestsellers, we’ve helped countless writers bring their
@@ -191,15 +191,6 @@ const Testimonials = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-
-          <div className="mt-10 mx-auto max-w-sm">
-            <div className="h-0.5 w-full bg-gray-300 rounded-full overflow-hidden">
-              <div
-                className="rev-progress-bar h-full bg-primary transition-all duration-300 ease-out"
-                style={{ width: "0%" }}
-              />
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

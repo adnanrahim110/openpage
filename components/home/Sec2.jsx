@@ -10,7 +10,7 @@ import Title from "../ui/Title";
 const defaultTitle =
   "Open Page Publishing The Top Book Ghostwriting Publishing Company You'll Ever Need";
 
-const Sec2 = ({ title, text, titleHighlight }) => {
+const Sec2 = ({ title, text, titleHighlight, img }) => {
   const displayTitle = title || defaultTitle;
   const highlightText = title
     ? titleHighlight
@@ -125,7 +125,7 @@ const Sec2 = ({ title, text, titleHighlight }) => {
                 <div className="relative">
                   <div className="absolute inset-0 bg-linear-to-br from-primary-100/50 to-accent-100/50 blur-3xl scale-110 rounded-3xl" />
                   <img
-                    src="/images/book_mockups/bc_sec2.avif"
+                    src={img || "/images/book_mockups/bc_sec2.avif"}
                     alt="Book cover"
                     className="relative z-1 "
                     style={{

@@ -2,6 +2,7 @@
 
 import { usePopup } from "@/context/PopupProvider";
 import { banners_noisy_bg, testi } from "@/public";
+import { cn } from "@/utils/cn";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { GiTalk } from "react-icons/gi";
@@ -23,7 +24,7 @@ const Hero = ({
   hero2 = false,
   textSlider = false,
   actionBtns,
-  comp = false,
+  gradient = true,
   images,
   titleHighlight,
 }) => {
@@ -40,51 +41,17 @@ const Hero = ({
               width={1920}
               height={1080}
               src={primaryImage}
-              className="size-full object-cover object-center"
+              className={cn("size-full object-cover")}
               alt=""
               priority
             />
           ) : (
             <div className="size-full bg-linear-to-br from-gray-900 via-black to-gray-900" />
           )}
-          <div className="absolute inset-0 bg-linear-to-b from-black/90 via-black/70 to-black/90" />
-          <div className="absolute inset-0 bg-linear-to-r from-black/80 via-transparent to-black/80" />
+          {gradient && (
+            <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/70 to-transparent" />
+          )}
         </div>
-      </div>
-
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div
-          className="size-full"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(25, 123, 188, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(25, 123, 188, 0.3) 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
-
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px]"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px]"
-        />
       </div>
 
       <div className="relative z-10 container px-6 pt-44 pb-20">
@@ -198,34 +165,32 @@ const Hero = ({
               </motion.div>
             )}
 
-            {comp && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
-                className="pt-8 inline-block"
-              >
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-linear-to-r from-transparent via-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative backdrop-blur-xl bg-white/2 border border-white/10 rounded-full px-8 py-4 flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6">
-                    <div className="flex items-center gap-3">
-                      <IoMdCheckmarkCircle className="text-primary text-xl" />
-                      <span className="font-sitka text-base text-neutral-300 font-semibold">
-                        Trusted By:
-                      </span>
-                    </div>
-                    <div className="h-px lg:h-6 w-24 lg:w-px bg-white/20" />
-                    <Image
-                      width={1080}
-                      height={500}
-                      src={testi}
-                      alt="Trusted partners"
-                      className="max-h-8 lg:h-10 h-full w-auto opacity-90"
-                    />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="pt-8 inline-block"
+            >
+              <div className="relative group">
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative backdrop-blur-xl bg-white/2 border border-white/10 rounded-full px-8 py-4 flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6">
+                  <div className="flex items-center gap-3">
+                    <IoMdCheckmarkCircle className="text-primary text-xl" />
+                    <span className="font-sitka text-base text-neutral-300 font-semibold">
+                      Trusted By:
+                    </span>
                   </div>
+                  <div className="h-px lg:h-6 w-24 lg:w-px bg-white/20" />
+                  <Image
+                    width={1080}
+                    height={500}
+                    src={testi}
+                    alt="Trusted partners"
+                    className="max-h-8 lg:h-10 h-full w-auto opacity-90"
+                  />
                 </div>
-              </motion.div>
-            )}
+              </div>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}

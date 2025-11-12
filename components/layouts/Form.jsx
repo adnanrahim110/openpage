@@ -87,7 +87,7 @@ const Form = () => {
   ];
 
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-24 overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
         style={{ backgroundImage: `url(${banners_form_bg})` }}
@@ -103,7 +103,7 @@ const Form = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
               className=" lg:pr-8"
             >
               <Subtitle
@@ -141,7 +141,7 @@ const Form = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.6 + idx * 0.1 }}
+                    transition={{ duration: 0.3, delay: 0.3 + idx * 0.1 }}
                     className="flex items-center gap-3 group"
                   >
                     <div className="shrink-0 w-8 h-8 rounded-full bg-linear-to-br from-primary to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -158,7 +158,7 @@ const Form = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.9 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
                 className="p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-100 shadow-lg"
               >
                 <div className="flex items-center gap-4">

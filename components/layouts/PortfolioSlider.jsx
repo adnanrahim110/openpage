@@ -16,7 +16,7 @@ import {
 } from "@/public";
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { HiSparkles } from "react-icons/hi2";
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -37,20 +37,23 @@ const PortfolioSlider = ({ bg }) => {
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
-  const portfolioItems = [
-    books_1_1,
-    books_2_1,
-    books_3_1,
-    books_4_1,
-    books_5_1,
-    books_6_1,
-    books_1_2,
-    books_2_2,
-    books_3_2,
-    books_4_2,
-    books_5_2,
-    books_6_2,
-  ];
+  const portfolioItems = useMemo(
+    () => [
+      books_1_1,
+      books_2_1,
+      books_3_1,
+      books_4_1,
+      books_5_1,
+      books_6_1,
+      books_1_2,
+      books_2_2,
+      books_3_2,
+      books_4_2,
+      books_5_2,
+      books_6_2,
+    ],
+    []
+  );
 
   return (
     <>
@@ -62,7 +65,7 @@ const PortfolioSlider = ({ bg }) => {
       >
         <motion.div
           style={{ y, opacity }}
-          className="absolute top-0 left-0 w-[600px] h-[600px] bg-linear-to-br from-primary-200/30 to-accent-200/30 rounded-full blur-3xl"
+          className="absolute top-0 left-0 w-[600px] h-[600px] bg-linear-to-br from-primary-200/30 to-accent-200/30 rounded-full blur-3xl will-change-transform"
         />
 
         <div className="container relative z-10">
@@ -71,8 +74,12 @@ const PortfolioSlider = ({ bg }) => {
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  duration: 0.6,
+                  ease: [0.25, 0.1, 0.25, 1],
+                }}
+                className="will-change-transform"
               >
                 <Subtitle
                   variant="soft"
@@ -82,46 +89,37 @@ const PortfolioSlider = ({ bg }) => {
                 >
                   Excellence in Publishing
                 </Subtitle>
-              </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="mb-8"
-              >
-                <Title
-                  as="h2"
-                  variant="black"
-                  title="A Glimpse into our Award-winning Portfolio"
-                  highlight="Award-winning"
-                  className="max-lg:text-center"
-                />
-              </motion.div>
+                <div className="mb-8">
+                  <Title
+                    as="h2"
+                    variant="black"
+                    title="A Glimpse into our Award-winning Portfolio"
+                    highlight="Award-winning"
+                    className="max-lg:text-center"
+                  />
+                </div>
 
-              <motion.p
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-gray-700 font-medium text-lg  mb-8"
-              >
-                We pride ourselves on our ability to produce quality and
-                creative content at a fraction of the cost. We have a long
-                history in the industry and have won many awards.
-              </motion.p>
+                <p className="text-gray-700 font-medium text-lg mb-8">
+                  We pride ourselves on our ability to produce quality and
+                  creative content at a fraction of the cost. We have a long
+                  history in the industry and have won many awards.
+                </p>
+              </motion.div>
             </div>
 
             <div className="lg:w-7/12 relative">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.25, 0.1, 0.25, 1],
+                }}
+                className="relative will-change-transform"
               >
-                <div className="absolute inset-0 bg-linear-to-r from-primary-400/30 to-secondary-400/30 blur-3xl scale-110 rounded-full" />
+                <div className="absolute inset-0 bg-linear-to-r from-primary-400/30 to-secondary-400/30 blur-3xl scale-110 rounded-full pointer-events-none" />
 
                 <div className="relative perspective-[2000px]">
                   <Swiper
@@ -174,14 +172,16 @@ const PortfolioSlider = ({ bg }) => {
                   >
                     {portfolioItems.map((img, idx) => (
                       <SwiperSlide key={idx} className="w-[273px]!">
-                        <div className="relative group cursor-pointer h-[387px] overflow-hidden">
-                          <div className="relative h-full w-full">
+                        <div className="relative group cursor-pointer h-[387px] overflow-hidden rounded-lg">
+                          <div className="relative h-full w-full transform-gpu">
                             <Image
                               width={600}
                               height={957}
                               src={img}
                               alt={`Portfolio ${idx + 1}`}
                               className="h-full w-full object-cover"
+                              loading="lazy"
+                              quality={85}
                             />
                           </div>
                         </div>

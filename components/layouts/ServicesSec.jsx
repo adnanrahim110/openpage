@@ -39,7 +39,7 @@ const ServicesSec = () => {
       />
 
       <div className="container relative z-10">
-        <div className="text-center mx-auto max-w-7xl mb-20">
+        <div className="text-center mx-auto max-w-6xl mb-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -79,7 +79,7 @@ const ServicesSec = () => {
                 end-to-end book publishing services designed to help your work
                 stand out in today’s market.
               </p>
-              <p className="mt-4 text-gray-700 font-medium">
+              <p className="mt-2 text-gray-700 font-medium">
                 Collaborate with a team that values creativity, precision, and
                 innovation. Let’s turn your manuscript into a book that leaves a
                 lasting impression.
@@ -123,6 +123,17 @@ const ServiceCard = ({ service, index, hoveredIndex, setHoveredIndex }) => {
         >
           <motion.div
             animate={{
+              x: hoveredIndex === index ? 0 : 5,
+              y: hoveredIndex === index ? 0 : -5,
+              opacity: hoveredIndex === index ? 1 : 0,
+            }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-4 right-4 size-10 rounded-full bg-linear-to-br from-primary to-primary-800 flex items-center justify-center"
+          >
+            <FaArrowRight className="text-white text-sm" />
+          </motion.div>
+          <motion.div
+            animate={{
               scale: hoveredIndex === index ? 1.2 : 0,
               opacity: hoveredIndex === index ? 1 : 0,
             }}
@@ -131,42 +142,27 @@ const ServiceCard = ({ service, index, hoveredIndex, setHoveredIndex }) => {
           />
 
           <div className="relative z-10">
-            <div className="flex items-start justify-between mb-6">
+            <div className="flex items-center gap-3 mb-6 pr-5">
               <motion.div
                 animate={{
                   scale: hoveredIndex === index ? 1.1 : 1,
                   rotate: hoveredIndex === index ? 5 : 0,
                 }}
                 transition={{ duration: 0.3 }}
-                className="w-16 h-16 rounded-2xl bg-linear-to-br from-primary to-purple-600 flex items-center justify-center shadow-lg"
+                className="size-12 shrink-0 rounded-xl bg-linear-to-br from-primary to-primary-800 flex items-center justify-center shadow-lg"
               >
-                <service.icon className="text-white text-3xl" />
+                <service.icon className="text-white text-2xl" />
               </motion.div>
-              <motion.div
-                animate={{
-                  x: hoveredIndex === index ? 0 : 5,
-                  y: hoveredIndex === index ? 0 : -5,
-                  opacity: hoveredIndex === index ? 1 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-                className="w-10 h-10 rounded-full bg-linear-to-br from-primary to-purple-600 flex items-center justify-center"
-              >
-                <FaArrowRight className="text-white text-sm" />
-              </motion.div>
-            </div>
 
-            <div className="mb-4">
-              <h5 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary transition-colors">
+              <h5 className="text-xl font-semibold text-gray-900 group-hover:text-primary transition-colors">
                 {service.title}
               </h5>
+            </div>
+
+            <div>
               <p className="text-gray-600 font-medium text-base">
                 {service.text}
               </p>
-            </div>
-
-            <div className="flex items-center gap-2 text-primary font-bold text-sm group-hover:gap-3 transition-all">
-              <span>Learn More</span>
-              <FaArrowRight className="text-xs" />
             </div>
 
             <motion.div
@@ -174,7 +170,7 @@ const ServiceCard = ({ service, index, hoveredIndex, setHoveredIndex }) => {
                 opacity: hoveredIndex === index ? 1 : 0.3,
               }}
               transition={{ duration: 0.3 }}
-              className="absolute bottom-4 right-4 text-7xl font-black text-gray-100 group-hover:text-primary/10 transition-colors"
+              className="absolute -bottom-4 leading-none right-0 text-9xl font-black text-gray-100 group-hover:text-primary/10 transition-colors"
             >
               {String(index + 1).padStart(2, "0")}
             </motion.div>
