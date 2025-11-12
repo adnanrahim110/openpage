@@ -1,7 +1,7 @@
 "use client";
 
 import { book_mockups_5 } from "@/public";
-import { fadeInLeft, fadeInRight, fadeInUp } from "@/utils/animations";
+import { fadeInRight, fadeInUp } from "@/utils/animations";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { BiSupport } from "react-icons/bi";
