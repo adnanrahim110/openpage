@@ -105,7 +105,7 @@ const RoundSlider = () => {
   }, [goNext, goPrev]);
 
   return (
-    <section className="relative overflow-hidden  py-20 md:pb-32 md:pt-24">
+    <section className="relative overflow-hidden  py-20 md:py-24">
       <Image
         src={banners_texture}
         width={2000}
@@ -138,15 +138,6 @@ const RoundSlider = () => {
               title="Our Published Authors — Stories That Inspire the World"
               className="font-normal"
             />
-
-            <div className="flex items-center justify-center gap-3 pt-4">
-              <div className="h-px w-8 bg-black/10" />
-              <p className="font-mono text-sm font-light text-black/40">
-                {String(currentIndex + 1).padStart(2, "0")} /{" "}
-                {String(total).padStart(2, "0")}
-              </p>
-              <div className="h-px w-8 bg-black/10" />
-            </div>
           </div>
 
           <div

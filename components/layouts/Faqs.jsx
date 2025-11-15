@@ -56,10 +56,9 @@ const Faqs = ({ qouestionare = faqs }) => {
             </motion.div>
 
             <p className="text-gray-700 font-medium text-lg  mb-10">
-              Our customer care is here to serve you with any queries you have
-              concerning our services. You can always rely on our team of
-              experts, who will answer your questions and give you the necessary
-              information to make the right decisions.
+              Get clear guidance on timelines, publishing steps, and
+              distribution options. We simplify the process so you can focus on
+              your story while we handle the rest.
             </p>
 
             <motion.div

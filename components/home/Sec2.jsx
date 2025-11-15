@@ -18,7 +18,7 @@ const Sec2 = ({ title, text, titleHighlight, img }) => {
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-br from-white via-gray-50 to-white" />
+      <div className="absolute inset-0 bg-primary-50" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-linear-to-br from-primary-100/50 to-accent-100/50 rounded-full blur-3xl opacity-60" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-linear-to-tr from-primary-100/50 to-accent-200/50 rounded-full blur-3xl opacity-60" />
       <div

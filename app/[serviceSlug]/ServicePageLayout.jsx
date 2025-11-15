@@ -9,7 +9,6 @@ import PortfolioSlider from "@/components/layouts/PortfolioSlider";
 import Testimonials from "@/components/layouts/Testimonials";
 import BenefitsSection from "@/components/service/BenefitsSection";
 import ServiceBody from "@/components/service/ServiceBody";
-import ServicesShowcase from "@/components/service/ServicesShowcase";
 import TitleMarquee from "@/components/service/TitleMarquee";
 import Hero from "@/components/ui/Hero";
 import { faqs } from "@/constants";
@@ -40,8 +39,6 @@ const ServicePageLayout = ({ service }) => {
       <ServiceBody service={service} />
 
       <BenefitsSection service={service} />
-
-      <ServicesShowcase service={service} pathname={pathname} />
 
       <Sec2
         title={service.sec2 && service.sec2.title}

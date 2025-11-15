@@ -1,6 +1,6 @@
 "use client";
 
-import { nav_logo } from "@/public";
+import { nav_logo, pay } from "@/public";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -249,6 +249,16 @@ const Footer = () => {
                   <span className="hidden lg:block w-1 h-1 rounded-full bg-gray-300" />
                   <p className="text-xs text-gray-500">All rights reserved.</p>
                 </motion.div>
+
+                <div className="w-full lg:w-60">
+                  <Image
+                    src="/images/pay.webp"
+                    width={354}
+                    height={77}
+                    className="w-full h-auto"
+                    alt=""
+                  />
+                </div>
 
                 <motion.ul
                   initial={{ opacity: 0, y: 20 }}

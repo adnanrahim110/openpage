@@ -123,15 +123,10 @@ const Form = () => {
                 className="mb-6 text-4xl md:text-5xl"
               />
 
-              <p className="text-gray-700 font-medium text-base  mb-1">
-                Ready to share your story with the world? At Open Page
-                Publishing, we make publishing simple, creative, and rewarding.
-                Whether you need ghostwriting, editing, or full publishing
-                support, our team is here to guide you every step of the way.
-              </p>
               <p className="text-gray-700 font-medium text-base  mb-8">
-                Let’s turn your vision into a book that inspires readers and
-                defines your author’s journey.
+                Your story deserves an exceptional beginning. Partner with Open
+                Page Publishing and publish with a team that values creativity,
+                precision, and your unique voice.
               </p>
 
               <div className="space-y-4 mb-8">

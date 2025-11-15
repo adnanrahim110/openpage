@@ -39,7 +39,7 @@ const ServicesSec = () => {
       />
 
       <div className="container relative z-10">
-        <div className="text-center mx-auto max-w-6xl mb-20">
+        <div className="text-center mx-auto max-w-5xl mb-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -58,8 +58,7 @@ const ServicesSec = () => {
             <Title
               as="h3"
               variant="black"
-              title="Leave Your Print in the World of Literature"
-              highlight="World of Literature"
+              title="Professional Book Publishing Services"
               className="mb-2 font-normal"
             />
           </motion.div>
@@ -73,16 +72,9 @@ const ServicesSec = () => {
           >
             <div className="relative">
               <p className="text-gray-700 font-medium">
-                Discover the power of professional publishing with Open Page
-                Publishing — your trusted partner in bringing stories to life.
-                Whether you’re a new or established author, we provide
-                end-to-end book publishing services designed to help your work
-                stand out in today’s market.
-              </p>
-              <p className="mt-2 text-gray-700 font-medium">
-                Collaborate with a team that values creativity, precision, and
-                innovation. Let’s turn your manuscript into a book that leaves a
-                lasting impression.
+                Our publishing solutions blend creative design with expert
+                guidance to help authors produce polished, industry-standard
+                books across global platforms.
               </p>
             </div>
           </motion.div>

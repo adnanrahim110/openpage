@@ -59,7 +59,7 @@ const PortfolioSlider = ({ bg }) => {
     <>
       <section
         ref={sectionRef}
-        className={`relative py-32 px-0 overflow-hidden ${
+        className={`relative py-24 px-0 overflow-hidden ${
           bg || "bg-linear-to-br from-primary-50 via-white to-accent-50"
         }`}
       >
@@ -128,9 +128,8 @@ const PortfolioSlider = ({ bg }) => {
                     loop
                     centeredSlides
                     autoplay={{
-                      delay: 3500,
+                      delay: 1000,
                       disableOnInteraction: false,
-                      pauseOnMouseEnter: true,
                     }}
                     speed={1200}
                     slidesPerView="auto"

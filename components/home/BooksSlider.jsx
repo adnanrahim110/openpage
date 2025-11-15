@@ -1,8 +1,6 @@
 "use client";
 
 import { homeSec3 } from "@/constants";
-import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa6";
 import { HiSparkles } from "react-icons/hi2";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -18,20 +16,13 @@ const BooksSlider = () => {
           <div className="w-full lg:w-8/12 text-center">
             <Title
               as="h2"
-              title="Your Story, Perfectly Written"
+              title="YOur Published Authors"
               className="font-normal"
             />
-            <p className="lg:text-xl mb-2">
-              At Open Page Publishing, ghostwriting is more than putting words
-              on a page it’s about bringing your unique voice and story to life.
-              We create manuscripts that sound authentic, feel personal, and
-              truly reflect who you are as an author.
-            </p>
             <p className="lg:text-xl">
-              Beyond writing, we offer expert editing, professional formatting,
-              and strategic book marketing to help your story shine. Whether
-              you’re self-publishing or preparing for a wider release, we make
-              sure your book connects with readers and leaves a lasting impact.
+              Explore books created with passion, care, and professional
+              craftsmanship. Every project reflects our commitment to helping
+              authors share their stories with confidence.
             </p>
           </div>
         </div>

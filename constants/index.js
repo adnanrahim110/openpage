@@ -31,18 +31,8 @@ export const navigation = [
   },
 
   {
-    title: "Book Publishing",
-    link: "/book-publishing",
-    dropdown: [
-      {
-        title: "E-Book Publishing",
-        link: "/ebook-publishing"
-      },
-      {
-        title: "Self Publishing",
-        link: "/self-publishing"
-      },
-    ]
+    title: "Self Publishing",
+    link: "/self-publishing"
   },
   {
     title: "Children's Book Publishing",
@@ -55,16 +45,6 @@ export const navigation = [
   {
     title: "Book Marketing",
     link: "/book-marketing-services",
-    dropdown: [
-      {
-        title: "Book SEO and SEM",
-        link: "/book-seo-and-sem"
-      },
-      {
-        title: "Digital Marketing",
-        link: "/digital-marketing"
-      },
-    ]
   },
   {
     title: "Services",
@@ -81,14 +61,6 @@ export const navigation = [
       {
         title: "Author Website",
         link: "/author-website"
-      },
-      {
-        title: "Customized Illustrations",
-        link: "/customized-illustrations"
-      },
-      {
-        title: "Book Cover Art",
-        link: "/book-cover-art"
       },
       {
         title: "formatting and Layout",

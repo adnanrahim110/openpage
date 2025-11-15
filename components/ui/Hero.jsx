@@ -151,7 +151,7 @@ const Hero = ({
                   size="lg"
                   className="shadow-[0_0_50px_0] shadow-primary/40 hover:shadow-primary/60 transition-all duration-300"
                 >
-                  Launch A Project
+                  Start Your Book
                 </Button>
                 <Button
                   onClick={() => Tawk_API.toggle()}
@@ -160,7 +160,7 @@ const Hero = ({
                   size="lg"
                   className="backdrop-blur-xl bg-white/5 hover:bg-white/10 border-2"
                 >
-                  Let's Talk
+                  Talk to an Expert
                 </Button>
               </motion.div>
             )}

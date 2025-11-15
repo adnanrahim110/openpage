@@ -51,30 +51,35 @@ const BenefitsSection = ({ service }) => {
             </div>
           </div>
 
-          <Subtitle
-            variant="neutral"
-            className="mb-4 bg-white border-slate-200 text-slate-600"
-          >
-            {benefits.eyebrow || "Value Stack"}
-          </Subtitle>
-
-          <Title
-            as="h2"
-            title={benefits.title}
-            className="text-slate-900 mb-6"
-          />
-
-          {Array.isArray(benefits.text) ? (
-            benefits.text.map((paragraph, idx) => (
-              <p key={idx} className="text-lg text-slate-600 leading-relaxed">
-                {paragraph}
-              </p>
-            ))
-          ) : (
-            <p className="text-lg text-slate-600 leading-relaxed">
-              {benefits.text}
-            </p>
+          {benefits.eyebrow && (
+            <Subtitle
+              variant="neutral"
+              className="mb-4 bg-white border-slate-200 text-slate-600"
+            >
+              {benefits.eyebrow || "Value Stack"}
+            </Subtitle>
           )}
+
+          {benefits.title && (
+            <Title
+              as="h2"
+              title={benefits.title}
+              className="text-slate-900 mb-1"
+            />
+          )}
+
+          {benefits.text &&
+            (Array.isArray(benefits.text) ? (
+              benefits.text.map((paragraph, idx) => (
+                <p key={idx} className="text-lg text-slate-600 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))
+            ) : (
+              <p className="text-lg text-slate-600 leading-relaxed">
+                {benefits.text}
+              </p>
+            ))}
         </div>
 
         {points.length > 0 && (

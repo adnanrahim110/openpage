@@ -40,7 +40,7 @@ const Sec3 = () => {
             icon={HiSparkles}
             iconClassName="text-primary text-lg"
           >
-            Premium PublishingOpen Page Publishing
+            Premium Publishing Open Page Publishing
           </Subtitle>
           <div className="h-px w-12 bg-linear-to-l from-transparent to-primary" />
         </motion.div>
@@ -54,8 +54,7 @@ const Sec3 = () => {
           <Title
             as="h2"
             variant="black"
-            title="Professional Book Publishing Services in the USA"
-            highlight="Book Publishing Services"
+            title="Your Story Matters"
             className="text-center font-normal max-w-4xl mx-auto"
           />
         </motion.div>
@@ -66,9 +65,9 @@ const Sec3 = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center text-gray-600 font-medium max-w-3xl mx-auto mb-16"
         >
-          Welcome to Open Page Publishing, where creativity meets precision. As
-          one of the leading book publishing companies in the USA, we help
-          authors bring their stories to life with passion and purpose.
+          Your ideas deserve exceptional presentation. We help you shape,
+          refine, and prepare your manuscript with clarity and purpose — so your
+          voice reaches readers everywhere.
         </motion.p>
 
         <div className="grid lg:grid-cols-2 gap-8 items-center">

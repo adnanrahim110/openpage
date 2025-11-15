@@ -4,99 +4,6 @@ import { banners_child_banner, services_abn_1, services_abn_2, services_aw_1, se
 
 export const services = [
   {
-    title: "Book Publishing and Distribution",
-    link: "/book-publishing",
-    hero: {
-      title: "Materialize Your Dreams with Book Publishing Services",
-      text: `Well, you wrote a book or are in the process of doing so and now you are saying, \"How do I go about getting my book published?\" And this is where we enter. <br/> Our job at Open Page Publishing is not to provide publishing services to a book and that is it we are with you, through all the stages of evolution of your book, until you have your book in the hands of a reader! Hoping to write the best book or simply wish to see your story on shelves, we have established a system that is easy, professional, and definitely aimed at authors like you.`,
-    },
-    overview: {
-      title: "We Help You Share Your Story with the World",
-      text: [
-        "Your words deserve to reach readers across the globe. At Open Page Publishing, we simplify the e-book publishing process giving you complete control and guidance from start to finish.",
-        "Whether you’re publishing fiction, nonfiction, or a business guide, our team ensures your e-book is polished, well-designed, and ready for a successful digital release."
-      ],
-      points: [
-        "Book Illustration",
-        "Book Publishing",
-        "Book Marketing",
-      ],
-    },
-    workflow: {
-      title: "A Seamless Workflow for Digital Marketing Success",
-      text: [
-        "We've designed our process to make book promotion easy, efficient, and impactful. With a clear plan and expert execution, your book's visibility grows while you focus on writing your next one."
-      ],
-    },
-    service_body: [
-      {
-        title: "Looking For Professional Book Publishing Services? You’re At The Right Place",
-        text: [
-          "Ready to have your book out then? Our best-in-class Book Publishing Services can help you actualize that dream. We do not only make your book publishing a success; we also take care of all the background work, so that you concentrate on your writing. Whether it is fine-tuning the format of your manuscript, designing the best cover, or even posting it to internet sites, we can do it all.",
-          "Need not be troubled about anything. You may ask yourself: how to list my book online? Or what is the most effective way to reach readers? We have the answers. Our professional team makes your book glitter, page in, page out."
-        ],
-        img: services_bp_1,
-      },
-      {
-        title: "Why Choose Open Page Publishing?",
-        text: "When it comes to publishing, Western is all about selecting service partner who has the knowledge of what it is all about: to bring a book to life. We understand how intimidating it can be to guide yourself through the publishing world; that is why we have created a process that is smooth, streamlined, and customized. We have experts with years of experience backed by a deep interest in storytelling, and your book will be given the due attention right through the process.",
-        img: services_bp_2
-      }
-    ],
-    sec2: {
-      title: "Amazon Publishing Solutions Built to Help You Stand Out and Sell More",
-      text: "Is Amazon’s publishing process confusing or time-consuming? With millions of books live on Amazon, launching your book properly is the difference between visibility and invisibility. At Open Page Publishing, we take the guesswork out of Amazon KDP. We offer full support including cover and interior formatting, metadata research, category selection, keyword targeting, and A+ content guidance. Our Amazon experts know how to position your book for discoverability and engagement, whether in paperback, hardcover, or Kindle formats. From first-time authors to seasoned storytellers, we help you publish confidently on the world’s biggest platform."
-    },
-  },
-
-  {
-    title: "E-Book Publishing",
-    link: "/ebook-publishing",
-    hero: {
-      title: "E-Book Publishing Services Crafted for Modern Authors",
-      text: [
-        "Bring your digital story to life with Open Page Publishing. We make e-book publishing effortless  combining creativity, technology, and precision to ensure your book shines across every digital platform.",
-        "From editing and formatting to marketing and distribution, our experts help you turn your manuscript into a professionally published e-book that connects with readers everywhere."
-      ]
-    },
-    overview: {
-      title: "We Help You Share Your Story with the World",
-      text: [
-        "Your words deserve to reach readers across the globe. At Open Page Publishing, we simplify the e-book publishing process giving you complete control and guidance from start to finish.",
-        "Whether you’re publishing fiction, nonfiction, or a business guide, our team ensures your e-book is polished, well-designed, and ready for a successful digital release."
-      ],
-      points: [
-        "Paperback",
-        "Hardcopy",
-        "Audio Book"
-      ],
-    },
-    workflow: {
-      title: "Smart Publishing Strategies for Your Book’s Digital Success",
-      text: [
-        "At Open Page Publishing, we craft tailored strategies that make your book stand out in the digital world. Our team focuses on highlighting your book’s unique voice and connecting it with the right readers.", "Through targeted campaigns and multi-channel promotion, we help your eBook gain the visibility and engagement it deserves turning your story into a digital success."
-      ],
-    },
-    service_body: [
-      {
-        title: "Why Authors Choose Open Page Publishing",
-        text: [
-          "At Open Page Publishing, we understand that every author’s publishing journey is unique. That’s why our team of expert editors, designers, and marketers works closely with you from manuscript to market guiding you through every step with care and precision.",
-          "We take pride in our commitment to quality, creativity, and author satisfaction, ensuring your book is presented beautifully and professionally to the world."
-        ],
-        img: services_ebp_1
-      },
-    ],
-    sec2: {
-      title: "Transform Your Manuscript into a Digital Masterpiece",
-      text: [
-        "Turn your ideas into an engaging eBook with Open Page Publishing. Our team combines creativity, technology, and expertise to design and publish digital books that captivate readers across every platform.",
-        "From professional editing and flawless formatting to global distribution and marketing, we ensure your eBook is ready to make an impact. With us, publishing your story digitally is simple, seamless, and successful."
-      ]
-    },
-  },
-
-  {
     title: "Proofreading and Editing",
     link: "/proofreading-and-editing",
     hero: {
@@ -147,11 +54,8 @@ export const services = [
     title: "Book Promotions and Marketing",
     link: "/book-marketing-services",
     hero: {
-      title: "Where Stories Take Flight — Not Just Shelf Space",
-      text: [
-        "At Open Page Publishing, we believe every great book deserves to be seen, shared, and celebrated. Our book marketing services are built to connect your story with the right readers through creativity, strategy, and proven industry expertise.",
-        "From tailored campaigns to global reach, we help your book rise above the noise and make a lasting impression."
-      ],
+      title: "Help Your Book Reach the Readers It Was Written For",
+      text: "At Open Page Publishing, we craft thoughtful marketing strategies that highlight your book, strengthen your author presence, and build genuine visibility across the platforms your readers use most.",
     },
     overview: {
       title: "Your Story Deserves to Be Discovered",
@@ -185,6 +89,26 @@ export const services = [
         img: services_bpm_2
       }
     ],
+    benefits: {
+      points: [
+        {
+          title: "Understand Your Book and Your Audience",
+          text: "We begin by exploring your book’s themes, message, and genre. This gives us the clarity to position your story effectively and tailor your marketing strategy to the readers most likely to connect with your work."
+        },
+        {
+          title: "Strengthen Your Author Presence Online",
+          text: "We help you build a consistent online identity through author page optimization, social engagement guidance, and content ideas that reflect your voice while increasing visibility and reader trust."
+        },
+        {
+          title: "Create Meaningful Content Around Your Story",
+          text: "We develop thoughtful content angles—updates, excerpts, storytelling moments, behind-the-scenes insights—that highlight your book naturally and encourage reader interest and interaction."
+        },
+        {
+          title: "Grow Your Book’s Visibility Over Time",
+          text: "As your campaign progresses, we refine your strategy based on what performs best. Our goal is long-term visibility through steady growth, honest communication, and ongoing support that keeps your book relevant."
+        }
+      ]
+    },
     sec2: {
       title: "We’ll Help You Reach the Readers You Deserve",
       text: [
@@ -241,115 +165,6 @@ export const services = [
     sec2: {
       title: "Don't Have a Website Yet? You Might Be Missing Out!",
       text: "Without a dedicated website, you're missing out on opportunities to grow your readership and showcase your work. Let's fix that. With Open Page Publishing, you'll have a custom-built site that highlights your achievements, sells your books, and keeps your fans engaged 24/7."
-    },
-  },
-
-  {
-    title: "Customized Illustrations",
-    link: "/customized-illustrations",
-    hero: {
-      title: "Illustrate Your Story with Creativity and Precision",
-      text: [
-        "At Open Page Publishing, we believe that every story deserves visuals as compelling as its words. Our custom illustration services bring your imagination to life — with original artwork that captures your story's essence, tone, and emotion.",
-        "Whether you're creating a children's book, novel, or memoir, our artists blend creativity with storytelling to make your book visually unforgettable."
-      ]
-    },
-    overview: {
-      title: "Where Imagination Meets Illustration",
-      text: [
-        "Your book's imagery can turn a good story into a lasting memory. At Open Page Publishing, our illustrators craft bespoke artwork tailored to your genre, characters, and creative direction.",
-        "From concept sketches to final renderings, we ensure every piece of art reflects your book's message and emotional depth — perfectly aligned with your vision."
-      ],
-      points: [
-        "Character Design",
-        "Scene Illustration",
-        "Cover Art",
-        "Book Layout Art"
-      ],
-    },
-    workflow: {
-      title: "A Seamless Process for Beautiful Illustrations",
-      text: [
-        "We make illustration creation effortless for authors. Our step-by-step process ensures that every drawing, sketch, and concept enhances your story's visual appeal."
-      ],
-    },
-    service_body: [
-      {
-        title: "Custom Illustration Services for Every Story",
-        text: "Our illustration team specializes in designing characters, environments, and cover art that resonate with readers. Whether you need whimsical, realistic, or dramatic visuals, we match you with the right illustrator for your project.",
-        img: services_ci_1
-      }
-    ],
-    sec2: {
-      title: "Need Art That Captures Your Story's Essence?",
-      text: "Every great story deserves stunning visuals. Our illustrators collaborate closely with you to create artwork that complements your narrative and enhances the reader's experience. At Open Page Publishing, our art team combines skill, style, and storytelling to ensure every image reflects the heart of your book."
-    },
-  },
-
-  {
-    title: "Book Cover Art",
-    link: "/book-cover-art",
-    hero: {
-      title: "Get Noticed with Expert Book Cover Design by Open Page Publishing",
-      text: [
-        "Your story deserves a cover that captures attention and tells its essence at a glance. At Open Page Publishing, we create custom book cover designs that stand out on shelves and digital platforms alike.",
-        "Our designers blend creativity, strategy, and genre-specific trends to craft covers that spark curiosity and drive readers to pick up your book."
-      ]
-    },
-    overview: {
-      title: "We Help You Share Your Story with the World — Beautifully",
-      text: [
-        "A powerful cover is more than just an image; it's your book's first impression. At Open Page Publishing, our cover artists collaborate with you to design visuals that reflect your tone, style, and target audience — ensuring your book makes an unforgettable debut."
-      ],
-      points: [
-        "Custom Design",
-        "Genre-Specific Art",
-        "Print & Digital Ready",
-        "Professional Formatting"
-      ],
-    },
-    workflow: {
-      title: "Smart Design for Maximum Impact",
-      text: [
-        "Your book's cover is your ultimate marketing tool. Our design process combines artistic vision with marketing insight, ensuring every element — from typography to imagery — supports your book's genre and brand identity.",
-        "We design covers that not only look exceptional but also sell — both in print and online."
-      ],
-    },
-    service_body: [
-      {
-        title: "Premium Book Cover Designs that Speak for Your Story",
-        text: [
-          "Your cover should convey emotion, intrigue, and professionalism. Our book cover design team crafts stunning, genre-appropriate visuals that align perfectly with your story's personality — from concept sketches to the final reveal."
-        ],
-        img: services_bca_2
-      },
-      {
-        title: "High-Quality Covers at Competitive Prices",
-        text: [
-          "We believe great design should be accessible. At Open Page Publishing, we deliver affordable book cover design services that never compromise on creativity or quality.",
-          "Our goal is to make your book look world-class — while keeping your publishing budget in mind."
-        ],
-        img: services_bca_1
-      },
-      {
-        title: "Covers Crafted to Fit Every Genre",
-        text: [
-          "Whether it's romance, fantasy, thriller, or nonfiction — our designers understand the visual language of every genre. We tailor each cover to captivate your ideal readers and meet the highest publishing standards."
-        ],
-        img: services_bca_3
-      },
-      {
-        title: "One-Stop Solution for Design and Publishing",
-        text: [
-          "From cover concept to full-scale publishing, Open Page Publishing offers everything under one roof. Once your design is ready, we ensure it's perfectly formatted for Amazon, IngramSpark, and all major publishing platforms.",
-          "You get stunning visuals, technical perfection, and marketing appeal — all in one seamless process."
-        ],
-        img: services_bca_4
-      },
-    ],
-    sec2: {
-      title: "Is Your Cover Catching Eyes or Being Overlooked?",
-      text: "Your cover determines your first impression — and we're here to make it unforgettable. Whether you're rebranding an existing book or launching a new one, our designers craft visuals that connect instantly with your readers."
     },
   },
 
@@ -549,12 +364,12 @@ export const services = [
     title: "Self Publishing",
     link: "/self-publishing",
     hero: {
-      title: "Ready to Self-Publish with Confidence?",
-      text: "At Open Page Publishing, we make self-publishing effortless, empowering authors to take full control of their stories. From editing and design to marketing and global distribution, our self-publishing services are designed to help your book reach readers everywhere — beautifully and professionally.",
+      title: "Bring Your Book to Life with Professional Publishing Services",
+      text: "Beautifully crafted, thoughtfully designed, and ready for readers — we help you publish your book with expert creative support from the first draft to global distribution.",
     },
     overview: {
-      title: "Your Self-Publishing Journey Starts Here",
-      text: "Publishing your book independently doesn’t mean doing it alone. With Open Page Publishing, you gain a dedicated team that guides you from concept to completion. Whether it’s formatting, cover design, or marketing strategy, we help you create a book that’s ready to compete in today’s market.",
+      title: "ABOUT BOOK PUBLISHING",
+      text: "At Open Page Publishing, we turn manuscripts into professionally produced books that meet industry standards and connect with readers worldwide. Our team supports your entire journey with careful guidance and a refined publishing process made for modern authors.",
       points: [
         "Professional Editing",
         "Custom Design",
@@ -570,56 +385,41 @@ export const services = [
     },
     service_body: [
       {
-        title: "What’s Included in Our Self-Publishing Packages",
-        text: "Our self-publishing services are built to give every author the support they need — whether you’re launching your first book or your fifth. Choose from flexible plans that fit your goals and budget.",
+        title: "SELF-PUBLISHING SERVICES",
+        text: "Take full control of your book with a publishing approach built around your vision. We assist with editing, formatting, design, printing, and distribution to help you release a polished, reader-ready book across global platforms.",
         img: services_sp_1
       },
       {
-        plan: true,
-        title: "Standard Plan Services",
-        bold: "Perfect for first-time authors who need professional guidance and publishing essentials:",
-        heading: "What’s included:",
-        points: [
-          "Interior formatting and layout",
-          "ISBN and copyright registration",
-          "Professional cover design",
-          "Worldwide distribution setup",
-          "Dedicated publishing consultant"
-        ],
-      },
-      {
-        plan: true,
-        title: "Extensive Plan Services",
-        bold: "Ideal for authors seeking a premium publishing experience:",
-        heading: "What’s included:",
-        points: [
-          "Everything in the Standard Plan",
-          "Comprehensive editing and proofreading",
-          "Custom illustrations (if needed)",
-          "Author website setup",
-          "Targeted marketing and promotional campaigns",
-          "Audiobook conversion option"
-        ],
-      },
-      {
-        title: "Share Your Story with Readers Worldwide",
-        text: [
-          "Your book deserves a global audience — and we make that possible. Through strategic self-publishing and digital distribution, your story reaches readers across platforms like Amazon Kindle, Apple Books, and Google Play.",
-          "At Open Page Publishing, we handle everything — from publishing logistics to online visibility — so you can focus on what matters most: writing your next great story."
-        ],
+        title: "EBOOK PUBLISHING SERVICES",
+        text: "Reach digital readers everywhere with expertly formatted eBooks designed for Kindle, Apple Books, Google Play, and more. From layout to file optimization, we ensure your eBook looks stunning on every screen.",
         img: services_sp_2
       }
     ],
     benefits: {
-      title: "All-in-One Amazon Self-Publishing Made Easy",
-      text: [
-        "Publishing on Amazon shouldn’t be complicated — and with Open Page Publishing, it isn’t. We simplify every step of the Amazon self-publishing process, from Kindle formatting to launch strategy.",
-        "Our experts optimize your book for visibility, sales, and success, ensuring it stands out in one of the world’s largest digital bookstores."
+      title: "STEP-BY-STEP WORKFLOW",
+      text: "A smooth, collaborative workflow that keeps your vision at the center.",
+      points: [
+        {
+          title: "Consultation",
+          text: "We learn your goals and audience."
+        },
+        {
+          title: "Preparation",
+          text: "Manuscript editing, layout, and cover design begin."
+        },
+        {
+          title: "Production",
+          text: "Your book is formatted for print and digital platforms."
+        },
+        {
+          title: "Publishing",
+          text: "We distribute your book across global marketplaces."
+        }
       ]
     },
     sec2: {
-      title: "Self-Publishing Packages for Creative Freedom",
-      text: "Our packages are built to give you the freedom to publish your way — without the stress. Whether you’re looking for professional editing, cover design, or complete publishing support, Open Page Publishing helps you launch confidently and successfully."
+      title: "Everything Your Book Needs, All in One Place",
+      text: "Enhance your publishing journey with our expanded services — including ghostwriting, illustration, audiobook production, marketing, and author website design. Create a complete, cohesive author brand effortlessly."
     },
   },
 
@@ -699,146 +499,4 @@ export const services = [
       img: services_cbp_4.src
     },
   },
-  {
-    title: "Book SEO and SEM",
-    link: "/book-seo-and-sem",
-    hero: {
-      title: "Boost Your Book’s Visibility with Open Page Publishing",
-      text: [
-        "Get your book noticed by the readers who matter most. At Open Page Publishing, we combine strategic SEO and SEM services to enhance your book’s online visibility, drive traffic, and boost discoverability across major platforms.",
-        "From keyword optimization to paid campaigns, we help your story rise above the competition and reach readers worldwide."
-      ],
-    },
-    overview: {
-      title: "Grow Your Online Presence and Attract More Readers",
-      text: [
-        "A great book deserves a great audience — and we make sure it finds one. With our expert Book SEO and SEM strategies, we optimize your visibility across search engines, online stores, and digital channels.",
-        "Our goal is simple: to help your book stand out, rank higher, and convert casual browsers into loyal readers."
-      ],
-      points: [
-        "Keyword Optimization",
-        "Paid Campaigns",
-        "Organic Reach",
-        "Global Discovery"
-      ]
-    },
-    workflow: {
-      title: "A Proven Workflow for Book SEO and SEM",
-      text: "We’ve simplified the process to help authors gain maximum exposure with minimal effort. Our SEO and SEM experts manage every stage with precision — so your book gets seen, clicked, and purchased.",
-    },
-    service_body: [
-      {
-        title: "Visibility Drives Success",
-        text: [
-          "In today’s digital landscape, visibility means everything. Our book SEO services ensure your title ranks higher on Google, Amazon, and other major platforms making it easier for readers to find you.",
-          "We pair this with smart advertising strategies to help your story shine where it matters most."
-        ],
-        img: services_bss_1
-      },
-      {
-        plan: true,
-        title: "SEO Services",
-        bold: "Our SEO services are designed to improve your website’s organic search rankings and increase visibility on search engines like Google.",
-        heading: "What’s included:",
-        points: [
-          "Keyword research tailored to your book’s genre and audience",
-          "On-page and off-page optimization for better ranking",
-          "Amazon SEO for improved discoverability",
-          "Metadata and product description optimization",
-          "Analytics reporting and progress tracking"
-        ]
-      },
-      {
-        plan: true,
-        title: "SEM Services",
-        bold: "Our SEM services focus on paid advertising strategies to drive targeted traffic to your book’s sales page.",
-        heading: "What’s included:",
-        points: [
-          "Google Ads and Amazon Ads campaign management",
-          "Social media ad campaigns for wider reach",
-          "Targeted audience segmentation and tracking",
-          "Conversion-focused ad copy and visuals",
-          "Continuous optimization for ROI growth"
-        ]
-      },
-    ],
-    sec2: {
-      title: "Book SEO and SEM That Elevate Ranking, Visibility, and Discovery",
-      text: "At Open Page Publishing, we bring strategy and creativity together to help authors grow their reach. Our data-driven marketing methods ensure your book stays relevant, visible, and in front of your ideal readers every single day."
-    },
-    benefits: {
-      title: "Benefits of Strengthening Your Online Presence",
-      text: [
-        "Enhancing your visibility means opening doors to new readers, higher rankings, and better sales. With our combined Book SEO and SEM services, you can establish a strong digital footprint and build lasting engagement.",
-        "We don’t just market your book we position it for success."
-      ]
-    },
-  },
-  {
-    title: "Digital Marketing",
-    link: "/digital-marketing",
-    hero: {
-      title: "Grow Your Book’s Reach with Open Page Publishing",
-      text: [
-        "At Open Page Publishing, we specialize in helping authors amplify their stories through smart, creative, and results-driven digital marketing strategies. Our mission is simple — to connect your book with readers around the world and build a lasting author brand.",
-        "From targeted ads to social media growth, we make sure your book doesn’t just exist online it thrives there."
-      ],
-    },
-    overview: {
-      title: "Expand Your Book's Digital Presence",
-      text: [
-        "Your story deserves the spotlight and we make sure it shines on every digital platform. At Open Page Publishing, we combine proven marketing strategies with data-driven insights to grow your readership and strengthen your online presence.",
-        "Whether you're a debut author or an experienced writer, our digital marketing experts help you reach the readers who will love your work most."
-      ],
-      points: [
-        "Social Media Campaigns",
-        "Email Marketing",
-        "Paid Ads",
-        "Author Branding"
-      ]
-    },
-    workflow: {
-      title: "A Seamless Workflow for Digital Marketing Success",
-      text: "We’ve designed our process to make book promotion easy, efficient, and impactful. With a clear plan and expert execution, your book’s visibility grows while you focus on writing your next one.",
-    },
-    service_body: [
-      {
-        title: "Our Digital Marketing Services Include",
-        text: "We offer end-to-end digital marketing services for authors designed to increase visibility, engagement, and book sales.",
-        points: [
-          "Targeted social media marketing (Facebook, Instagram, X, LinkedIn)",
-          "Paid ad campaigns for Amazon and Google",
-          "Email marketing and newsletter outreach",
-          "Author brand management and growth strategies",
-          "Analytics and reporting to measure real results"
-        ],
-        img: services_dm_1
-      },
-      {
-        plan: true,
-        title: "Standard Plan Services",
-        bold: "Perfect for authors looking to make a strong online impact from day one.",
-        heading: "What’s included:",
-        points: [
-          "Customized marketing strategy",
-          "Campaign design and management",
-          "Social media optimization",
-          "Monthly performance reports",
-          "Dedicated marketing support"
-        ],
-        img: services_dm_2
-      },
-    ],
-    sec2: {
-      title: "Digital Marketing for Authors Who Want to Build Lasting Connections",
-      text: "Our digital marketing services go beyond visibility  they’re about creating meaningful relationships between authors and readers. Whether you want to boost sales, grow your following, or establish your brand, Open Page Publishing helps you achieve long-term success."
-    },
-    benefits: {
-      title: "Affordable, Effective, and Results-Driven",
-      text: [
-        "We believe great marketing shouldn’t come with a high price tag. That’s why our digital marketing solutions are designed to deliver measurable results — without stretching your budget.",
-        "At Open Page Publishing, we combine creativity with analytics to make your marketing campaigns efficient, affordable, and impactful."
-      ]
-    },
-  }
 ];

@@ -61,7 +61,7 @@ const TicketCard = ({ comment, name, role, avatar }) => (
 
 const Testimonials = () => {
   return (
-    <section className="relative py-20 overflow-hidden bg-gray-50">
+    <section className="relative py-20 overflow-hidden bg-white">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.03]"
         style={{ backgroundImage: `url(${banners_reviews_bg})` }}
@@ -111,12 +111,9 @@ const Testimonials = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-700 text-lg  max-w-4xl mx-auto"
           >
-            Our authors are the heart of everything we do. From first drafts to
-            published bestsellers, we’ve helped countless writers bring their
-            stories to life with creativity, precision, and passion.
-            <br />
-            Here’s what they say about working with Open Page Publishing their
-            success is our greatest achievement.
+            Authors trust us for our care, expertise, and dedication to quality.
+            We support your vision with a thoughtful, hands-on approach that
+            makes your publishing journey smooth and rewarding.
           </motion.p>
         </div>
 
