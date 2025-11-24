@@ -81,7 +81,7 @@ const processSteps = [
       text: "We’re your production & publishing partner — not a traditional publisher taking control. Your story stays fully yours.",
     },
     icon: Palette,
-    image: "/images/il3.avif",
+    image: "/images/il4.avif",
     cardGradient: "from-white via-[#fdf2ff] to-[#f9e3ff]",
     badgeColor: "bg-[#f5dcff]",
     iconGradient: "from-[#c084fc] to-[#f472b6]",
