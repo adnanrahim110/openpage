@@ -133,13 +133,15 @@ const Header = ({ setIsSidebar }) => {
     <header ref={headerRef} className={headerClasses}>
       <div className="hidden md:block bg-white text-slate-600">
         <div className="container mx-auto flex items-center justify-end gap-6 py-2 font-semibold tracking-wide">
-          <span className="mr-5 text-slate-700">For inquiries & support -</span>
+          <span className="mr-5 text-slate-700 xl:text-xl text-base">
+            For inquiries & support -
+          </span>
           {topContacts.map((detail, idx) => {
             const Icon = detail.icon;
             const body = (
               <>
                 <Icon className="text-primary-600 text-base" />
-                <span className="flex items-center gap-1 text-sm font-semibold text-neutral-700">
+                <span className="flex items-center gap-1 text-xs xl:text-sm font-semibold text-neutral-700">
                   <span>{formatLabel(detail.name)}</span>
                   <span className="text-slate-900">{detail.text}</span>
                 </span>
@@ -181,7 +183,9 @@ const Header = ({ setIsSidebar }) => {
               src={nav_logo2}
               alt="Ink Nest Publishing"
               className={`h-auto transition-all duration-300 ease-linear ${
-                atTop ? "lg:-mt-9 lg:-ml-6 w-[200px] lg:w-[300px]" : "mt-0 w-60"
+                atTop
+                  ? "lg:-mt-9 lg:-ml-6 w-[200px] lg:w-60 xl:w-[300px]"
+                  : "mt-0 w-60"
               }`}
               priority
             />
@@ -195,7 +199,7 @@ const Header = ({ setIsSidebar }) => {
                 const dropdownOpen = hasDropdown && activeDropdown === idx;
                 const itemActive = isItemActive(item);
                 const triggerBase =
-                  "relative inline-flex items-center gap-2 py-2 text-lg transition-colors duration-200";
+                  "relative inline-flex items-center gap-2 py-2 text-sm xl:text-lg transition-colors duration-200";
                 const triggerContent = renderTriggerContent(
                   item.title,
                   hasDropdown,

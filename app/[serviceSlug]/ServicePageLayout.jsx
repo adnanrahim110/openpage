@@ -8,7 +8,9 @@ import Form from "@/components/layouts/Form";
 import PortfolioSlider from "@/components/layouts/PortfolioSlider";
 import Testimonials from "@/components/layouts/Testimonials";
 import BenefitsSection from "@/components/service/BenefitsSection";
+import Process2 from "@/components/service/Process2";
 import ProcessTimeline from "@/components/service/ProcessTimeline";
+import Sample from "@/components/service/Sample";
 import ServiceBody from "@/components/service/ServiceBody";
 import TitleMarquee from "@/components/service/TitleMarquee";
 import Hero from "@/components/ui/Hero";
@@ -37,19 +39,27 @@ const ServicePageLayout = ({ service }) => {
 
       <BrandsSlider />
 
-      {service.process && <ProcessTimeline process={service.process} />}
+      {service.process && service.process.second ? (
+        <Process2 process={service.process} />
+      ) : (
+        <ProcessTimeline process={service.process} />
+      )}
 
       <TitleMarquee service={service} />
 
       {service.overflow && <ServiceBody service={service} />}
 
+      {service.sample && <Sample sample={service.sample} />}
+
       <BenefitsSection service={service} />
 
-      <Sec2
-        title={service.sec2 && service.sec2.title}
-        text={service.sec2 && service.sec2.text}
-        img={service.sec2.img && service.sec2.img}
-      />
+      {service.sec2 && (
+        <Sec2
+          title={service.sec2 && service.sec2.title}
+          text={service.sec2 && service.sec2.text}
+          img={service.sec2.img && service.sec2.img}
+        />
+      )}
 
       <PortfolioSlider bg="bg-white" />
 

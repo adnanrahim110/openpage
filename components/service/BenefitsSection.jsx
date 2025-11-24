@@ -44,8 +44,8 @@ const BenefitsSection = ({ service }) => {
         <div className="mx-auto max-w-6xl text-center mb-16">
           <div className="flex justify-center mb-6">
             <div className="relative">
-              <div className="absolute inset-0 bg-linear-to-br from-blue-500 to-purple-500 rounded-2xl blur-xl opacity-30" />
-              <div className="relative rounded-2xl bg-linear-to-br from-blue-500 to-purple-500 p-4 shadow-2xl ring-2 ring-blue-500/20">
+              <div className="absolute inset-0 bg-linear-to-br from-blue-500 to-primary-500 rounded-2xl blur-xl opacity-30" />
+              <div className="relative rounded-2xl bg-linear-to-br from-blue-500 to-primary-500 p-4 shadow-2xl ring-2 ring-blue-500/20">
                 <FaStar size={32} className="text-white" />
               </div>
             </div>
@@ -83,7 +83,11 @@ const BenefitsSection = ({ service }) => {
         </div>
 
         {points.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <div
+            className={`grid grid-cols-1 md:grid-cols-2 ${
+              benefits.inline ? "lg:grid-cols-4" : "lg:grid-cols-2"
+            } gap-6 lg:gap-8`}
+          >
             {points.map((point, index) => (
               <div
                 key={index}
@@ -91,14 +95,16 @@ const BenefitsSection = ({ service }) => {
               >
                 <div className="absolute inset-0 bg-linear-to-br from-blue-500/0 via-purple-500/0 to-blue-500/0 opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
 
-                <div className="absolute top-6 right-6">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-blue-500 rounded-full blur-lg opacity-20 group-hover:opacity-40 transition-opacity" />
-                    <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-purple-500 text-sm font-bold text-white shadow-xl ring-2 ring-blue-500/20">
-                      {String(index + 1).padStart(2, "0")}
+                {!benefits.inline && (
+                  <div className="absolute top-6 right-6">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-blue-500 rounded-full blur-lg opacity-20 group-hover:opacity-40 transition-opacity" />
+                      <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-purple-500 text-sm font-bold text-white shadow-xl ring-2 ring-blue-500/20">
+                        {String(index + 1).padStart(2, "0")}
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
 
                 <div className="mb-4 inline-flex">
                   <div className="relative">

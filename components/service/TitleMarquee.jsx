@@ -51,7 +51,7 @@ const TitleMarquee = ({ service }) => {
           <div className="relative h-full">
             <div className="absolute inset-y-6 inset-x-10 rounded-[40px] bg-linear-to-br from-white to-blue-50/60 blur-2xl" />
 
-            <div className="relative rounded-4xl border border-white/60 bg-white/85 p-6 shadow-2xl backdrop-blur-xl">
+            <div className="relative rounded-4xl border border-white/60 bg-white/85 p-6 shadow-xl backdrop-blur-xl">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase text-blue-500">
@@ -61,7 +61,7 @@ const TitleMarquee = ({ service }) => {
                     Concierge Launch Desk
                   </h3>
                 </div>
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-purple-500 text-white text-sm font-bold shadow-lg">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-primary text-white text-sm font-bold shadow-lg">
                   OP
                 </div>
               </div>
@@ -75,15 +75,17 @@ const TitleMarquee = ({ service }) => {
                 {overview.points.map((chip, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-3 justify-between rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3 text-sm font-medium text-slate-700"
+                    className="flex items-center gap-3 justify-between rounded-2xl border border-primary-200 bg-primary-50 px-4 py-3 text-sm font-medium text-slate-700 shadow-lg shadow-primary/15"
                   >
                     <div className="flex flex-col">
-                      {chip.title ? chip.title : chip}
+                      <span className="font-bold text-primary-600 mb-0.5 text-base">
+                        {chip.title ? chip.title : chip}
+                      </span>
                       {chip.text && (
                         <span className="text-xs">{chip.text}</span>
                       )}
                     </div>
-                    <span className="text-blue-500">↗</span>
+                    <span className="text-blue-500 shrink-0 text-2xl">↗</span>
                   </div>
                 ))}
               </div>

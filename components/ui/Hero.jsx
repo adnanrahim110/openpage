@@ -123,13 +123,13 @@ const Hero = ({
                     text.map((item, index) => (
                       <p
                         key={index}
-                        className="text-neutral-200 font-medium text-base lg:text-xl mb-4 last:mb-0"
+                        className="text-neutral-200 font-medium text-base xl:text-xl mb-4 last:mb-0"
                         dangerouslySetInnerHTML={{ __html: item }}
                       />
                     ))
                   ) : (
                     <p
-                      className="text-neutral-200 font-medium text-base lg:text-xl"
+                      className="text-neutral-200 font-medium text-base xl:text-xl"
                       dangerouslySetInnerHTML={{ __html: text }}
                     />
                   )}

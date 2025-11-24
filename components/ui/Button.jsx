@@ -28,7 +28,7 @@ const Button = ({
       case "sm":
         return "px-6 py-2.5 text-base";
       case "lg":
-        return "px-10 py-4 text-xl";
+        return "px-10 py-4 text-lg";
       case "xl":
         return "px-12 py-5 text-2xl";
       default:

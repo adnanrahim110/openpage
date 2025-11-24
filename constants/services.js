@@ -180,7 +180,9 @@ export const services = [
       btn2: "Listen to Sample Styles"
     },
     process: {
+      second: true,
       title: "Audiobook Services We Provide",
+      titleHighlight: "We Provide",
       text: "End-to-end audiobook production tailored for authors who want professional results without the stress.",
       steps: [
         {
@@ -221,6 +223,11 @@ export const services = [
         }
       ]
     },
+    sample: {
+      title: "Sample Audiobook Styles",
+      text: "Imagine your book in one of these styles. We’ll help you choose the perfect narrator and tone.",
+      audio: "/images/audio.mp3"
+    },
     overview: {
       title: "Why Turn Your Book Into an Audiobook?",
       text: "Audiobooks are one of the fastest-growing formats in publishing. Give your readers another way to experience your story—while opening a new revenue stream on Audible and beyond.",
@@ -239,16 +246,10 @@ export const services = [
         },
       ]
     },
-    sec2: {
-      title: "Thinking of Turning Your Book into an Audiobook?",
-      text: [
-        "You’ve written your story now let the world hear it. Whether you have a finished manuscript or a published book, Open Page Publishing can help you transform it into an exceptional listening experience.",
-        "Our process is fast, professional, and completely managed by our in-house team ensuring your audiobook is produced to perfection."
-      ]
-    },
     benefits: {
       title: "How Your Audiobook Project Works",
       text: "A guided, step-by-step process so you always know what’s happening with your book.",
+      inline: true,
       points: [
         {
           title: "Brief & Script",
