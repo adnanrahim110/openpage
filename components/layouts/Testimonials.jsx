@@ -4,6 +4,7 @@ import { testimonials } from "@/constants";
 import { banners_reviews_bg } from "@/public";
 import { motion } from "motion/react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { FaStar } from "react-icons/fa6";
 import { HiSparkles } from "react-icons/hi2";
 import "swiper/css";
@@ -24,7 +25,7 @@ const Stars = ({ n = 5 }) => (
 
 const TicketCard = ({ comment, name, role, avatar }) => (
   <div className="relative mx-auto w-[92%] max-w-[520px] select-none">
-    <div className="relative rounded-2xl bg-linear-to-br from-secondary-50 via-primary-50 to-white p-7 border border-gray-200 transition-all duration-500 will-change-transform group-[.swiper-slide-active]:border-primary/40 group-[.swiper-slide-active]:shadow-[0_0_15px] shadow-black/25 group-[.swiper-slide-active]:scale-[1.02] group-[.swiper-slide-active]:-translate-y-1">
+    <div className="relative rounded-2xl bg-linear-to-br from-secondary-50 via-primary-50 to-white p-4 lg:p-7 border border-gray-200 transition-all duration-500 will-change-transform group-[.swiper-slide-active]:border-primary/40 group-[.swiper-slide-active]:shadow-[0_0_15px] shadow-black/25 group-[.swiper-slide-active]:scale-[1.02] group-[.swiper-slide-active]:-translate-y-1">
       <div className="absolute top-0 left-8 right-8 h-px bg-primary/20" />
 
       <div className="flex items-center gap-4 mb-5">
@@ -34,22 +35,26 @@ const TicketCard = ({ comment, name, role, avatar }) => (
             height={1080}
             src={avatar}
             alt={name}
-            className="h-14 w-14 rounded-full object-cover ring-2 ring-gray-100 shadow-sm transition-all duration-300 group-[.swiper-slide-active]:ring-primary/30"
+            className="size-12 lg:size-14 rounded-full object-cover ring-2 ring-gray-100 shadow-sm transition-all duration-300 group-[.swiper-slide-active]:ring-primary/30"
           />
         </div>
         <div className="flex-1">
-          <p className="text-xl font-semibold text-gray-900">{name}</p>
+          <p className="text-base lg:text-xl font-semibold text-gray-900">
+            {name}
+          </p>
           {role && (
-            <p className="text-sm text-gray-600 font-medium mt-0.5">{role}</p>
+            <p className="text-[10px] lg:text-sm text-gray-600 font-medium lg:mt-0.5">
+              {role}
+            </p>
           )}
         </div>
       </div>
 
-      <blockquote className="relative pl-4 text-base text-gray-700  border-l-2 border-gray-200 transition-colors duration-300 group-[.swiper-slide-active]:border-primary">
+      <blockquote className="relative pl-4 text-xs lg:text-base text-gray-700  border-l-2 border-gray-200 transition-colors duration-300 group-[.swiper-slide-active]:border-primary">
         {comment}
       </blockquote>
 
-      <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
+      <div className="mt-1 lg:mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
         <Stars n={5} />
       </div>
 
@@ -60,6 +65,7 @@ const TicketCard = ({ comment, name, role, avatar }) => (
 );
 
 const Testimonials = () => {
+  const pathname = usePathname();
   return (
     <section className="relative py-20 overflow-hidden bg-white">
       <div
@@ -101,6 +107,11 @@ const Testimonials = () => {
               title="Why Authors Love Working with Us"
               highlight="Working with Us"
               className="text-center font-normal"
+              style={
+                pathname === "/childrens-book-publishing"
+                  ? { fontFamily: "'Baloo 2', cursive" }
+                  : {}
+              }
             />
           </motion.div>
 
@@ -138,7 +149,7 @@ const Testimonials = () => {
             }}
             breakpoints={{
               0: { slidesPerView: 1, spaceBetween: 16 },
-              480: { slidesPerView: 1.1, spaceBetween: 18 },
+              480: { slidesPerView: 1, spaceBetween: 18 },
               640: { slidesPerView: 1.25, spaceBetween: 20 },
               768: { slidesPerView: 1.45, spaceBetween: 22 },
               1024: { slidesPerView: 1.6, spaceBetween: 24 },

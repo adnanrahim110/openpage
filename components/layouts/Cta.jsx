@@ -1,5 +1,6 @@
 "use client";
 
+import { contactDetails } from "@/constants";
 import { usePopup } from "@/context/PopupProvider";
 import {
   books_1_3,
@@ -198,12 +199,12 @@ const Cta = () => {
                   Start Your Journey
                 </Button>
                 <Button
-                  href="tel:+13462967813"
+                  href={contactDetails[0].href}
                   tone="dark"
                   variant="outline"
                   icon={FiPhone}
                 >
-                  +1 346 296 7813
+                  {contactDetails[0].text}
                 </Button>
               </motion.div>
               <motion.div

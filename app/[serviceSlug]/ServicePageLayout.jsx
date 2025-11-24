@@ -8,6 +8,7 @@ import Form from "@/components/layouts/Form";
 import PortfolioSlider from "@/components/layouts/PortfolioSlider";
 import Testimonials from "@/components/layouts/Testimonials";
 import BenefitsSection from "@/components/service/BenefitsSection";
+import ProcessTimeline from "@/components/service/ProcessTimeline";
 import ServiceBody from "@/components/service/ServiceBody";
 import TitleMarquee from "@/components/service/TitleMarquee";
 import Hero from "@/components/ui/Hero";
@@ -30,13 +31,17 @@ const ServicePageLayout = ({ service }) => {
         title={service.hero.title}
         text={service.hero.text}
         qoute={service.hero.qoute}
+        btn1={service.hero.btn1}
+        btn2={service.hero.btn2}
       />
 
       <BrandsSlider />
 
+      {service.process && <ProcessTimeline process={service.process} />}
+
       <TitleMarquee service={service} />
 
-      <ServiceBody service={service} />
+      {service.overflow && <ServiceBody service={service} />}
 
       <BenefitsSection service={service} />
 
@@ -46,9 +51,9 @@ const ServicePageLayout = ({ service }) => {
         img={service.sec2.img && service.sec2.img}
       />
 
-      <Testimonials />
-
       <PortfolioSlider bg="bg-white" />
+
+      <Testimonials />
 
       <Cta />
 
@@ -58,7 +63,14 @@ const ServicePageLayout = ({ service }) => {
         />
       )}
 
-      <Form />
+      {service.faqs && <Faqs qouestionare={service.faqs} />}
+
+      <Form
+        title={service.form && service.form.title}
+        text={service.form && service.form.text}
+        points={service.form && service.form.points}
+        highlight={service.form && service.form.titleHighlight}
+      />
     </>
   );
 };

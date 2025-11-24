@@ -9,9 +9,9 @@ import Subtitle from "../ui/Subtitle";
 import Title from "../ui/Title";
 
 const FALLBACK_SLIDES = [
-  "/images/books/1_4.avif",
-  "/images/books/2_4.avif",
-  "/images/books/3_4.avif",
+  "/images/books/1.avif",
+  "/images/books/2.avif",
+  "/images/books/3.avif",
 ];
 
 const RoundSlider = () => {
@@ -146,7 +146,7 @@ const RoundSlider = () => {
             onMouseMove={handleMouseMove}
             onMouseLeave={() => setMousePos({ x: 0, y: 0 })}
           >
-            <div className="relative mx-auto h-[420px] w-full md:h-[500px]">
+            <div className="relative mx-auto h-[420px] w-full md:h-[460px]">
               {items.map((src, index) => {
                 const offset = (index - currentIndex + total) % total;
                 const isActive = offset === 0;
@@ -241,59 +241,6 @@ const RoundSlider = () => {
                   </div>
                 );
               })}
-            </div>
-
-            <div className="inline-flex items-center justify-center gap-12 bg-black/5 backdrop-blur-xs p-2">
-              <button
-                onClick={goPrev}
-                className="group relative flex h-12 w-12 items-center justify-center"
-                aria-label="Previous"
-              >
-                <div className="absolute inset-0 border border-black/20 transition-all duration-300 group-hover:border-black group-hover:scale-110" />
-                <svg
-                  className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              <div className="flex items-center gap-2">
-                {items.map((_, index) => (
-                  <button
-                    key={`dot-${index}`}
-                    onClick={() => goTo(index, index > currentIndex ? 1 : -1)}
-                    className="group relative"
-                    aria-label={`Go to slide ${index + 1}`}
-                  >
-                    {index === currentIndex ? (
-                      <div className="h-0.5 w-12 bg-black transition-all duration-500" />
-                    ) : (
-                      <div className="h-1 w-1 rounded-full bg-black/30 transition-all duration-300 group-hover:bg-black/50" />
-                    )}
-                  </button>
-                ))}
-              </div>
-
-              <button
-                onClick={goNext}
-                className="group relative flex h-12 w-12 items-center justify-center"
-                aria-label="Next"
-              >
-                <div className="absolute inset-0 border border-black/20 transition-all duration-300 group-hover:border-black group-hover:scale-110" />
-                <svg
-                  className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
             </div>
           </div>
         </div>

@@ -75,12 +75,13 @@ export const navigation = [
 ];
 
 export const roundSlider = [
-  "/images/books/1_4.avif",
-  "/images/books/2_4.avif",
-  "/images/books/3_4.avif",
-  "/images/books/4_4.avif",
-  "/images/books/5_4.avif",
-  "/images/books/6_4.avif",
+  "/images/books/1.avif",
+  "/images/books/2.avif",
+  "/images/books/3.avif",
+  "/images/books/4.avif",
+  "/images/books/5.avif",
+  "/images/books/6.avif",
+  "/images/books/7.avif",
 ];
 
 export const homeSec3 = [
@@ -133,15 +134,6 @@ export const servicesList = [
       "Launch globally with confidence. We handle everything from print to digital distribution, ensuring your book reaches readers everywhere."
   },
   {
-    id: 2,
-    title: "E-Book Publishing",
-    link: "/ebook-publishing",
-    img: services_2,
-    icon: FaBookOpen,
-    text:
-      "Publish your eBook seamlessly across all major platforms with our expert formatting, design, and marketing support."
-  },
-  {
     id: 3,
     title: "Proofreading and Editing",
     link: "/proofreading-and-editing",
@@ -168,24 +160,6 @@ export const servicesList = [
     text:
       "Showcase your author brand with a beautifully designed website that connects you with your audience."
   },
-  // {
-  //   id: 6,
-  //   title: "Customized Illustrations",
-  //   link: "/customized-illustrations",
-  //   img: services_6,
-  //   icon: FaPalette,
-  //   text:
-  //     "Bring your imagination to life with bespoke illustrations that match your story’s tone and style."
-  // },
-  {
-    id: 7,
-    title: "Book Cover Art",
-    link: "/book-cover-art",
-    img: services_7,
-    icon: FaImage,
-    text:
-      "Make a memorable first impression with eye-catching, professionally designed covers."
-  },
   {
     id: 8,
     title: "Audio Book Narration and Publishing",
@@ -204,15 +178,15 @@ export const servicesList = [
     text:
       "From layout to typography, we create clean, professional designs that elevate your book’s presentation."
   },
-  {
-    id: 10,
-    title: "Ghost Writing",
-    link: "/ghost-writing",
-    img: services_10,
-    icon: FaPen,
-    text:
-      "No time to write? Our expert ghostwriters craft compelling books in your voice ready for publication and success."
-  }
+  // {
+  //   id: 10,
+  //   title: "Ghost Writing",
+  //   link: "/ghost-writing",
+  //   img: services_10,
+  //   icon: FaPen,
+  //   text:
+  //     "No time to write? Our expert ghostwriters craft compelling books in your voice ready for publication and success."
+  // }
 ];
 
 export const testimonials = [

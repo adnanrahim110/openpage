@@ -16,13 +16,15 @@ const BooksSlider = () => {
           <div className="w-full lg:w-8/12 text-center">
             <Title
               as="h2"
-              title="YOur Published Authors"
+              title="Complete Ghostwriting Solutions"
               className="font-normal"
             />
             <p className="lg:text-xl">
-              Explore books created with passion, care, and professional
-              craftsmanship. Every project reflects our commitment to helping
-              authors share their stories with confidence.
+              At Open Page Publishing, we bring your story to life with
+              ghostwriting that captures your true voice. We provide editing,
+              formatting, and optional marketing to prepare your book for
+              success. From self-publishing to wide launches, we guide you
+              creatively and ethically every step of the way.
             </p>
           </div>
         </div>

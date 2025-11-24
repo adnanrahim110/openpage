@@ -40,35 +40,35 @@ const StepItem = forwardRef(({ step, isActive, onActivate }, ref) => {
   return (
     <div
       ref={ref}
-      className={`relative p-6 rounded-lg cursor-pointer
+      className={`relative p-5 sm:p-6 rounded-2xl cursor-pointer border border-white/30 backdrop-blur
                   transition-all duration-300 ease-in-out
                   ${
                     isActive
                       ? "bg-white shadow-xl scale-[1.03]"
-                      : "hover:bg-white/50"
+                      : "bg-white/60 hover:bg-white/80"
                   }`}
       onMouseEnter={onActivate}
       onClick={onActivate}
     >
       <span
-        className={`absolute top-0 left-0 -translate-y-1/4 text-9xl font-extrabold
+        className={`block font-extrabold leading-none text-5xl md:text-9xl
                    transition-colors duration-300
+                   md:absolute md:top-0 md:left-0 md:-translate-y-1/4 md:z-0
                    ${isActive ? "text-primary-100" : "text-primary-100/60"}`}
-        style={{ zIndex: 0 }}
       >
         {step.number}
       </span>
 
-      <div className="relative" style={{ zIndex: 1 }}>
+      <div className="relative mt-3 md:mt-0 md:z-10">
         <h3
-          className={`text-2xl font-bold mb-2 transition-colors duration-300
+          className={`text-xl sm:text-2xl font-bold mb-2 transition-colors duration-300
                     ${isActive ? "text-primary" : "text-slate-800"}`}
         >
           {step.title}
         </h3>
         <p
-          className={`transition-colors duration-300 text-[15px] ${
-            isActive ? "text-slate-700" : "text-slate-600"
+          className={`transition-colors duration-300 text-sm sm:text-[15px] leading-relaxed ${
+            isActive ? "text-slate-700" : "text-slate-600/90"
           }`}
         >
           {step.text}
@@ -82,6 +82,7 @@ StepItem.displayName = "StepItem";
 
 const Process = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   const [lines, setLines] = useState([]);
   const containerRef = useRef(null);
@@ -89,6 +90,36 @@ const Process = () => {
   const stepRefs = useRef(new Array(processSteps.length));
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+
+    const handleWidthChange = (event) => {
+      setIsLargeScreen(event.matches);
+    };
+
+    handleWidthChange(mediaQuery);
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleWidthChange);
+    } else {
+      mediaQuery.addListener(handleWidthChange);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener("change", handleWidthChange);
+      } else {
+        mediaQuery.removeListener(handleWidthChange);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isLargeScreen) {
+      setLines([]);
+      return;
+    }
+
     const calculateLines = () => {
       if (
         !containerRef.current ||
@@ -131,32 +162,34 @@ const Process = () => {
     window.addEventListener("resize", calculateLines);
 
     return () => window.removeEventListener("resize", calculateLines);
-  }, [activeIndex]);
+  }, [activeIndex, isLargeScreen]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen text-slate-900 p-8 font-sans antialiased">
+    <div className="flex items-start lg:items-center justify-center min-h-screen text-slate-900 py-12 px-4 sm:px-6 lg:px-8 font-sans antialiased">
       <div className="relative w-full" ref={containerRef}>
-        <svg
-          className="absolute top-0 left-0 w-full h-full"
-          style={{ zIndex: 1, pointerEvents: "none" }}
-        >
-          {lines.map((line, index) => (
-            <line
-              key={index}
-              x1={line.x1}
-              y1={line.y1}
-              x2={line.x2}
-              y2={line.y2}
-              className={`stroke-primary transition-opacity duration-300 ease-in-out`}
-              strokeWidth="2"
-              strokeDasharray="5, 5"
-            />
-          ))}
-        </svg>
+        {isLargeScreen && (
+          <svg
+            className="absolute top-0 left-0 w-full h-full hidden lg:block"
+            style={{ zIndex: 1, pointerEvents: "none" }}
+          >
+            {lines.map((line, index) => (
+              <line
+                key={index}
+                x1={line.x1}
+                y1={line.y1}
+                x2={line.x2}
+                y2={line.y2}
+                className={`stroke-primary transition-opacity duration-300 ease-in-out`}
+                strokeWidth="2"
+                strokeDasharray="5, 5"
+              />
+            ))}
+          </svg>
+        )}
 
         <div className="container relative" style={{ zIndex: 2 }}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 items-center">
-            <div className="flex flex-col gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 items-start lg:items-center">
+            <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12">
               {processSteps.slice(0, 3).map((step, index) => (
                 <StepItem
                   key={index}
@@ -170,14 +203,14 @@ const Process = () => {
 
             <div
               ref={imageContainerRef}
-              className="relative w-full h-96 min-h-[400px] md:min-h-[600px] flex items-center justify-center"
+              className="relative w-full h-80 sm:h-96 min-h-80 sm:min-h-[400px] lg:min-h-[600px] flex items-center justify-center"
             >
               {processSteps.map((step, index) => (
                 <Image
                   key={index}
                   width={800}
                   height={1280}
-                  src={`/images/book_mockups/p${index + 1}.png`}
+                  src={`/images/book_mockups/p${index + 1}.avif`}
                   alt={step.title}
                   className={`absolute mix-blend-multiply object-contain max-h-full max-w-full transition-opacity duration-500 ease-in-out ${
                     activeIndex === index ? "opacity-100" : "opacity-0"

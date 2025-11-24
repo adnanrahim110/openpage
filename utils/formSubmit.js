@@ -1,48 +1,169 @@
+"use client";
+
+const defaultEndpoint = process.env.NEXT_PUBLIC_ENDPOINT_URL;
+
+const isFormElement = (value) =>
+  typeof window !== "undefined" &&
+  value instanceof window.HTMLFormElement;
+
+const isFormData = (value) =>
+  typeof FormData !== "undefined" && value instanceof FormData;
+
+const humanize = (key) =>
+  key
+    .replace(/[_-]+/g, " ")
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/^\w/, (char) => char.toUpperCase());
+
+const normalizeToFormData = (input) => {
+  if (!input) {
+    return new FormData();
+  }
+
+  if (isFormData(input)) {
+    const clone = new FormData();
+    input.forEach((value, key) => {
+      clone.append(key, value);
+    });
+    return clone;
+  }
+
+  if (isFormElement(input)) {
+    return new FormData(input);
+  }
+
+  const payload = new FormData();
+
+  if (typeof input === "object") {
+    Object.entries(input).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach((item) => {
+          payload.append(key, item ?? "");
+        });
+      } else if (value instanceof File) {
+        payload.append(key, value);
+      } else if (value !== undefined && value !== null) {
+        payload.append(key, String(value));
+      }
+    });
+  }
+
+  return payload;
+};
+
+const hasValue = (value) => {
+  if (value === undefined || value === null) return false;
+  if (typeof value === "string") return value.trim().length > 0;
+  return true;
+};
+
+const safeInvoke = (fn, ...args) => {
+  if (typeof fn !== "function") return;
+  try {
+    fn(...args);
+  } catch (error) {
+    console.error("submitForm callback error:", error);
+  }
+};
+
 export const submitForm = async ({
-  endpoint = "https://westernbookpublishing.com/api/sendEmail.php",
-  // endpoint = "http://localhost/brands/westernbook-react/api/sendEmail.php",
+  endpoint = defaultEndpoint,
   formData,
   requiredFields = [],
-  onSuccess = () => { },
-  onError = (_errMsg) => { },
-}) => {
-  const errors = {};
+  extraFields = {},
+  formName,
+  onSuccess,
+  onError,
+} = {}) => {
+  if (!endpoint) {
+    const errorMessage =
+      "Form endpoint is not configured. Please try again later.";
+    safeInvoke(onError, errorMessage, { type: "config" });
+    return {
+      success: false,
+      error: errorMessage,
+    };
+  }
+
+  const payload = normalizeToFormData(formData);
+
+  if (formName && !payload.has("formName")) {
+    payload.set("formName", String(formName));
+  }
+
+  if (extraFields && typeof extraFields === "object") {
+    Object.entries(extraFields).forEach(([key, value]) => {
+      if (value === undefined || value === null) return;
+      payload.set(key, value instanceof File ? value : String(value));
+    });
+  }
+
+  const validationErrors = {};
   requiredFields.forEach((field) => {
-    if (!formData[field] || formData[field].toString().trim() === "") {
-      errors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} is required *`;
+    const value = payload.get(field);
+    if (!hasValue(value)) {
+      validationErrors[field] = `${humanize(field)} is required.`;
     }
   });
 
-  if (Object.keys(errors).length > 0) {
-    return { success: false, validationErrors: errors };
+  if (Object.keys(validationErrors).length > 0) {
+    return { success: false, validationErrors };
+  }
+
+  const body = new URLSearchParams();
+  for (const [key, value] of payload.entries()) {
+    if (value instanceof File) continue;
+    body.append(key, value ?? "");
   }
 
   try {
-    const payloadObj = {
-      ...formData,
-      // normalize service to a string; supports multi-select forms like Signup2
-      service: Array.isArray(formData.service)
-        ? formData.service.join(", ")
-        : (formData.service || "").toString(),
-    };
-
-    const res = await fetch(endpoint, {
+    const response = await fetch(endpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-      body: new URLSearchParams(payloadObj),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: body.toString(),
     });
 
-    const payload = await res.json();
-
-    if (payload.status === "success") {
-      onSuccess(payload);
-      return { success: true };
-    } else {
-      onError(payload.message || "Server returned an error");
-      return { success: false, serverError: payload.message || "" };
+    const responseText = await response.text();
+    let json;
+    try {
+      json = responseText ? JSON.parse(responseText) : null;
+    } catch (error) {
+      json = null;
     }
-  } catch (networkError) {
-    onError(networkError.message || "Network error");
-    return { success: false, networkError: networkError.message };
+
+    const status = json?.status;
+    const message =
+      json?.message ||
+      (response.ok
+        ? "Unexpected response received from the server."
+        : "Unable to submit the form at the moment. Please try again.");
+
+    if (!response.ok || status !== "success") {
+      const errorPayload = {
+        success: false,
+        error: message,
+        statusCode: response.status || 500,
+        data: json,
+      };
+      safeInvoke(onError, message, errorPayload);
+      return errorPayload;
+    }
+
+    const successPayload = { success: true, data: json };
+    safeInvoke(onSuccess, successPayload);
+    return successPayload;
+  } catch (error) {
+    const message =
+      error?.message ||
+      "We could not reach the server. Please check your connection and try again.";
+    safeInvoke(onError, message, { type: "network", error });
+    return {
+      success: false,
+      error: message,
+    };
   }
 };

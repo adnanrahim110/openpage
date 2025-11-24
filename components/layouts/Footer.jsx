@@ -1,5 +1,6 @@
 "use client";
 
+import { usePopup } from "@/context/PopupProvider";
 import { nav_logo, pay } from "@/public";
 import { motion } from "motion/react";
 import Image from "next/image";
@@ -11,6 +12,8 @@ import { contactDetails, navigation, servicesList } from "../../constants";
 
 const Footer = () => {
   const pathname = usePathname();
+  const { openPopup } = usePopup();
+
   return (
     <>
       <footer
@@ -60,13 +63,16 @@ const Footer = () => {
                     deserves— authentically, beautifully, and with heart.
                   </p>
 
-                  <div className="inline-flex items-center gap-2 px-5 py-3 bg-primary/5 backdrop-blur-sm rounded-xl border border-primary/20 w-fit group hover:bg-primary/10 transition-all cursor-pointer">
+                  <button
+                    onClick={openPopup}
+                    className="inline-flex items-center gap-2 px-5 py-3 bg-primary/5 backdrop-blur-sm rounded-xl border border-primary/20 w-fit group hover:bg-primary/10 transition-all cursor-pointer"
+                  >
                     <HiSparkles className="text-primary text-lg animate-pulse" />
                     <span className="text-sm font-bold text-gray-900">
                       Start Your Publishing Journey
                     </span>
                     <FaArrowRight className="text-primary text-xs group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  </button>
                 </div>
               </motion.div>
 
@@ -207,9 +213,9 @@ const Footer = () => {
                     })}
                   </ul>
 
-                  <div className="p-4 rounded-xl bg-linear-to-br from-primary/10 to-purple-600/10 border border-primary/20 backdrop-blur-sm">
+                  <div className="p-4 rounded-xl bg-linear-to-br from-primary/10 to-primary-600/10 border border-primary/20 backdrop-blur-sm">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-linear-to-br from-primary to-purple-600 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-linear-to-br from-primary to-primary-600 flex items-center justify-center">
                         <HiSparkles className="text-white text-xl" />
                       </div>
                       <div>
@@ -252,9 +258,9 @@ const Footer = () => {
 
                 <div className="w-full lg:w-60">
                   <Image
-                    src="/images/pay.webp"
-                    width={354}
-                    height={77}
+                    src="/images/pay.avif"
+                    width={1062}
+                    height={231}
                     className="w-full h-auto"
                     alt=""
                   />

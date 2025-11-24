@@ -22,7 +22,9 @@ export async function generateMetadata({ params }) {
   const service = services.find((s) => s.link.replace("/", "") === serviceSlug);
   if (service) {
     return {
-      title: service.title,
+      title: service.metaTitle || `${service.title} | Open Page Publishing`,
+      description: service.metaDesc && service.metaDesc,
+      keywords: service.metaKeywords && service.metaKeywords,
     };
   }
 

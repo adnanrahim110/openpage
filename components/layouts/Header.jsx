@@ -95,7 +95,7 @@ const Header = ({ setIsSidebar }) => {
     atTop
       ? "translate-y-0"
       : scrollingUp
-      ? "-translate-y-12"
+      ? "translate-y-0 lg:-translate-y-12"
       : "-translate-y-full",
     atTop ? "" : "shadow-[0_12px_24px_rgba(0,0,0,0.18)]",
   ]
@@ -181,7 +181,7 @@ const Header = ({ setIsSidebar }) => {
               src={nav_logo2}
               alt="Ink Nest Publishing"
               className={`h-auto transition-all duration-300 ease-linear ${
-                atTop ? "-mt-9 -ml-6 w-[300px]" : "mt-0 w-60"
+                atTop ? "lg:-mt-9 lg:-ml-6 w-[200px] lg:w-[300px]" : "mt-0 w-60"
               }`}
               priority
             />

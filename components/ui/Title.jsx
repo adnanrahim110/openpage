@@ -4,9 +4,9 @@ import { cn } from "@/utils/cn";
 import { forwardRef } from "react";
 
 const SIZE_MAP = {
-  h1: "text-5xl md:text-6xl lg:text-7xl",
-  h2: "text-4xl md:text-5xl lg:text-[46px]",
-  h3: "text-3xl md:text-4xl lg:text-5xl",
+  h1: "text-4xl md:text-6xl lg:text-7xl",
+  h2: "text-2xl md:text-5xl lg:text-[46px]",
+  h3: "text-2xl md:text-4xl lg:text-5xl",
   h4: "text-2xl md:text-3xl lg:text-4xl",
   h5: "text-xl md:text-2xl lg:text-3xl",
   span: "text-2xl md:text-3xl lg:text-4xl",

@@ -3,7 +3,8 @@
 import { banners_form_bg } from "@/public";
 import { submitForm } from "@/utils/formSubmit";
 import { motion } from "motion/react";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { use, useState } from "react";
 import { BsFillSendFill } from "react-icons/bs";
 import { FaEnvelope, FaPhone, FaUser } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
@@ -31,7 +32,15 @@ const services = [
   { title: "Ghost Writing", value: "ghost-writing" },
 ];
 
-const Form = () => {
+const benefits = [
+  "Quick response within 24 hours",
+  "Expert consultation included",
+  "Free project quotation",
+];
+
+const Form = ({ title = "", highlight = "", text = "", points = benefits }) => {
+  const pathname = usePathname();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -62,29 +71,31 @@ const Form = () => {
     setLoading(true);
     setErrors({});
 
-    const { success, validationErrors } = await submitForm({
+    const pageUrl =
+      typeof window !== "undefined" ? window.location.href : undefined;
+
+    const result = await submitForm({
       formData,
       requiredFields: ["name", "email", "phone"],
+      formName: "Primary Contact Form",
+      extraFields: {
+        source: "main-contact-form",
+        ...(pageUrl ? { pageUrl } : {}),
+      },
       onSuccess: () => {
         window.location.href = "/thankyou";
       },
       onError: (errMsg) => {
-        if (typeof toast !== "undefined") toast.error(errMsg);
+        toast.error(errMsg);
       },
     });
 
-    if (!success && validationErrors) {
-      setErrors(validationErrors);
+    if (!result.success && result.validationErrors) {
+      setErrors(result.validationErrors);
     }
 
     setLoading(false);
   };
-
-  const benefits = [
-    { icon: IoCheckmarkCircle, text: "Quick response within 24 hours" },
-    { icon: IoCheckmarkCircle, text: "Expert consultation included" },
-    { icon: IoCheckmarkCircle, text: "Free project quotation" },
-  ];
 
   return (
     <section className="relative py-24 overflow-hidden">
@@ -97,8 +108,8 @@ const Form = () => {
       <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-linear-to-tl from-primary-100/50 to-accent-200/50 rounded-full blur-3xl opacity-60" />
 
       <div className="container relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div>
+          <div className="grid grid-cols-1 lg:grid-cols-[55%_auto] gap-8 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -118,19 +129,23 @@ const Form = () => {
               <Title
                 as="h2"
                 variant="black"
-                title="Let’s Bring Your Book to Life"
-                highlight="Book to Life"
-                className="mb-6 text-4xl md:text-5xl"
+                title={title || "Let’s Bring Your Book to Life"}
+                highlight={highlight || "Book to Life"}
+                className="mb-2 text-3xl md:text-4xl"
+                style={
+                  pathname === "/childrens-book-publishing"
+                    ? { fontFamily: "'Baloo 2', cursive" }
+                    : {}
+                }
               />
 
               <p className="text-gray-700 font-medium text-base  mb-8">
-                Your story deserves an exceptional beginning. Partner with Open
-                Page Publishing and publish with a team that values creativity,
-                precision, and your unique voice.
+                {text ||
+                  "Your story deserves an exceptional beginning. Partner with Open Page Publishing and publish with a team that values creativity, precision, and your unique voice."}
               </p>
 
-              <div className="space-y-4 mb-8">
-                {benefits.map((benefit, idx) => (
+              <div className="space-y-2 mb-8">
+                {points.map((point, idx) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, x: -20 }}
@@ -139,11 +154,11 @@ const Form = () => {
                     transition={{ duration: 0.3, delay: 0.3 + idx * 0.1 }}
                     className="flex items-center gap-3 group"
                   >
-                    <div className="shrink-0 w-8 h-8 rounded-full bg-linear-to-br from-primary to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <benefit.icon className="text-white text-sm" />
+                    <div className="shrink-0 size-8 rounded-full bg-linear-to-br from-primary to-primary-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <IoCheckmarkCircle className="text-white text-xl" />
                     </div>
                     <p className="text-gray-700 font-semibold text-sm">
-                      {benefit.text}
+                      {point}
                     </p>
                   </motion.div>
                 ))}
@@ -154,10 +169,10 @@ const Form = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: 0.6 }}
-                className="p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-100 shadow-lg"
+                className="p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-100 shadow-lg w-fit"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-linear-to-br from-primary to-purple-600 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-xl bg-linear-to-br from-primary to-primary-600 flex items-center justify-center">
                     <HiSparkles className="text-white text-2xl" />
                   </div>
                   <div>
@@ -315,6 +330,11 @@ const Form = () => {
                           "&:hover": {
                             borderColor: "#1a73e8",
                           },
+                        }),
+                        menu: (base) => ({
+                          ...base,
+                          zIndex: 100,
+                          borderRadius: "0.75rem",
                         }),
                       }}
                     />

@@ -1,6 +1,5 @@
 import BooksSlider from "@/components/home/BooksSlider";
 import Sec3 from "@/components/home/Sec3";
-import Sec4 from "@/components/home/Sec4";
 import BrandsSlider from "@/components/layouts/BrandsSlider";
 import Faqs from "@/components/layouts/Faqs";
 import Form from "@/components/layouts/Form";
@@ -27,7 +26,6 @@ export default function Home() {
       <Sec3 />
       <ServicesSec />
       <Process />
-      {/* <Sec4 /> */}
       <Testimonials />
       <Faqs />
       <Form />

@@ -41,7 +41,7 @@ const BenefitsSection = ({ service }) => {
       </div>
 
       <div className="container relative z-10">
-        <div className="mx-auto max-w-5xl text-center mb-16">
+        <div className="mx-auto max-w-6xl text-center mb-16">
           <div className="flex justify-center mb-6">
             <div className="relative">
               <div className="absolute inset-0 bg-linear-to-br from-blue-500 to-purple-500 rounded-2xl blur-xl opacity-30" />
@@ -56,7 +56,7 @@ const BenefitsSection = ({ service }) => {
               variant="neutral"
               className="mb-4 bg-white border-slate-200 text-slate-600"
             >
-              {benefits.eyebrow || "Value Stack"}
+              {benefits.eyebrow}
             </Subtitle>
           )}
 
@@ -83,7 +83,7 @@ const BenefitsSection = ({ service }) => {
         </div>
 
         {points.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {points.map((point, index) => (
               <div
                 key={index}
@@ -103,13 +103,13 @@ const BenefitsSection = ({ service }) => {
                 <div className="mb-4 inline-flex">
                   <div className="relative">
                     <div className="absolute inset-0 bg-emerald-500 rounded-xl blur-md opacity-20 group-hover:opacity-40 transition-opacity" />
-                    <div className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-linear-to-br from-emerald-500 to-emerald-600 shadow-xl ring-2 ring-emerald-500/20">
+                    <div className="relative flex size-12 items-center justify-center rounded-xl bg-linear-to-br from-emerald-500 to-emerald-600 shadow-xl ring-2 ring-emerald-500/20">
                       <FaCheck className="text-xl text-white" />
                     </div>
                   </div>
                 </div>
 
-                <div className="relative">
+                <div className="relative mt-2">
                   <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
                     {point.title}
                   </h3>

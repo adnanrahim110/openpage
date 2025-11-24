@@ -1,5 +1,6 @@
 "use client";
 
+import { contactDetails } from "@/constants";
 import { book_mockups_5 } from "@/public";
 import { fadeInRight, fadeInUp } from "@/utils/animations";
 import { motion } from "motion/react";
@@ -55,40 +56,96 @@ const Sec2 = () => {
                 </div>
 
                 <div className="relative z-10 space-y-6">
-                  <Subtitle
-                    variant="glass"
-                    icon={HiSparkles}
-                    endIcon={IoMdInfinite}
-                    className="inline-flex border border-white/20 bg-white/10 backdrop-blur-md"
-                    textClassName="text-[10px] font-semibold uppercase text-white/90"
-                    iconClassName="text-primary text-sm"
-                    endIconClassName="text-primary text-sm"
-                  >
-                    Our Mission
-                  </Subtitle>
-
                   <Title
                     as="h2"
-                    title="Everlasting Tales via Open Page Publishing"
-                    highlight="Open Page Publishing"
+                    title="Our Vision"
                     variant="white"
-                    highlightColor="primary"
-                    className="text-3xl font-bold md:text-4xl lg:text-5xl"
+                    className="text-3xl font-bold lg:text-4xl"
                   />
 
                   <div className="space-y-4 text-base text-neutral-200 md:text-lg">
                     <p>
-                      Becoming an author starts a journey that goes well beyond
-                      the writing of a single book. The spark of inventions has
-                      no limitations. As an author, your drive to write more
-                      stories, thoughts, and experiences is limitless.
+                      To create a publishing experience where every story gets
+                      the recognition it deserves. We aim to empower authors
+                      with tools, expertise, and confidence to share their
+                      stories with the world ethically, beautifully, and
+                      globally.
                     </p>
-                    <p>
-                      Western Book Publishing Portal is here to keep the flame
-                      burning and assist your ongoing journey of
-                      self-expression. Our commitment is to assist you in
-                      realizing and living that ideal, book after book.
-                    </p>
+                  </div>
+
+                  <Title
+                    as="h2"
+                    title="Our Values"
+                    variant="white"
+                    className="text-3xl font-bold lg:text-4xl"
+                  />
+
+                  <div className="w-full">
+                    {(() => {
+                      const values = [
+                        {
+                          title: "Integrity",
+                          text: "Transparent, honest, and author-focused at every step.",
+                          icon: HiSparkles,
+                          color: "from-primary to-indigo-600",
+                        },
+                        {
+                          title: "Creativity",
+                          text: "Innovative solutions that make every book stand out.",
+                          icon: IoMdInfinite,
+                          color: "from-amber-500 to-pink-600",
+                        },
+                        {
+                          title: "Excellence",
+                          text: "World-class standards in editing, design, and publishing.",
+                          icon: BiSupport,
+                          color: "from-emerald-500 to-teal-600",
+                        },
+                        {
+                          title: "Empowerment",
+                          text: "Supporting authors to take full control of their creative vision.",
+                          icon: FaPhoneAlt,
+                          color: "from-violet-500 to-indigo-500",
+                        },
+                      ];
+                      return (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                          {values.map((v, idx) => {
+                            const Icon = v.icon;
+                            return (
+                              <motion.div
+                                key={v.title}
+                                initial={{ opacity: 0, y: 8 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                  duration: 0.5,
+                                  delay: idx * 0.08,
+                                }}
+                                className="group bg-white/3 border border-white/10 rounded-2xl p-5 shadow-lg hover:shadow-2xl transform-gpu hover:-translate-y-1 transition-all duration-300"
+                              >
+                                <div className="flex items-start gap-4">
+                                  <div
+                                    className={`shrink-0 h-12 w-12 rounded-lg bg-linear-to-br ${v.color} flex items-center justify-center text-white text-2xl drop-shadow-lg`}
+                                  >
+                                    <Icon className="h-6 w-6" />
+                                  </div>
+
+                                  <div className="min-w-0">
+                                    <h3 className="text-white text-lg font-semibold leading-snug truncate">
+                                      {v.title}
+                                    </h3>
+                                    <p className="mt-1 text-sm text-neutral-300 leading-relaxed">
+                                      {v.text}
+                                    </p>
+                                  </div>
+                                </div>
+                              </motion.div>
+                            );
+                          })}
+                        </div>
+                      );
+                    })()}
                   </div>
 
                   <div className="flex items-center gap-4 py-4">
@@ -108,13 +165,13 @@ const Sec2 = () => {
                       Contact Us
                     </Button>
                     <Button
-                      href="tel:+13462967813"
+                      href={contactDetails[0].href}
                       tone="light"
                       variant="outline"
                       size="lg"
                       icon={FaPhoneAlt}
                     >
-                      +1 346 296 7813
+                      {contactDetails[0].text}
                     </Button>
                   </div>
                 </div>

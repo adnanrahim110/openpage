@@ -151,7 +151,7 @@ const ServiceCard = ({ service, index, hoveredIndex, setHoveredIndex }) => {
               </h5>
             </div>
 
-            <div>
+            <div className="relative z-2">
               <p className="text-gray-600 font-medium text-base">
                 {service.text}
               </p>
@@ -162,7 +162,7 @@ const ServiceCard = ({ service, index, hoveredIndex, setHoveredIndex }) => {
                 opacity: hoveredIndex === index ? 1 : 0.3,
               }}
               transition={{ duration: 0.3 }}
-              className="absolute -bottom-4 leading-none right-0 text-9xl font-black text-gray-100 group-hover:text-primary/10 transition-colors"
+              className="absolute z-0 -bottom-4 leading-none right-0 text-9xl font-black text-gray-100 group-hover:text-primary/10 transition-colors"
             >
               {String(index + 1).padStart(2, "0")}
             </motion.div>

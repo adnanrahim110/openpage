@@ -40,7 +40,7 @@ const Sec3 = () => {
             icon={HiSparkles}
             iconClassName="text-primary text-lg"
           >
-            Premium Publishing Open Page Publishing
+            Premium Publishing
           </Subtitle>
           <div className="h-px w-12 bg-linear-to-l from-transparent to-primary" />
         </motion.div>
@@ -147,7 +147,6 @@ const Sec3 = () => {
                 "Award-Winning Team",
                 "24/7 Support",
                 "Global Reach",
-                "24/7 Support",
               ].map((item, idx) => (
                 <motion.div
                   key={idx}

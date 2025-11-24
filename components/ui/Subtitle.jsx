@@ -6,7 +6,7 @@ import { forwardRef } from "react";
 const BASE_CLASSES = {
   container:
     "inline-flex items-center gap-2 px-5 py-2.5 rounded-full border transition-colors duration-300",
-  text: "text-base font-semibold uppercase tracking-wider",
+  text: "text-xs lg:text-base font-semibold uppercase tracking-wider",
   icon: "text-lg",
   endIcon: "text-lg",
 };

@@ -25,6 +25,8 @@ const Hero = ({
   textSlider = false,
   actionBtns,
   gradient = true,
+  btn1,
+  btn2,
   images,
   titleHighlight,
 }) => {
@@ -151,7 +153,7 @@ const Hero = ({
                   size="lg"
                   className="shadow-[0_0_50px_0] shadow-primary/40 hover:shadow-primary/60 transition-all duration-300"
                 >
-                  Start Your Book
+                  {btn1 || "Start Your Book"}
                 </Button>
                 <Button
                   onClick={() => Tawk_API.toggle()}
@@ -160,7 +162,7 @@ const Hero = ({
                   size="lg"
                   className="backdrop-blur-xl bg-white/5 hover:bg-white/10 border-2"
                 >
-                  Talk to an Expert
+                  {btn2 || "Talk to an Expert"}
                 </Button>
               </motion.div>
             )}
@@ -173,20 +175,20 @@ const Hero = ({
             >
               <div className="relative group">
                 <div className="absolute inset-0 bg-linear-to-r from-transparent via-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative backdrop-blur-xl bg-white/2 border border-white/10 rounded-full px-8 py-4 flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6">
+                <div className="relative backdrop-blur-xl bg-white/2 border border-white/10 rounded-full px-5 lg:px-8 py-4 flex flex-row items-center justify-center gap-3 lg:gap-6">
                   <div className="flex items-center gap-3">
                     <IoMdCheckmarkCircle className="text-primary text-xl" />
-                    <span className="font-sitka text-base text-neutral-300 font-semibold">
+                    <span className="font-sitka text-sm lg:text-base text-neutral-300 font-semibold">
                       Trusted By:
                     </span>
                   </div>
-                  <div className="h-px lg:h-6 w-24 lg:w-px bg-white/20" />
+                  <div className="h-6 w-px bg-white/20" />
                   <Image
                     width={1080}
                     height={500}
                     src={testi}
                     alt="Trusted partners"
-                    className="max-h-8 lg:h-10 h-full w-auto opacity-90"
+                    className="max-h-6 lg:h-10 h-full w-auto opacity-90"
                   />
                 </div>
               </div>

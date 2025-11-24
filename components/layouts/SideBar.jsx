@@ -12,12 +12,10 @@ import { MdOutlineClose } from "react-icons/md";
 
 const SideBar = ({ isSidebar, setIsSidebar }) => {
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [activeSubmenu, setActiveSubmenu] = useState({});
   const pathname = usePathname();
 
   useEffect(() => {
     setIsSidebar(false);
-    setActiveDropdown(null);
   }, [pathname]);
 
   const isActiveItem = (item) => {
@@ -34,7 +32,7 @@ const SideBar = ({ isSidebar, setIsSidebar }) => {
 
   return (
     <div
-      className={`fixed flex w-full h-full top-0 left-0 z-1000 ${
+      className={`fixed flex w-full h-screen top-0 left-0 z-1000 ${
         isSidebar ? "translate-x-0 pointer-events-auto" : " pointer-events-none"
       }`}
     >

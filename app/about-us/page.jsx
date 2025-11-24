@@ -7,7 +7,7 @@ import PortfolioSlider from "@/components/layouts/PortfolioSlider";
 import Hero from "@/components/ui/Hero";
 
 export const metadata = {
-  title: "About Us - Open Page Publishing",
+  title: "About Us | Open Page Publishing",
 };
 
 const AboutPage = () => {
@@ -16,9 +16,9 @@ const AboutPage = () => {
       <Hero
         hero2
         actionBtns
-        subtitle="INFUSING INNOVATION WITH UNRIVALLED PERFECTION"
-        title="OPEN PAGE PUBLISHING"
-        text="Welcome to Open Page Publishing Portal, where endless opportunities await. Our goal is to revolutionize the book publishing industry with a dedicated team creating captivating literary works. Join us where creativity knows no bounds and every word holds power and charm."
+        subtitle="Open Page Publishing"
+        title="Where Every Story Finds Its Voice"
+        text="At Open Page Publishing, we’re redefining what it means to publish a book. With innovation, creativity, and care at the heart of everything we do, we help authors bring their stories to life  from first draft to global success."
       />
       <BrandsSlider />
       <Sec1 />

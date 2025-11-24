@@ -1,6 +1,7 @@
 "use client";
 
 import { faqs } from "@/constants";
+import { usePopup } from "@/context/PopupProvider";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { FaAngleDown, FaQuestionCircle } from "react-icons/fa";
@@ -11,6 +12,7 @@ import Title from "../ui/Title";
 
 const Faqs = ({ qouestionare = faqs }) => {
   const [openId, setOpenId] = useState(0);
+  const { openPopup } = usePopup();
 
   return (
     <section className="relative py-24 overflow-hidden">
@@ -76,7 +78,7 @@ const Faqs = ({ qouestionare = faqs }) => {
                   Our expert team is ready to help you with any additional
                   queries
                 </p>
-                <Button>Contact Support</Button>
+                <Button onClick={openPopup}>Contact Support</Button>
               </div>
             </motion.div>
           </motion.div>
@@ -120,7 +122,7 @@ const Faqs = ({ qouestionare = faqs }) => {
                           transition={{ duration: 0.3 }}
                           className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
                             isOpen
-                              ? "bg-linear-to-br from-primary to-purple-600"
+                              ? "bg-linear-to-br from-primary to-primary-600"
                               : "bg-gray-100 group-hover:bg-primary/10"
                           }`}
                         >
@@ -187,7 +189,7 @@ const Faqs = ({ qouestionare = faqs }) => {
                           className="absolute inset-0 rounded-2xl pointer-events-none"
                           style={{
                             background:
-                              "linear-gradient(135deg, rgba(26, 115, 232, 0.1), rgba(147, 51, 234, 0.1))",
+                              "linear-gradient(135deg, rgba(26, 115, 232, 0.1), rgba(26, 115, 232, 0.1))",
                           }}
                         />
                       )}

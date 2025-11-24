@@ -172,49 +172,73 @@ export const services = [
     title: "Audio Book Narration and Publishing",
     link: "/audio-book-services",
     hero: {
-      title: "Voice Your Story with Premium Audiobook Publishing",
+      title: "Turn Your Book Into a Studio- Quality Audiobook",
       text: [
-        "At Open Page Publishing, we turn your written words into an immersive audio experience. Our audiobook publishing services help authors bring their stories to life through professional narration, high-quality production, and seamless global distribution.",
-        "From script preparation to final mastering, we ensure your audiobook connects with listeners everywhere — on every major platform."
+        "We handle narration, recording, editing, and ACX-compliant mastering so your audiobook is ready for Audible, Amazon, and iTunes—without you ever stepping into a studio."
       ],
+      btn1: "Get Free Audiobook Consultation",
+      btn2: "Listen to Sample Styles"
     },
-    overview: {
-      title: "Transform Your Book into an Engaging Audiobook",
-      text: [
-        "Your story deserves to be heard. With Open Page Publishing, you gain access to experienced narrators, skilled audio engineers, and strategic marketers who specialize in audiobook creation and publishing.",
-        "We handle every step — narration, recording, editing, and promotion — so you can focus on what matters most: your story."
-      ],
-      points: [
-        "Professional Narration ",
-        "Studio-Quality Sound ",
-        "Global Reach ",
-        "Hassle-Free Publishing"
+    process: {
+      title: "Audiobook Services We Provide",
+      text: "End-to-end audiobook production tailored for authors who want professional results without the stress.",
+      steps: [
+        {
+          title: "Narrator Selection",
+          text: "Choose from a curated roster of male and female narrators across accents, ages, and tones.",
+          points: [
+            "Warm, conversational, authoritative, or dramatic delivery",
+            "American & British English focus",
+            "Voice test samples available before final selection"
+          ]
+        },
+        {
+          title: "Recording & Editing",
+          text: "Your book is recorded in a controlled environment for clean, clear sound.",
+          points: [
+            "Professional-grade microphones and workflow",
+            "Removal of clicks, breaths, background noise",
+            "Consistent pacing and tone throughout"
+          ]
+        },
+        {
+          title: "Mixing, Mastering & ACX Compliance",
+          text: "We deliver files that meet Audible / ACX technical requirements.",
+          points: [
+            "RMS levels, peaks, and noise floor within ACX specs",
+            "Chapter-by-chapter mastering and QC",
+            "Intro, outro, and retail sample included"
+          ]
+        },
+        {
+          title: "Upload Support & Guidance",
+          text: "We guide you through (or assist with) the ACX/Audible upload process.",
+          points: [
+            "Account setup help if needed",
+            "Metadata, pricing, and category guidance",
+            "Clear royalty and rights explanation"
+          ]
+        }
       ]
     },
-    workflow: {
-      title: "A Seamless Workflow for Audiobook Publishing",
-      text: [
-        "Publishing your audiobook should be effortless. Our step-by-step process ensures precision, quality, and creative freedom."
-      ],
+    overview: {
+      title: "Why Turn Your Book Into an Audiobook?",
+      text: "Audiobooks are one of the fastest-growing formats in publishing. Give your readers another way to experience your story—while opening a new revenue stream on Audible and beyond.",
+      points: [
+        {
+          title: "Reach More Readers",
+          text: "Attract commuters, busy professionals, and audio-first listeners who prefer to listen instead of read."
+        },
+        {
+          title: "New Income Channel",
+          text: "Earn additional royalties from Audible, Amazon, and iTunes—without rewriting a single word."
+        },
+        {
+          title: "Professional Sound",
+          text: "Your story deserves more than a home recording. We use pro narration, studio audio, and ACX mastering."
+        },
+      ]
     },
-    service_body: [
-      {
-        title: "Bring Your Story to Life with Expert Audiobook Creation",
-        text: [
-          "We specialize in transforming books into immersive, high-quality audio experiences. Our narrators capture your tone and emotion perfectly, while our production team ensures studio-grade clarity.",
-          "Whether you’re publishing fiction, self-help, or memoirs, we’ll make sure your audiobook sounds authentic, engaging, and professional."
-        ],
-        img: services_abn_1
-      },
-      {
-        title: "Take Your Voice Global with Strategic Audiobook Promotion",
-        text: [
-          "Your audiobook deserves to be heard far and wide. Our audiobook marketing and promotion services help you reach listeners across multiple platforms.",
-          "We design personalized marketing campaigns from social media promotion to keyword optimization ensuring your audiobook stands out and generates lasting impact."
-        ],
-        img: services_abn_2
-      }
-    ],
     sec2: {
       title: "Thinking of Turning Your Book into an Audiobook?",
       text: [
@@ -223,27 +247,50 @@ export const services = [
       ]
     },
     benefits: {
-      title: "Comprehensive Audiobook Publishing Services",
-      text: "At Open Page Publishing, we provide everything you need to create and publish a professional audiobook.",
+      title: "How Your Audiobook Project Works",
+      text: "A guided, step-by-step process so you always know what’s happening with your book.",
       points: [
         {
-          title: "Audiobook Production",
-          text: "Full recording, editing, and mastering services with top-tier audio quality."
+          title: "Brief & Script",
+          text: "You share your book files, genre, and vision. We confirm length and quote."
         },
         {
-          title: "Narration & Voice Casting",
-          text: "Access to a diverse pool of professional narrators who bring your story to life."
+          title: "Voice & Sample",
+          text: "We match narrators and record a short sample for your approval."
         },
         {
-          title: "Distribution Management",
-          text: "We handle global release on Audible, iTunes, Spotify, Scribd, and more."
+          title: "Full Recording",
+          text: "Chapters are recorded, edited, and mastered to ACX standards."
         },
         {
-          title: "Marketing & Promotion",
-          text: "Custom campaigns are designed to boost visibility and listener engagement."
+          title: "Delivery & Upload",
+          text: "You receive final files and support to launch on Audible and beyond."
         },
       ]
     },
+    faqs: [
+      {
+        title: "How much does audiobook production cost?",
+        ans: "Pricing depends on final audio hours, narrator type, and complexity. Most projects are quoted per finished hour. Share your word count and we’ll estimate it for you."
+      },
+      {
+        title: "How long does it take?",
+        ans: "On average, 2–6 weeks depending on length, revisions, and narrator schedule.",
+      },
+      {
+        title: "Who owns the rights?",
+        ans: "You retain full ownership of your audiobook. We are a production partner, not a publisher taking rights."
+      }
+    ],
+    form: {
+      title: "Ready to Hear Your Book Come Alive?",
+      text: "Tell us about your book and we’ll send you a custom quote and narrator recommendations for your project.",
+      points: [
+        "Professional audio production from start to finish",
+        "ACX-compliant files ready for Audible",
+        "You keep 100% of your audiobook royalties"
+      ]
+    }
   },
 
   {
@@ -363,57 +410,96 @@ export const services = [
   {
     title: "Self Publishing",
     link: "/self-publishing",
+    metaTitle: "Book Publishing Services | Self-Publishing & eBook Publishing Experts",
+    metaDesc: "Open Page Publishing offers professional book publishing, self-publishing, and eBook services. Edit, design, format, and publish your book with global distribution support.",
+    metaKeywords: [
+      "book publishing services", "self-publishing services", "ebook publishing", "publish my book", "professional publishing services", "book formatting", "global book distribution"
+    ],
     hero: {
-      title: "Bring Your Book to Life with Professional Publishing Services",
-      text: "Beautifully crafted, thoughtfully designed, and ready for readers — we help you publish your book with expert creative support from the first draft to global distribution.",
+      title: "Want to Self-Publish Without Feeling Overwhelmed?",
+      text: "We help you self-publish like a pro — on Amazon, Kindle, and more — while you stay in control of your accounts, royalties, and rights. No confusing dashboards. No guessing. No McDonald’s-book-cover vibes.",
+      btn1: "Free Self-Publishing Consult",
+      btn2: "See What we handle"
     },
-    overview: {
-      title: "ABOUT BOOK PUBLISHING",
-      text: "At Open Page Publishing, we turn manuscripts into professionally produced books that meet industry standards and connect with readers worldwide. Our team supports your entire journey with careful guidance and a refined publishing process made for modern authors.",
-      points: [
-        "Professional Editing",
-        "Custom Design",
-        "Global Reach",
-        "24/7 Author Support"
+    process: {
+      title: "Self-Publishing Services We Offer",
+      text: "Choose exactly what you need — or let us build a full self-publishing plan for your book.",
+      steps: [
+        {
+          title: "Manuscript Polish",
+          text: "Editing, proofreading, and formatting to make your manuscript clean and professional.",
+          points: [
+            "Line editing & grammar",
+            "Interior formatting for print + ebook",
+            "Front/back matter setup"
+          ]
+        },
+        {
+          title: "Cover Design That Actually Sells",
+          text: "Scroll-stopping, genre-appropriate covers that look “trad-pub level,” not homemade.",
+          points: [
+            "Full-wrap paperback & hardcover designs",
+            "Optimized thumbnail for Amazon search results",
+            "Typography & composition based on your genre"
+          ]
+        },
+        {
+          title: "KDP / Publishing Setup",
+          text: "We set up your book properly inside your own KDP account.",
+          points: [
+            "Category & keyword research",
+            "Pricing strategy recommendations",
+            "Metadata and description formatting"
+          ]
+        },
+        {
+          title: "Launch Assets",
+          text: "Optional add-ons to support your launch.",
+          points: [
+            "Social media graphics & quote cards",
+            "Simple author website / landing page",
+            "Email scripts for your existing audience"
+          ]
+        },
       ]
     },
-    workflow: {
-      title: "A Seamless Workflow for Self-Publishing Success",
-      text: [
-        "We’ve simplified the publishing process so you can focus on your story while we handle the rest. Our step-by-step self-publishing workflow ensures your book meets the highest industry standards — from manuscript to marketplace."
-      ],
-    },
-    service_body: [
-      {
-        title: "SELF-PUBLISHING SERVICES",
-        text: "Take full control of your book with a publishing approach built around your vision. We assist with editing, formatting, design, printing, and distribution to help you release a polished, reader-ready book across global platforms.",
-        img: services_sp_1
-      },
-      {
-        title: "EBOOK PUBLISHING SERVICES",
-        text: "Reach digital readers everywhere with expertly formatted eBooks designed for Kindle, Apple Books, Google Play, and more. From layout to file optimization, we ensure your eBook looks stunning on every screen.",
-        img: services_sp_2
-      }
-    ],
-    benefits: {
-      title: "STEP-BY-STEP WORKFLOW",
-      text: "A smooth, collaborative workflow that keeps your vision at the center.",
+    overview: {
+      title: "Why Self-Publish (With a Team Behind You)",
+      text: "Self-publishing lets you move faster, keep control, and earn more per copy — but the learning curve can be brutal. We remove the confusion while letting **you** stay the publisher.",
       points: [
         {
-          title: "Consultation",
-          text: "We learn your goals and audience."
+          title: "You Own Accounts & Rights",
+          text: "Everything is created under your name and login. We don’t lock you into our platform."
         },
         {
-          title: "Preparation",
-          text: "Manuscript editing, layout, and cover design begin."
+          title: "Higher Royalty Potential",
+          text: "You keep your KDP royalties and can adjust pricing and promotions whenever you want."
         },
         {
-          title: "Production",
-          text: "Your book is formatted for print and digital platforms."
+          title: "A Guide, Not a Gatekeeper",
+          text: "We handle the technical and design work while teaching you how everything works."
+        },
+      ]
+    },
+    benefits: {
+      title: "How Your Self-Publishing Project Works",
+      text: "A clear, guided path from finished (or half-finished) manuscript to live listings.",
+      points: [
+        {
+          title: "Discovery Call",
+          text: "We review your goals, genre, and manuscript status."
         },
         {
-          title: "Publishing",
-          text: "We distribute your book across global marketplaces."
+          title: "Edit & Design",
+          text: "We polish the manuscript, design your cover, and format the interior."
+        },
+        {
+          title: "KDP Setup",
+          text: "We configure your KDP account and upload files under your ownership."
+        },
+        {
+          title: "Launch & Learn",
+          text: "You go live with a clear understanding of how it all works."
         }
       ]
     },
@@ -421,17 +507,26 @@ export const services = [
       title: "Everything Your Book Needs, All in One Place",
       text: "Enhance your publishing journey with our expanded services — including ghostwriting, illustration, audiobook production, marketing, and author website design. Create a complete, cohesive author brand effortlessly."
     },
+    form: {
+      title: "Ready to Self-Publish Without Doing It All Alone?",
+      titleHighlight: "Self-Publish",
+      text: "Share a few details about your book and we’ll recommend the best self-publishing path — with transparent pricing and no obligation.",
+      points: [
+        "Keep full ownership, control, and royalties",
+        "We handle the hard parts and teach you as we go",
+        "Built for busy professionals and first-time authors"
+      ]
+    }
   },
 
   {
     title: "Children's Book Publishing",
     link: "/childrens-book-publishing",
     hero: {
-      title: "Bring Your Story to Life with Our Children’s Book Publishing Services",
-      text: [
-        "Every great story begins with imagination and at Open Page Publishing, we help you bring those magical ideas to life. Our children’s book publishing services are designed to turn your vision into a beautifully illustrated, professionally published book that kids will love and parents will trust.",
-        "From concept to creation, our team of expert writers, illustrators, and designers works hand-in-hand with you to craft stories that inspire young readers and spark endless curiosity."
-      ],
+      title: "Have a Children’s Story in Your Heart? We’ll Turn It Into a Real Published Book.",
+      text: "Whether you’re a parent, teacher, or first-time author, we turn your idea into a fully illustrated, professionally published children’s book — even if you can’t draw, have never formatted a page, and have no idea where to start.",
+      btn1: "Talk to a Children’s Book Expert",
+      btn2: "View Sample Pages",
       img: banners_child_banner
     },
     overview: {

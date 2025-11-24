@@ -51,7 +51,7 @@ const TitleMarquee = ({ service }) => {
           <div className="relative h-full">
             <div className="absolute inset-y-6 inset-x-10 rounded-[40px] bg-linear-to-br from-white to-blue-50/60 blur-2xl" />
 
-            <div className="relative rounded-4xl border border-white/60 bg-white/85 p-10 shadow-2xl backdrop-blur-xl">
+            <div className="relative rounded-4xl border border-white/60 bg-white/85 p-6 shadow-2xl backdrop-blur-xl">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase text-blue-500">
@@ -72,12 +72,17 @@ const TitleMarquee = ({ service }) => {
               </p>
 
               <div className="mt-8 grid gap-4">
-                {overview.points.slice(0, 4).map((chip, idx) => (
+                {overview.points.map((chip, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3 text-sm font-medium text-slate-700"
+                    className="flex items-center gap-3 justify-between rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3 text-sm font-medium text-slate-700"
                   >
-                    {chip}
+                    <div className="flex flex-col">
+                      {chip.title ? chip.title : chip}
+                      {chip.text && (
+                        <span className="text-xs">{chip.text}</span>
+                      )}
+                    </div>
                     <span className="text-blue-500">↗</span>
                   </div>
                 ))}

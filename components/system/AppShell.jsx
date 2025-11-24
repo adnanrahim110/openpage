@@ -8,6 +8,7 @@ import SideBar from "@/components/layouts/SideBar";
 import PopupProvider from "@/context/PopupProvider";
 import { ReactLenis } from "lenis/react";
 import { AnimatePresence } from "motion/react";
+import { usePathname } from "next/navigation";
 import { Suspense, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import Popup from "../layouts/Popup";
@@ -15,11 +16,24 @@ import Popup from "../layouts/Popup";
 const AppShell = ({ children }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isSidebar, setIsSidebar] = useState(false);
+
+  const pathname = usePathname();
+
   return (
     <PopupProvider>
-      <ReactLenis root />
-      <Header setIsSidebar={setIsSidebar} />
-      <SideBar isSidebar={isSidebar} setIsSidebar={setIsSidebar} />
+      <ReactLenis
+        root
+        options={{
+          allowNestedScroll: true,
+        }}
+      />
+
+      {pathname !== "/thankyou" && (
+        <>
+          <Header setIsSidebar={setIsSidebar} />
+          <SideBar isSidebar={isSidebar} setIsSidebar={setIsSidebar} />
+        </>
+      )}
 
       <main>{children}</main>
 
@@ -42,8 +56,12 @@ const AppShell = ({ children }) => {
       </Suspense>
       <OpenAtTop />
 
-      <ScrollToTop />
-      <Footer />
+      {pathname !== "/thankyou" && (
+        <>
+          <ScrollToTop />
+          <Footer />
+        </>
+      )}
     </PopupProvider>
   );
 };
