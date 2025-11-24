@@ -136,59 +136,6 @@ const ProcessSection = () => {
         animate={{ y: [0, 30, -10, 0] }}
         transition={{ duration: 18, repeat: Infinity }}
       />
-      <div className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-24 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[9fr_3fr] lg:items-center">
-          <div className="space-y-6 text-left">
-            <Title
-              highlight="Children's Books"
-              title="A Seamless Process for Publishing Children's Books"
-              className="leading-tight text-[#2a2a2a]"
-              style={{ fontFamily: "'Baloo 2', cursive" }}
-            />
-            <p className="text-lg text-slate-600">
-              At Open Page Publishing, we make children’s book publishing
-              beautifully simple. Whether you’re a new author, a parent, or an
-              educator, our end-to-end process ensures your story becomes a
-              professionally illustrated, market-ready children’s book that
-              captivates young readers.
-              <br />
-              <strong className="text-neutral-800">
-                Every book we publish begins like Noah’s very first sketch,
-                grows through Milo’s sense of adventure, comes to life through
-                Luna’s magical artwork, and finally reaches readers’ hearts with
-                Sophie’s storytelling warmth.
-              </strong>
-            </p>
-          </div>
-          <div className="rounded-4xl border border-white/70 bg-white/80 p-6 shadow-xl backdrop-blur">
-            <div className="flex flex-wrap items-center gap-6">
-              <div>
-                <p className="text-4xl font-bold text-[#ff6d8f]">4</p>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                  Story studios
-                </p>
-              </div>
-              <div>
-                <p className="text-4xl font-bold text-[#4f46e5]">90%</p>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                  Returning creators
-                </p>
-              </div>
-              <div>
-                <p className="text-4xl font-bold text-[#f59e0b]">6</p>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                  Weeks average
-                </p>
-              </div>
-            </div>
-            <p className="mt-6 text-sm text-slate-500">
-              Bring your sketchbook heart, we’ll guide the rest. Scroll to glide
-              through the playground.
-            </p>
-          </div>
-        </div>
-      </div>
-
       <div ref={wrapperRef} className="relative w-full h-[400vh]">
         <div
           ref={stickyRef}
