@@ -16,7 +16,8 @@ import {
 } from "@/public";
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
-import { useMemo, useRef } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { HiSparkles } from "react-icons/hi2";
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -26,8 +27,30 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Subtitle from "../ui/Subtitle";
 import Title from "../ui/Title";
 
-const PortfolioSlider = ({ bg }) => {
+const portfolioItems = [
+  books_1_1,
+  books_2_1,
+  books_3_1,
+  books_4_1,
+  books_5_1,
+  books_6_1,
+  books_1_2,
+  books_2_2,
+  books_3_2,
+  books_4_2,
+  books_5_2,
+  books_6_2,
+];
+
+const PortfolioSlider = ({
+  bg,
+  title = "",
+  highlight = "",
+  text = "",
+  imgs = portfolioItems,
+}) => {
   const sectionRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -36,24 +59,30 @@ const PortfolioSlider = ({ bg }) => {
 
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const pathname = usePathname();
 
-  const portfolioItems = useMemo(
-    () => [
-      books_1_1,
-      books_2_1,
-      books_3_1,
-      books_4_1,
-      books_5_1,
-      books_6_1,
-      books_1_2,
-      books_2_2,
-      books_3_2,
-      books_4_2,
-      books_5_2,
-      books_6_2,
-    ],
-    []
-  );
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const mediaQuery = window.matchMedia("(max-width: 1023px)");
+    const handleChange = () => setIsMobile(mediaQuery.matches);
+
+    handleChange();
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleChange);
+    } else {
+      mediaQuery.addListener(handleChange);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener("change", handleChange);
+      } else {
+        mediaQuery.removeListener(handleChange);
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -64,19 +93,28 @@ const PortfolioSlider = ({ bg }) => {
         }`}
       >
         <motion.div
-          style={{ y, opacity }}
-          className="absolute top-0 left-0 w-[600px] h-[600px] bg-linear-to-br from-primary-200/30 to-accent-200/30 rounded-full blur-3xl will-change-transform"
+          style={isMobile ? undefined : { y, opacity }}
+          className="absolute top-0 left-0 w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] lg:w-[600px] lg:h-[600px] bg-linear-to-br from-primary-200/30 to-accent-200/30 rounded-full blur-3xl will-change-transform opacity-80"
         />
 
         <div className="container relative z-10">
           <div className="row gap-y-16 max-lg:text-center justify-center items-center">
             <div className="lg:w-5/12 lg:pl-10">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                initial={isMobile ? undefined : { opacity: 0, x: -40 }}
+                whileInView={
+                  isMobile
+                    ? undefined
+                    : {
+                        opacity: 1,
+                        x: 0,
+                      }
+                }
+                viewport={
+                  isMobile ? undefined : { once: true, margin: "-100px" }
+                }
                 transition={{
-                  duration: 0.6,
+                  duration: isMobile ? 0.3 : 0.6,
                   ease: [0.25, 0.1, 0.25, 1],
                 }}
                 className="will-change-transform"
@@ -94,27 +132,42 @@ const PortfolioSlider = ({ bg }) => {
                   <Title
                     as="h2"
                     variant="black"
-                    title="A Glimpse into our Award-winning Portfolio"
-                    highlight="Award-winning"
+                    title={
+                      title || "A Glimpse into our Award-winning Portfolio"
+                    }
+                    highlight={highlight || "Award-winning"}
                     className="max-lg:text-center"
+                    style={
+                      pathname === "/childrens-book-publishing"
+                        ? { fontFamily: "'Baloo 2', cursive" }
+                        : {}
+                    }
                   />
                 </div>
 
                 <p className="text-gray-700 font-medium text-lg mb-8">
-                  We pride ourselves on our ability to produce quality and
-                  creative content at a fraction of the cost. We have a long
-                  history in the industry and have won many awards.
+                  {text ||
+                    "We pride ourselves on our ability to produce quality and creative content at a fraction of the cost. We have a long history in the industry and have won many awards."}
                 </p>
               </motion.div>
             </div>
 
-            <div className="lg:w-7/12 relative">
+            <div className="lg:w-7/12 relative max-lg:mt-10">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
+                initial={isMobile ? undefined : { opacity: 0, scale: 0.9 }}
+                whileInView={
+                  isMobile
+                    ? undefined
+                    : {
+                        opacity: 1,
+                        scale: 1,
+                      }
+                }
+                viewport={
+                  isMobile ? undefined : { once: true, margin: "-100px" }
+                }
                 transition={{
-                  duration: 0.8,
+                  duration: isMobile ? 0.4 : 0.8,
                   ease: [0.25, 0.1, 0.25, 1],
                 }}
                 className="relative will-change-transform"
@@ -123,43 +176,49 @@ const PortfolioSlider = ({ bg }) => {
 
                 <div className="relative perspective-[2000px]">
                   <Swiper
-                    modules={[Autoplay, EffectCoverflow]}
-                    effect="coverflow"
+                    modules={
+                      isMobile ? [Autoplay] : [Autoplay, EffectCoverflow]
+                    }
+                    effect={isMobile ? "slide" : "coverflow"}
                     loop
                     centeredSlides
                     autoplay={{
-                      delay: 1000,
+                      delay: isMobile ? 2500 : 1000,
                       disableOnInteraction: false,
                     }}
-                    speed={1200}
-                    slidesPerView="auto"
-                    spaceBetween={0}
-                    coverflowEffect={{
-                      rotate: 15,
-                      stretch: 0,
-                      depth: 250,
-                      modifier: 1.5,
-                      slideShadows: true,
-                    }}
+                    speed={isMobile ? 600 : 1200}
+                    slidesPerView={isMobile ? 1.15 : "auto"}
+                    spaceBetween={isMobile ? 20 : 0}
+                    coverflowEffect={
+                      isMobile
+                        ? undefined
+                        : {
+                            rotate: 15,
+                            stretch: 0,
+                            depth: 250,
+                            modifier: 1.5,
+                            slideShadows: true,
+                          }
+                    }
                     breakpoints={{
                       320: {
                         slidesPerView: 1,
-                        coverflowEffect: {
-                          rotate: 10,
-                          depth: 150,
-                          modifier: 1,
-                        },
+                        spaceBetween: 20,
                       },
                       768: {
                         slidesPerView: 2,
-                        coverflowEffect: {
-                          rotate: 12,
-                          depth: 200,
-                          modifier: 1.2,
-                        },
+                        spaceBetween: 24,
+                        coverflowEffect: isMobile
+                          ? undefined
+                          : {
+                              rotate: 12,
+                              depth: 200,
+                              modifier: 1.2,
+                            },
                       },
                       1024: {
                         slidesPerView: 3,
+                        spaceBetween: 0,
                         coverflowEffect: {
                           rotate: 15,
                           depth: 250,
@@ -169,9 +228,14 @@ const PortfolioSlider = ({ bg }) => {
                     }}
                     className="portfolio-swiper pb-12!"
                   >
-                    {portfolioItems.map((img, idx) => (
-                      <SwiperSlide key={idx} className="w-[273px]!">
-                        <div className="relative group cursor-pointer h-[387px] overflow-hidden rounded-lg">
+                    {imgs.map((img, idx) => (
+                      <SwiperSlide
+                        key={idx}
+                        className={
+                          isMobile ? "w-[85vw]! max-sm:w-[88vw]!" : "w-[273px]!"
+                        }
+                      >
+                        <div className="relative group cursor-pointer h-[320px] sm:h-[387px] overflow-hidden rounded-2xl shadow-[0_20px_60px_rgba(15,23,42,0.07)]">
                           <div className="relative h-full w-full transform-gpu">
                             <Image
                               width={600}
