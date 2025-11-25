@@ -110,7 +110,7 @@ const Sample = ({ sample }) => {
   };
 
   return (
-    <section className="relative overflow-hidden py-24">
+    <section id="portfolio" className="relative overflow-hidden py-24">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(28,155,244,0.12),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(85, 163, 247, 0.12),transparent_35%),radial-gradient(circle_at_60%_80%,rgba(14,165,233,0.1),transparent_40%)]" />
       <div className="pointer-events-none absolute left-1/2 top-12 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
 

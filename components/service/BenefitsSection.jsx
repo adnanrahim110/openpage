@@ -11,7 +11,10 @@ const BenefitsSection = ({ service }) => {
   const points = benefits.points || [];
 
   return (
-    <section className="relative overflow-hidden bg-primary-50 py-24 lg:py-32">
+    <section
+      id="what-we-handle"
+      className="relative overflow-hidden bg-primary-50 py-24 lg:py-32"
+    >
       <div
         className="absolute inset-0 opacity-30 mix-blend-multiply"
         style={{

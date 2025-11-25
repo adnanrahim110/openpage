@@ -35,6 +35,7 @@ const ServicePageLayout = ({ service }) => {
         qoute={service.hero.qoute}
         btn1={service.hero.btn1}
         btn2={service.hero.btn2}
+        btn2Action={service.hero.btn2Action}
       />
 
       <BrandsSlider />

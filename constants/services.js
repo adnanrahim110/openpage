@@ -177,7 +177,8 @@ export const services = [
         "We handle narration, recording, editing, and ACX-compliant mastering so your audiobook is ready for Audible, Amazon, and iTunes—without you ever stepping into a studio."
       ],
       btn1: "Get Free Audiobook Consultation",
-      btn2: "Listen to Sample Styles"
+      btn2: "View Portfolio",
+      btn2Action: "#portfolio",
     },
     process: {
       second: true,
@@ -281,6 +282,14 @@ export const services = [
       {
         title: "Who owns the rights?",
         ans: "You retain full ownership of your audiobook. We are a production partner, not a publisher taking rights."
+      },
+      {
+        title: "Can I choose my own narrator?",
+        ans: "You’ll be able to review voice samples that fit your genre and tone. We’ll help you narrow down options, but the final narrator choice is entirely yours."
+      },
+      {
+        title: "What formats do you deliver the audiobook in?",
+        ans: "We provide industry-standard audio files that meet requirements for major platforms like Audible, Apple Books, and others. If you need specific formatting, we can deliver that as well."
       }
     ],
     form: {
@@ -420,9 +429,11 @@ export const services = [
       title: "Want to Self-Publish Without Feeling Overwhelmed?",
       text: "We help you self-publish like a pro — on Amazon, Kindle, and more — while you stay in control of your accounts, royalties, and rights. No confusing dashboards. No guessing. No McDonald’s-book-cover vibes.",
       btn1: "Free Self-Publishing Consult",
-      btn2: "See What we handle"
+      btn2: "See What we handle",
+      btn2Action: "#what-we-handle",
     },
     process: {
+      second: true,
       title: "Self-Publishing Services We Offer",
       text: "Choose exactly what you need — or let us build a full self-publishing plan for your book.",
       steps: [
@@ -483,6 +494,7 @@ export const services = [
       ]
     },
     benefits: {
+      inline: true,
       title: "How Your Self-Publishing Project Works",
       text: "A clear, guided path from finished (or half-finished) manuscript to live listings.",
       points: [

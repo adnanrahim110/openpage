@@ -27,6 +27,7 @@ const Hero = ({
   gradient = true,
   btn1,
   btn2,
+  btn2Action,
   images,
   titleHighlight,
 }) => {
@@ -156,7 +157,9 @@ const Hero = ({
                   {btn1 || "Start Your Book"}
                 </Button>
                 <Button
-                  onClick={() => Tawk_API.toggle()}
+                  {...(btn2Action
+                    ? { href: btn2Action }
+                    : { onClick: () => Tawk_API.toggle() })}
                   tone="light"
                   variant="outline"
                   size="lg"
